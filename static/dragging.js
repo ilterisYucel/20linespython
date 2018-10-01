@@ -19,10 +19,8 @@ var formatChars = [" ", "(", ")", "+", "-", "*", "/", "%", ".", "[", "]", "{", "
 
 var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-var level = 1000;
-var font = 12;
-var helpUse = 0;
-
+var level = 0;
+var font = getFontSize();
 var levelData = [];
 var codelines = [];
 var orient = (y >= x) ? 'p' : 'l';
@@ -280,16 +278,15 @@ function createGame(app)
     {
         for(var i = 0; i < lines.length; i++)
         {
-            //var xLoc = random(Math.floor(x / 2), Math.floor(x - maxLineWidth));
-            //var yLoc = random(Math.floor(6 * (y / 10)), Math.floor(y - maxLineHeight));
             var rndInd = getEmptyInd(indexArr);
             indexArr[rndInd] = true;
             var xLoc = 2;
-            var yLoc = 2 * (y / 10) + rndInd * font + 2;            
+            var yLoc = y - ((rndInd + 1) * font + 2);              
             var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
             line.xInd = parseInt(xLocs[i]);
             line.yInd = parseInt(yLocs[i]);
             line.helpStatus = false;
+            line.id = i;
             codelines.push(line);
         }
     }
@@ -297,16 +294,15 @@ function createGame(app)
     {
         for(var i = 0; i < lines.length; i++)
         {
-            //var xLoc = random(Math.floor(6 * (x / 10)), Math.floor(x  - maxLineWidth));
-            //var yLoc = random(Math.floor(5 * (y / 10)), Math.floor(y - maxLineHeight));
             var rndInd = getEmptyInd(indexArr);
             indexArr[rndInd] = true;
             var xLoc = 2 * (x / 10) + 2;
-            var yLoc = rndInd * font + 2;
+            var yLoc = y - ((rndInd + 1) * font + 2);
             var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
             line.xInd = parseInt(xLocs[i]);
             line.yInd = parseInt(yLocs[i]);
             line.helpStatus = false;
+            line.id = i;
             codelines.push(line);
         }    
     }
@@ -417,12 +413,6 @@ function onDragEnd()
 {
     this.alpha = 1;
     this.dragging = false;
-    /*var maxHeight = getMaxLineHeight() + 2;
-    if(this.position.y % maxHeight !== 2)
-    {
-        this.position.y = this.position.y - (this.position.y % maxHeight) + 2;
-    }*/
-    
     var tmp_position = this.position.x - codeAreaBeginX;
     if(tmp_position % (font * 2) !== 2)
     {
@@ -631,6 +621,24 @@ function createLevelLine(text, posX, posY)
     line.position.y = posY;
     
     return line;
+}
+
+function getFontSize(){
+    var size = 12;
+    
+    if(x < 300){
+        size = 10;
+    }
+    else if(x >= 300 && x < 600){
+        size = 12;
+    }
+    else if(x >= 600 && x < 900){
+        size = 18;
+    }
+    else{
+        size = 24;
+    }
+    return size;
 }
 
 window.onload = function(){
