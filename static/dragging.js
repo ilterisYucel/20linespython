@@ -711,11 +711,11 @@ function getFontSize(){
 }
 
 window.onload = function(){
-    var app = new PIXI.Application(window.innerWidth, window.innerHeight, {backgroundColor : 0xFFFFFF});
+    var app = new PIXI.Application(window.innerWidth, window.innerHeight, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     
     createPage(app);
     createGame(app);
     console.log(getMaxLineHeight());
-    
+    //document.getElementsByTagName("canvas")[0].style.width = (window.innerWidth*2) + "px";
 }
