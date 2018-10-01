@@ -26,7 +26,7 @@ var codelines = [];
 var orient = (y >= x) ? 'p' : 'l';
 
 let xhr = new XMLHttpRequest();
-xhr.open("GET", "assets/questions/question" + level + ".json", false);
+xhr.open("GET", "assets/questions/code" + level + ".json", false);
 xhr.send();
 
 if (xhr.status < 200 || xhr.status >= 300) {
@@ -104,10 +104,12 @@ function createPage(app)
 {
     this.app = app;
     var graphics = new PIXI.Graphics();
-    var texture = new PIXI.Texture.fromImage("./assets/images/configure.png");
-    var texture1 = new PIXI.Texture.fromImage("./assets/images/message-24-help.png");
+    var texture = new PIXI.Texture.fromImage("./assets/images/run.png");
+    var texture1 = new PIXI.Texture.fromImage("./assets/images/tip.png");
+    var texture2 = new PIXI.Texture.fromImage("./assets/images/question.png");
     var runButton = new PIXI.Sprite(texture);
     var helpButton = new PIXI.Sprite(texture1);
+    var qButton = new PIXI.Sprite(texture2);
     runButton.interactive = true;
     runButton.buttonMode = true;
     runButton
@@ -118,10 +120,15 @@ function createPage(app)
     helpButton.buttonMode = true;
     helpButton
             .on('mousedown', help)
-            .on('touchstart', help)
+            .on('touchstart', help);
+    qButton.interactive = true;
+    qButton.buttonMode = true;
+    qButton
+            .on('mousedown', quest)
+            .on('touchstart', quest);
     if (orient === 'p')
     {
-        graphics.beginFill(0x888a85);
+        graphics.beginFill(0x000000);
         graphics.drawRect(0, y / 10, x, y / 10);
         graphics.endFill();
         graphics.beginFill(0x2e3436);
@@ -142,10 +149,16 @@ function createPage(app)
         helpButton.width = y / 20;
         helpButton.height = y / 20;
         
+        qButton.anchor.x = 0.5;
+        qButton.position.x = x / 2;
+        qButton.position.y = y / 10 + y / 40;
+        qButton.width = y / 20;
+        qButton.height = y / 20;
+        
     }
     else
     {
-        graphics.beginFill(0x888a85);
+        graphics.beginFill(0x000000);
         graphics.drawRect(x / 10, 0, x / 10, y);
         graphics.endFill();
         graphics.beginFill(0x2e3436);
@@ -160,17 +173,27 @@ function createPage(app)
         runButton.position.y = x / 10 - x / 20;
         runButton.width = x / 20;
         runButton.height = x / 20;
+        runButton.rotate += Math.PI / 2;
         
         helpButton.position.x = x / 10 + x / 40;
         helpButton.position.y = y - x / 10;
         helpButton.width = x / 20;
         helpButton.height = x / 20;
+        helpButton.rotate = Math.PI / 2;
+        
+        qButton.anchor.y = 0.5;
+        qButton.position.x = x / 10 + x / 40;
+        qButton.position.y = y / 2;
+        qButton.width = x / 20;
+        qButton.height = x / 20;
+        qButton.rotate = Math.PI / 2;
         
     }
     
     this.app.stage.addChild(graphics);
     this.app.stage.addChild(runButton);
     this.app.stage.addChild(helpButton);
+    this.app.stage.addChild(qButton);
 }
 
 function dashedLine(graphics, beginX, beginY, endX, endY)
@@ -212,6 +235,13 @@ function run()
             val = false;
         }
     }
+    /*for(var i = 0; i < codelines.length-1; i++)
+    {
+        if(!(controlLoc(i))){
+            val = false;
+        }
+            
+    }*/
     
     alert(val);
     return val;
@@ -221,7 +251,7 @@ function help()
 {
     var helpLines = controlHelpStatus();
     var xStep = 2 * font;
-    var yStep = getMaxLineHeight();
+    var yStep = getMaxLineHeight() + 5;
     var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2
     var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2)
     if(helpLines.length <= 3 )
@@ -252,6 +282,11 @@ function help()
     
 }
 
+function quest()
+{
+
+}
+
 function controlHelpStatus()
 {
     var helpItems = [];
@@ -264,7 +299,41 @@ function controlHelpStatus()
         }
     }
     return helpItems;
-} 
+}
+
+/*function controlLoc(i)
+{
+    var value = false;
+    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+    var yBegin = (orient < 'm') ?  2 : (2 * (y / 10) + 2);
+    if(i === 0)
+    {
+        value = codelines[i].position.x === indentBegin + codelines[i].xInd * (2 * font) && codelines[i].position.y === yBegin + 2;
+    }
+    else
+    {
+        var value1 = true;
+        for(var j = i; j > 0; j--)
+        {
+            if(codelines[j].position.y <= codelines[j-1].position.y)
+            {
+                value1 = false;
+                break;
+            }
+        }
+        for(var k = i; k < codelines.length-1; k++)
+        {
+            if(codelines[k].position.y >= codelines[k+1].position.y)
+            {
+                value1 = false;
+                break;
+            }
+        }
+        value = codelines[i].position.x === indentBegin + codelines[i].xInd * (2 * font) && value1;
+    }
+    
+    return value;
+}*/ 
 
 function createGame(app)
 {
@@ -626,17 +695,17 @@ function createLevelLine(text, posX, posY)
 function getFontSize(){
     var size = 12;
     
-    if(x < 300){
+    if(x < 360){
         size = 10;
     }
-    else if(x >= 300 && x < 600){
+    else if(x >= 360 && x < 720){
         size = 12;
     }
-    else if(x >= 600 && x < 900){
-        size = 18;
+    else if(x >= 720 && x < 1080){
+        size = 16;
     }
     else{
-        size = 24;
+        size = 20;
     }
     return size;
 }
