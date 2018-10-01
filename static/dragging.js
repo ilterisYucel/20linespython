@@ -516,7 +516,7 @@ function convertToCode(text)
   
   for(var j = 0; j < result.length; j++)
   {
-    if(result[j] === "\"" || result[j] === "'")
+    if( (j === 0 || result[j-1] != "\\") && (result[j] === "\"" || result[j] === "'"))
     {
       if(matched && result[j] === last)
       {
