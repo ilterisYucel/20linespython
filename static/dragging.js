@@ -719,14 +719,14 @@ function getAllUrlParams(url) {
 }
 
 window.onload = function(){
-    var app = new PIXI.Application(window.innerWidth*2, window.innerHeight, {backgroundColor : 0x2e3436});
+    var app = new PIXI.Application(window.innerWidth  + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font), 
+                                    window.innerHeight, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     
     createPage(app);
     createGame(app);
-    console.log(getMaxLineHeight());
     canvasElement = document.getElementsByTagName("canvas")[0];
-    canvasElement.style.width = (window.innerWidth*2) + "px";
+    canvasElement.style.width = window.innerWidth + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font) + "px";
     if (orient === "p") {
         setInterval(checkScroll,20);
     }
