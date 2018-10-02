@@ -19,7 +19,7 @@ var formatChars = [" ", "(", ")", "+", "-", "*", "/", "%", ".", "[", "]", "{", "
 
 var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-var level = 0;
+var level = parseInt(getAllUrlParams().level);
 var font = getFontSize();
 var levelData = [];
 var codelines = [];
@@ -103,13 +103,13 @@ function createCodeLine(x, y, text, app)
 function createPage(app)
 {
     this.app = app;
-    var graphics = new PIXI.Graphics();
+    graphics = new PIXI.Graphics();
     var texture = new PIXI.Texture.fromImage("./assets/images/run.png");
     var texture1 = new PIXI.Texture.fromImage("./assets/images/tip.png");
     var texture2 = new PIXI.Texture.fromImage("./assets/images/question.png");
-    var runButton = new PIXI.Sprite(texture);
-    var helpButton = new PIXI.Sprite(texture1);
-    var qButton = new PIXI.Sprite(texture2);
+    runButton = new PIXI.Sprite(texture);
+    helpButton = new PIXI.Sprite(texture1);
+    qButton = new PIXI.Sprite(texture2);
     runButton.interactive = true;
     runButton.buttonMode = true;
     runButton
@@ -130,9 +130,6 @@ function createPage(app)
     {
         graphics.beginFill(0x000000);
         graphics.drawRect(0, y / 10, x, y / 10);
-        graphics.endFill();
-        graphics.beginFill(0x2e3436);
-        graphics.drawRect(0, 2 * (y / 10), x, 8 *(y / 10));
         graphics.endFill();
         for(var i = 0; i < getMaxIndent(); i++)
         {
@@ -160,9 +157,6 @@ function createPage(app)
     {
         graphics.beginFill(0x000000);
         graphics.drawRect(x / 10, 0, x / 10, y);
-        graphics.endFill();
-        graphics.beginFill(0x2e3436);
-        graphics.drawRect( 2 * (x/ 10), 0,  8 * (x/ 10), y);
         graphics.endFill();
         
         for(var i = 0; i < getMaxIndent(); i++)
@@ -194,6 +188,34 @@ function createPage(app)
     this.app.stage.addChild(runButton);
     this.app.stage.addChild(helpButton);
     this.app.stage.addChild(qButton);
+}
+
+function redraw() {
+    graphics.clear();
+    graphics.beginFill(0x000000);
+    graphics.drawRect(document.body.scrollLeft+0, y / 10, document.body.scrollLeft+x, y / 10);
+    graphics.endFill();
+    
+    for(var i = 0; i < getMaxIndent(); i++)
+    {
+        dashedLine(graphics, i * (2 * font), 2 * (y /  10), x, y);
+    }
+    
+    runButton.position.x = document.body.scrollLeft+x - y / 10;
+    runButton.position.y = y / 10 + y / 40;
+    runButton.width = y / 20;
+    runButton.height = y / 20;
+    
+    helpButton.position.x = document.body.scrollLeft+y / 10 - y / 20;
+    helpButton.position.y = y / 10 + y / 40;
+    helpButton.width = y / 20;
+    helpButton.height = y / 20;
+    
+    qButton.anchor.x = 0.5;
+    qButton.position.x = document.body.scrollLeft+x / 2;
+    qButton.position.y = y / 10 + y / 40;
+    qButton.width = y / 20;
+    qButton.height = y / 20;
 }
 
 function dashedLine(graphics, beginX, beginY, endX, endY)
@@ -235,13 +257,6 @@ function run()
             val = false;
         }
     }
-    /*for(var i = 0; i < codelines.length-1; i++)
-    {
-        if(!(controlLoc(i))){
-            val = false;
-        }
-            
-    }*/
     
     alert(val);
     return val;
@@ -260,7 +275,9 @@ function help()
         {
             codelines[helpLines[i]].position.x = indentBeginX + codelines[helpLines[i]].xInd * xStep;
             codelines[helpLines[i]].position.y = indentBeginY + codelines[helpLines[i]].yInd * yStep;
-            codelines[helpLines[i]].helpStatus = true;            
+            codelines[helpLines[i]].helpStatus = true;
+            codelines[helpLines[i]].buttonMode = false;
+            codelines[helpLines[i]].interactive = false;           
         }
     }
     else
@@ -274,6 +291,8 @@ function help()
                 codelines[helpLines[ind]].position.x = indentBeginX + codelines[helpLines[ind]].xInd * xStep;
                 codelines[helpLines[ind]].position.y = indentBeginY + codelines[helpLines[ind]].yInd * yStep;
                 codelines[helpLines[ind]].helpStatus = true;
+                codelines[helpLines[ind]].buttonMode = false;
+                codelines[helpLines[ind]].interactive = false; 
                 j++;            
             }
         }
@@ -284,6 +303,11 @@ function help()
 
 function quest()
 {
+    this.isdown = true;
+    this.alpha = 0.5;
+    setTimeout(function(){
+        location.replace("./quest.html?quest=" + level);
+    },500);
 
 }
 
@@ -300,40 +324,7 @@ function controlHelpStatus()
     }
     return helpItems;
 }
-
-/*function controlLoc(i)
-{
-    var value = false;
-    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
-    var yBegin = (orient < 'm') ?  2 : (2 * (y / 10) + 2);
-    if(i === 0)
-    {
-        value = codelines[i].position.x === indentBegin + codelines[i].xInd * (2 * font) && codelines[i].position.y === yBegin + 2;
-    }
-    else
-    {
-        var value1 = true;
-        for(var j = i; j > 0; j--)
-        {
-            if(codelines[j].position.y <= codelines[j-1].position.y)
-            {
-                value1 = false;
-                break;
-            }
-        }
-        for(var k = i; k < codelines.length-1; k++)
-        {
-            if(codelines[k].position.y >= codelines[k+1].position.y)
-            {
-                value1 = false;
-                break;
-            }
-        }
-        value = codelines[i].position.x === indentBegin + codelines[i].xInd * (2 * font) && value1;
-    }
-    
-    return value;
-}*/ 
+ 
 
 function createGame(app)
 {
@@ -656,42 +647,6 @@ function convertToCode(text)
 
 }
 
-function createLevelLine(text, posX, posY)
-{
-    this.text = text;
-        
-    if(orient === 'l'){
-        var line = new PIXI.Text(this.text,
-        {
-                fontFamily: "monospace",
-                fontSize: (y / 20) + "px",
-                fill: "0x000000",
-                align: "center",
-                wordWrap: true,
-                wordWrapWidth: 1
-       });
-       
-       line.anchor.y = 0.5;
-
-    }else{
-        var line = new PIXI.Text(this.text,
-        {
-                fontFamily: "monospace",
-                fontSize: (y / 20) + "px",
-                fill: "0x000000",
-                align: "center"
-      
-       });
-           
-        line.anchor.x = 0.5;
-    }
-
-    line.position.x = posX;
-    line.position.y = posY;
-    
-    return line;
-}
-
 function getFontSize(){
     var size = 12;
     
@@ -710,12 +665,70 @@ function getFontSize(){
     return size;
 }
 
+function checkScroll() {
+    if (document.body.scrollLeft !== lastScroll) {
+        redraw();
+        lastScroll = document.body.scrollLeft;
+    }
+}
+
+function getAllUrlParams(url) {
+
+    var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+    var obj = {};
+
+    if (queryString) {
+
+        queryString = queryString.split('#')[0];
+
+        var arr = queryString.split('&');
+
+        for (var i=0; i<arr.length; i++) {
+            var a = arr[i].split('=');
+
+            var paramNum = undefined;
+            var paramName = a[0].replace(/\[\d*\]/, function(v) {
+                paramNum = v.slice(1,-1);
+                return '';
+            });
+
+            var paramValue = typeof(a[1])==='undefined' ? true : a[1];
+
+            paramName = paramName.toLowerCase();
+            paramValue = paramValue.toLowerCase();
+
+            if (obj[paramName]) {
+                if (typeof obj[paramName] === 'string') {
+                    obj[paramName] = [obj[paramName]];
+                }
+                if (typeof paramNum === 'undefined') {
+                    obj[paramName].push(paramValue);
+                }
+                else {
+                    obj[paramName][paramNum] = paramValue;
+                }
+            }
+            else {
+                obj[paramName] = paramValue;
+            }
+        }
+    }
+
+  return obj;
+}
+
 window.onload = function(){
-    var app = new PIXI.Application(window.innerWidth, window.innerHeight, {backgroundColor : 0x2e3436});
+    var app = new PIXI.Application(window.innerWidth*2, window.innerHeight, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     
     createPage(app);
     createGame(app);
     console.log(getMaxLineHeight());
-    //document.getElementsByTagName("canvas")[0].style.width = (window.innerWidth*2) + "px";
+    canvasElement = document.getElementsByTagName("canvas")[0];
+    canvasElement.style.width = (window.innerWidth*2) + "px";
+    if (orient === "p") {
+        setInterval(checkScroll,20);
+    }
+    lastScroll = 0;
 }
