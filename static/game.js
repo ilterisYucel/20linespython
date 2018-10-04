@@ -5,6 +5,15 @@ var w = window,
     x = w.innerWidth || e.clientWidth || g.clientWidth,
     y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
+var modalText = {
+                 0 : "CONGRATULATIONS!",
+                 1 : "YOU'RE ON WAY!",
+                 2 : "AWESOME!",
+                 3 : "GODLIKE BUDDY!",
+                 4 : "FAST AND FURIOUS!",
+                 5 : "YOU'RE A KING!"
+                }
+
 var keywordArr = ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'];
 
 var builtInArr = ["abs", "all", "any", "ascii", "bin", "bool", "bytearray", "bytes", "callable", "chr", "classmethod",
@@ -19,6 +28,7 @@ var formatChars = [" ", "(", ")", "+", "-", "*", "/", "%", ".", "[", "]", "{", "
 
 var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+var app;
 var level = parseInt(getAllUrlParams().level);
 var font = getFontSize();
 var levelData = [];
@@ -100,7 +110,7 @@ function createCodeLine(x, y, text, app)
     return line;
 }
 
-function createPage(app)
+function createPage()
 {
     this.app = app;
     graphics = new PIXI.Graphics();
@@ -240,6 +250,7 @@ function dashedLine(graphics, beginX, beginY, endX, endY)
 function run()
 {
     var val = true;
+    var items = [];
     var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2
     
     for(var i = 0; i < codelines.length-1; i++)
@@ -258,8 +269,23 @@ function run()
         }
     }
     
-    alert(val);
-    return val;
+    if(val){
+        level++;
+		setTimeout(function() {
+			createModal(val, this.app);
+			setTimeout(function() {
+			    location.replace("./game.html?level="+level);
+			},1000);
+		},500);
+    }else{
+		setTimeout(function() {
+			items = createModal(val, this.app);
+			setTimeout(function() {
+			    app.stage.removeChild(items[0]);
+			    app.stage.removeChild(items[1]);
+			},1000);
+		},500);        
+    }
 }
 
 function help()
@@ -326,7 +352,7 @@ function controlHelpStatus()
 }
  
 
-function createGame(app)
+function createGame()
 {
     this.app = app;
     var lines = levelData.slice(0, levelData.length-2);
@@ -717,14 +743,43 @@ function getAllUrlParams(url) {
 
   return obj;
 }
+function createModal(condition)
+{
+    var items = [];
+    var graphicModal = new PIXI.Graphics();
+    graphicModal.beginFill(0x000000, 0.5);
+    graphicModal.drawRoundedRect(0, 0, x, y, step / 5);
+    graphicModal.endFill();
+    if(condition)
+    {
+        var text = modalText[random(0, 5)];
+        var line = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  font + "px" ,
+                                        align : "center",  fill : "0xeeeeec", fontWeight: "bold"});
+    }else{
+        var line = new PIXI.Text("FALSE", {fontFamily : "monospace", fontSize :  font  + "px" ,
+                                        align : "center",  fill : "0xeeeeec", fontWeight: "bold"});    
+    }
+    line.anchor.x = 0.5;
+    line.anchor. y = 0.5;
+    line.position.x = x / 2;
+    line.position.y = y / 2;
+    
+    app.stage.addChild(graphicModal);
+    app.stage.addChild(line);
+    
+    items.push(graphicModal);
+    items.push(line);
+    return items;
+
+}
 
 window.onload = function(){
-    var app = new PIXI.Application(window.innerWidth  + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font), 
+    app = new PIXI.Application(window.innerWidth  + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font), 
                                     window.innerHeight, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     
-    createPage(app);
-    createGame(app);
+    createPage();
+    createGame();
     canvasElement = document.getElementsByTagName("canvas")[0];
     canvasElement.style.width = window.innerWidth + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font) + "px";
     if (orient === "p") {

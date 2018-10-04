@@ -98,7 +98,7 @@ function goFunc() {
     this.isdown = true;
     this.alpha = 0.5;
     setTimeout(function(){
-        location.replace("./index.html?level=" + quest);
+        location.replace("./game.html?level=" + quest);
     },500);
 }
 
