@@ -1,6 +1,19 @@
 if (typeof(Storage) !== "undefined") {
-    localStorage.setItem("minLevel", 0);
-    localStorage.setItem("maxLevel", 999);
+    if(!localStorage.getItem("minLevel")){
+        localStorage.setItem("minLevel", 0);
+    }
+    if(!localStorage.getItem("maxLevel")){
+        localStorage.setItem("maxLevel", 89);
+    }
+    if(!localStorage.getItem("itemTest")){
+        var obj = [];
+        for(var o = 0; o <= 89; o++){
+            obj[o] = false;
+        }
+        setTimeout(function(){
+            localStorage.setItem("itemTest", JSON.stringify(obj));
+        },100);
+    }
 } else {
     console.log("No local storage.")
 }
@@ -25,13 +38,13 @@ function menuPage(){
     stepInX = (6 * stepX) / 12;
     stepInY = (6 * stepY) / 12;
     
-    graphics.beginFill(0xe60000);
+    graphics.beginFill(0x306998);
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();
-    graphics.beginFill(0x2eb82e);
+    graphics.beginFill(0xFFD43B);
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + 4 * stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();
-    graphics.beginFill(0x005ce6);
+    graphics.beginFill(0x646464);
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + 7 * stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();
     /*graphics.beginFill(0x000000);
@@ -118,7 +131,7 @@ function onButtonDown(event) {
     this.alpha = 0.5;
     if(this.id === 0){
         setTimeout(function(){
-            location.replace("./game.html?level=" + 0);
+            location.replace("./quest.html?quest=" + 0);
         },500);
     }
     else if(this.id === 1){

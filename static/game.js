@@ -5,14 +5,6 @@ var w = window,
     x = w.innerWidth || e.clientWidth || g.clientWidth,
     y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
-var modalText = {
-                 0 : "CONGRATULATIONS!",
-                 1 : "YOU'RE ON WAY!",
-                 2 : "AWESOME!",
-                 3 : "GODLIKE BUDDY!",
-                 4 : "FAST AND FURIOUS!",
-                 5 : "YOU'RE A KING!"
-                }
 
 var keywordArr = ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'];
 
@@ -30,10 +22,12 @@ var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 var app;
 var level = parseInt(getAllUrlParams().level);
-var font = getFontSize();
 var levelData = [];
 var codelines = [];
 var orient = (y >= x) ? 'p' : 'l';
+var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+var font = orient < 'm' ? y / 30 : (8 * y / 10) / 30;
+var fFont = (orient < 'm') ? y : x;
 
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "assets/questions/code" + level + ".json", false);
@@ -136,6 +130,12 @@ function createPage()
     qButton
             .on('mousedown', quest)
             .on('touchstart', quest);
+            
+    var fontBack = ('m' > orient) ? (y / 20) : (x / 20);        
+    back = new PIXI.Text("\u27a4", {fontSize : fontBack + "px", fill : "#FFFFFF"});
+    back
+        .on('mousedown', goBack)
+        .on('touchstart', goBack);
     if (orient === 'p')
     {
         graphics.beginFill(0x000000);
@@ -151,16 +151,24 @@ function createPage()
         runButton.width = y / 20;
         runButton.height = y / 20;
         
-        helpButton.position.x = y / 10 - y / 20;
+        helpButton.position.x = x - 3 * y / 10;
         helpButton.position.y = y / 10 + y / 40;
         helpButton.width = y / 20;
         helpButton.height = y / 20;
         
-        qButton.anchor.x = 0.5;
-        qButton.position.x = x / 2;
+        qButton.position.x = x - 2 * y / 10;
         qButton.position.y = y / 10 + y / 40;
         qButton.width = y / 20;
         qButton.height = y / 20;
+        
+        back.anchor.x = 0.5;
+        back.anchor.y = 0.5;
+        back.position.x = x / 10 - x / 20;
+        back.position.y = y / 10 + y / 20;
+        back.rotation += Math.PI;
+        back.buttonMode = true;
+        back.interactive = true;
+
         
     }
     else
@@ -173,24 +181,35 @@ function createPage()
         {
             dashedLine(graphics, i * (2 * font) + (2 * x / 10), 0, x, y);
         }
-        runButton.position.x = x / 10 + x / 40;
-        runButton.position.y = x / 10 - x / 20;
-        runButton.width = x / 20;
-        runButton.height = x / 20;
+        runButton.anchor.x = 0.5;
+        runButton.position.x = x / 10 + x / 20;
+        runButton.position.y = x / 20 - y / 20;
+        runButton.width = y / 20;
+        runButton.height = y / 20;
         runButton.rotate += Math.PI / 2;
         
-        helpButton.position.x = x / 10 + x / 40;
-        helpButton.position.y = y - x / 10;
-        helpButton.width = x / 20;
-        helpButton.height = x / 20;
+        helpButton.anchor.x = 0.5;
+        helpButton.position.x = x / 10 + x / 20;
+        helpButton.position.y = x / 20 +  3 * y / 20;
+        helpButton.width = y / 20;
+        helpButton.height = y / 20;
         helpButton.rotate = Math.PI / 2;
         
-        qButton.anchor.y = 0.5;
-        qButton.position.x = x / 10 + x / 40;
-        qButton.position.y = y / 2;
-        qButton.width = x / 20;
-        qButton.height = x / 20;
+        qButton.anchor.x = 0.5;        
+        qButton.position.x = x / 10 + x / 20;
+        qButton.position.y = x / 20 + y / 20;
+        qButton.width = y / 20;
+        qButton.height = y / 20;
         qButton.rotate = Math.PI / 2;
+        
+
+        back.anchor.x = 0.5;
+        back.anchor.y = 0.5;
+        back.position.x = x / 10 + x / 20;
+        back.position.y = y - x / 20;
+        back.rotation += Math.PI;
+        back.buttonMode = true;
+        back.interactive = true;
         
     }
     
@@ -198,6 +217,7 @@ function createPage()
     this.app.stage.addChild(runButton);
     this.app.stage.addChild(helpButton);
     this.app.stage.addChild(qButton);
+    this.app.stage.addChild(back);
 }
 
 function redraw() {
@@ -216,16 +236,18 @@ function redraw() {
     runButton.width = y / 20;
     runButton.height = y / 20;
     
-    helpButton.position.x = document.body.scrollLeft+y / 10 - y / 20;
+    helpButton.position.x = document.body.scrollLeft+x - 3 * y / 10;
     helpButton.position.y = y / 10 + y / 40;
     helpButton.width = y / 20;
     helpButton.height = y / 20;
     
-    qButton.anchor.x = 0.5;
-    qButton.position.x = document.body.scrollLeft+x / 2;
+    qButton.position.x = document.body.scrollLeft+x - 2 * y / 10;
     qButton.position.y = y / 10 + y / 40;
     qButton.width = y / 20;
     qButton.height = y / 20;
+    
+    back.position.x = document.body.scrollLeft+ x / 10 - x / 20;
+    back.position.y = y / 10 + y / 20;
 }
 
 function dashedLine(graphics, beginX, beginY, endX, endY)
@@ -270,16 +292,18 @@ function run()
     }
     
     if(val){
+        itemTest[level] = true;
+        localStorage.setItem("itemTest", JSON.stringify(itemTest));
         level++;
 		setTimeout(function() {
-			createModal(val, this.app);
+			createModal(val);
 			setTimeout(function() {
-			    location.replace("./game.html?level="+level);
+			    window.location.assign("./game.html?level="+level);
 			},1000);
 		},500);
     }else{
 		setTimeout(function() {
-			items = createModal(val, this.app);
+			items = createModal(val);
 			setTimeout(function() {
 			    app.stage.removeChild(items[0]);
 			    app.stage.removeChild(items[1]);
@@ -292,7 +316,7 @@ function help()
 {
     var helpLines = controlHelpStatus();
     var xStep = 2 * font;
-    var yStep = getMaxLineHeight() + 5;
+    var yStep = getMaxLineHeight() + font / 4;
     var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2
     var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2)
     if(helpLines.length <= 3 )
@@ -330,9 +354,10 @@ function help()
 function quest()
 {
     this.isdown = true;
-    this.alpha = 0.5;
+    //this.alpha = 0.5;
     setTimeout(function(){
-        location.replace("./quest.html?quest=" + level);
+        //window.location.assign("./quest.html?quest=" + level);
+        createQuestPage();
     },500);
 
 }
@@ -673,24 +698,6 @@ function convertToCode(text)
 
 }
 
-function getFontSize(){
-    var size = 12;
-    
-    if(x < 360){
-        size = 10;
-    }
-    else if(x >= 360 && x < 720){
-        size = 12;
-    }
-    else if(x >= 720 && x < 1080){
-        size = 16;
-    }
-    else{
-        size = 20;
-    }
-    return size;
-}
-
 function checkScroll() {
     if (document.body.scrollLeft !== lastScroll) {
         redraw();
@@ -748,16 +755,15 @@ function createModal(condition)
     var items = [];
     var graphicModal = new PIXI.Graphics();
     graphicModal.beginFill(0x000000, 0.5);
-    graphicModal.drawRoundedRect(0, 0, x, y, step / 5);
+    graphicModal.drawRect(0, 0, x, y);
     graphicModal.endFill();
     if(condition)
     {
-        var text = modalText[random(0, 5)];
-        var line = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  font + "px" ,
-                                        align : "center",  fill : "0xeeeeec", fontWeight: "bold"});
+        var line = new PIXI.Text("\u2714", {fontFamily : "monospace", fontSize :  8 * font + "px" ,
+                                        align : "center",  fill : "#e60000", fontWeight: "bold"});
     }else{
-        var line = new PIXI.Text("FALSE", {fontFamily : "monospace", fontSize :  font  + "px" ,
-                                        align : "center",  fill : "0xeeeeec", fontWeight: "bold"});    
+        var line = new PIXI.Text("\u2716", {fontFamily : "monospace", fontSize :  8 * font  + "px" ,
+                                        align : "center",  fill : "#005ce6", fontWeight: "bold"});    
     }
     line.anchor.x = 0.5;
     line.anchor. y = 0.5;
@@ -771,6 +777,114 @@ function createModal(condition)
     items.push(line);
     return items;
 
+}
+
+function createQuestPage(){
+
+    var questData = {};
+    var list = [];
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "assets/questions/quest" + level + ".json", false);
+    xhr.send();
+
+    if (xhr.status < 200 || xhr.status >= 300) {
+	    console.log("XHR failed.");
+    } else {
+	    questData = JSON.parse(xhr.responseText);
+    }
+    
+    var questText = "";
+    var questTitle = questData["title"];
+    
+    var graphicsQuest = new PIXI.Graphics();
+    graphicsQuest.beginFill(0x888a85);
+    graphicsQuest.drawRect(0, 0, x, y);
+    graphicsQuest.endFill();
+    
+    graphicsQuest.beginFill(0x2e3436);
+    graphicsQuest.drawRect(0, y / 10, x, y / 10);
+    graphicsQuest.endFill();
+    
+    graphicsQuest.beginFill(0x555753);
+    graphicsQuest.drawRect(0 , 9 * (y / 10), x, (y / 10));
+    graphicsQuest.endFill();
+    
+    for(var i = 0; i < questData["content"].length; i++){
+        questText += questData["content"][i];
+        questText += "\n\n";
+    }
+    
+    app.stage.addChild(graphicsQuest);
+    list.push(graphicsQuest);
+    
+    var title = new PIXI.Text(questTitle, 
+                          {
+                            fontSize: fFont / 20 + 'px', 
+                            fontFamily: "monospace", 
+                            fill : "#eeeeec",  
+                            fontWeight: "bold", 
+                            align : "center" 
+                          });
+    title.anchor.x = 0.5;
+    title.anchor.y = 0.5;
+    title.position.x = x / 2;
+    title.position.y = y / 10 + y /20;
+    app.stage.addChild(title);
+    list.push(title);
+    
+    var content = new PIXI.Text(questText, 
+                          {
+                            fontSize: fFont / 30 + 'px', 
+                            fontFamily: "monospace", 
+                            fill : "#D8D8D8",  
+                            fontStyle: "oblique",
+                            fontWeight: "bold", 
+                            //align : "center" 
+                          });
+                          
+    content.anchor.x = 0.5;
+    content.position.x = x / 2;
+    content.position.y = 2 * y / 10 + y /20;
+    app.stage.addChild(content); 
+    list.push(content);
+    
+    var go = new PIXI.Text("<<<<BACK>>>>", 
+                          {
+                            fontSize: fFont / 20 + 'px', 
+                            fontFamily: "monospace", 
+                            fill : "#edd400",  
+                            fontWeight: "bold", 
+                            align : "center" 
+                          });
+    go.anchor.x = 0.5;
+    go.anchor.y = 0.5;
+    go.position.x = x / 2;
+    go.position.y = 9 * y / 10 + y /20;
+    go.interactive = true;
+    go.buttonMode = true;
+    go
+      .on('mousedown', function(){backFunc(list);})
+      .on('touchstart', function(){backFunc(list);});
+      
+    app.stage.addChild(go);
+    list.push(go);   
+}
+
+function backFunc(list) {
+    this.isdown = true;
+    this.alpha = 0.5;
+    setTimeout(function(){
+        for(var i = 0; i < list.length; i++){
+            app.stage.removeChild(list[i]);
+        }
+    },500);
+}
+
+function goBack() {
+    setTimeout(function(){
+        window.location.assign("./index.html");
+    },500);  
 }
 
 window.onload = function(){

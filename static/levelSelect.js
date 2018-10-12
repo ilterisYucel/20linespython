@@ -1,4 +1,4 @@
-const path = "./assets/images/arrow.png";
+var path = "./assets/images/arrow.png";
 var w = window,
     d = document,
     e = d.documentElement,
@@ -10,6 +10,12 @@ var begin = parseInt(getAllUrlParams().begin);
 var end = parseInt(getAllUrlParams().end);
 var minLevel = parseInt(localStorage.getItem("minLevel"));
 var maxLevel = parseInt(localStorage.getItem("maxLevel"));
+var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+var activeColors = [0x306998, 0xFFD43B, 0x646464];
+
+if (begin === maxLevel+1) {
+    location.replace("./levelSelect.html?begin="+(maxLevel === maxLevel - maxLevel%10 ? maxLevel : maxLevel - maxLevel%10)+"&end="+(maxLevel+1));
+}
 
 var count = end - begin;
 var orient = (x >= y) ? 'l' : 'p';
@@ -25,22 +31,28 @@ function menuPage(){
     stepInX = (6 * stepX) / 30;
     stepInY = (6 * stepY) / 30;
     
-    graphics.beginFill(0x888a85);
     
     for(var i = 0; i < count; i++){
-        graphics.drawRoundedRect(3.5 * stepX, 2 * stepY + (3 * i + 1) * stepInY, 3 * stepX, 2 * stepInY, 10);
+        if(itemTest[begin + i]){
+            graphics.beginFill(0x000000, 0.5);
+            graphics.drawRect(3.5 * stepX, 2 * stepY + (3 * i + 1) * stepInY, 3 * stepX, 2 * stepInY);
+            graphics.endFill();
+        }else{
+            graphics.beginFill(activeColors[i % 3]);
+            graphics.drawRect(3.5 * stepX, 2 * stepY + (3 * i + 1) * stepInY, 3 * stepX, 2 * stepInY);
+            graphics.endFill();
+        }
     }
-    
-    graphics.endFill();
-    
+        
     app.stage.addChild(graphics);
     
     for(var j = 0; j < count; j++){
+        var fontColor = itemTest[begin + j] ? "#d3d7cf" : "#000000"
         if(orient === 'p'){
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
+            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
         }
         else{
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
+            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
         }
         text.id = (begin + j);
         text.position.x = x / 2;
@@ -117,7 +129,22 @@ function menuPage(){
             .on('mouseup', onArrowUp)
             .on('touchstart', onArrowDown)
             .on('touchend', onArrowUp)          
-    app.stage.addChild(prevArr);    
+    app.stage.addChild(prevArr);
+    
+    var font = ('m' > orient) ? (y / 18) : (x / 18);
+
+    var back = new PIXI.Text("\u27a4", {fontSize : font + "px", fill : "#edd400"});
+    back.anchor.x = 0.5;
+    back.anchor.y = 0.5;
+    back.position.x = stepX;
+    back.position.y = stepY;
+    back.rotation += Math.PI;
+    back.buttonMode = true;
+    back.interactive = true;
+    back
+        .on('mousedown', goBack)
+        .on('touchstart', goBack);
+   app.stage.addChild(back);    
     
 }
 
@@ -173,7 +200,7 @@ function onButtonDown(event) {
     this.isdown = true;
     this.alpha = 0.5;
     setTimeout(function(){
-        location.replace("./quest.html?quest=" + level);
+        window.location.assign("./quest.html?quest=" + level);
     },500);
 }
 
@@ -186,35 +213,35 @@ function onArrowDown(event){
     this.data = event.data;
     this.isdown = true;
     if(this.direction === "right"){
-        if(end === maxLevel){
+        if(end === maxLevel+1){
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=0&end=10");
+                window.location.assign("./levelSelect.html?begin=0&end=10");
             },500);        
         }
         else if(end + 10 > maxLevel){
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=" + (begin + 10) + "&end=" + maxLevel);
+                window.location.assign("./levelSelect.html?begin=" + (begin + 10) + "&end=" + (maxLevel+1));
             },500);
         }
         else{
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=" + (begin + 10) + "&end=" + (end + 10));
+                window.location.assign("./levelSelect.html?begin=" + (begin + 10) + "&end=" + (end + 10));
             },500);            
         }
     }else{
-        if(end === maxLevel){
+        if(end === maxLevel+1){
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=" + (begin - 10) + "&end=" + (maxLevel - maxLevel % 10));
+                window.location.assign("./levelSelect.html?begin=" + (begin - 10) + "&end=" + begin);
             },500);        
         }
         else if(begin === minLevel){
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=" + (maxLevel - maxLevel % 10) + "&end=" + maxLevel);
+                window.location.assign("./levelSelect.html?begin=" + (maxLevel === maxLevel - maxLevel%10 ? maxLevel : maxLevel - maxLevel%10) + "&end=" + (maxLevel+1));
             },500); 
         }
         else{
             setTimeout(function(){
-                location.replace("./levelSelect.html?begin=" + (begin - 10) + "&end=" + (end - 10));
+                window.location.assign("./levelSelect.html?begin=" + (begin - 10) + "&end=" + (end - 10));
             },500);         
         }
     }
@@ -222,6 +249,12 @@ function onArrowDown(event){
 
 function onArrowUp(){
     this.isdown = false;
+}
+
+function goBack() {
+    setTimeout(function(){
+        window.location.assign("./index.html");
+    },500);  
 }
 
 window.onload = function(){
