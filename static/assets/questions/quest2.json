@@ -1,0 +1,12 @@
+{
+    "title" : "Output-2",
+    "content" : [
+                    "1-)Get input respectively.\n\t\t-name\n\t\t-surname\n\t\t-age",
+                    "2-)Print them respectively.",
+                    "3-)1 tab between name and surname.",
+                    "4-)2 tab between surname and age.",
+                    "5-)1. print output name, surname.",
+                    "6-)2. print output age."
+                ]
+
+}

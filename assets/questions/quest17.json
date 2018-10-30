@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "SET-1",
+            "content":
+                    [ 
+                       "1-)Open story.txt read mode and define empty set words.",
+                       "2-)Get lines of file with line variable.",
+                       "3-)Strip newline char from line and split it words.",
+                       "4-)Add these words to set and print set.",
+                       "5-)This set include every unique word in stort.txt."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "SET-1",
+            "content": 
+                      [
+                       "1-)story.txt dosyasını aç ve boş words setini tanımla.",
+                       "2-)Dosyadaki satırları line değişkeni ile al.",
+                       "3-)Satırlardan yeni satır karakterini sil ve kelimelere ayır.",
+                       "4-)Kelimeleri words setine ad ve seti yazdır.",
+                       "5-)Bu set dosyadaki tüm farklı kelimeleri içerir."
+                      ]
+    }
+
+
+}

@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "FUNCTION-2",
+            "content":
+                    [ 
+                       "1-)Create function get_word_count take file name and return dict include counts of words of file.",
+                       "2-)In second loop,If word not in dict, add it count 1 if in increase count.",
+                       "3-)Create function print_word_count take 2 file name first read second write.",
+                       "4-)Get word_count_dict first file, write them second file 'word ---> count' pattern with loop.",
+                       "5-)Invoke print_word_count function with in.txt, out.txt"
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "FONKSİYON-2",
+            "content": 
+                      [
+                       "1-)get_word_count fonksiyonunu tanımla. Fonksiyon verilen dosyayı okur ve kelimelerin sayılarını içeren sözlük döndürür.",
+                       "2-)2.döngüde kelime sözlükte yoksa sözlüğe at ve sayısına 1 ata.Varsa sayısını 1 arttır.",
+                       "3-)print_word_count fonksiyonunu tanımla.Bu fonksiyon 2 dosya alır.İlkini okur, ikincisine yazar.",
+                       "4-)Birinci dosyanın word_count_dict'ini al, 2.sine 'word ---> count' düzeninde yazdır.",
+                       "5-)print_word_count fonksiyonunu in.txt, out.txt ile çağır"
+                      ]
+    }
+
+
+}

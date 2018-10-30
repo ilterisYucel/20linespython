@@ -1,0 +1,13 @@
+[
+    "inputA = input(\"Enter your age >\")",
+    "inputB = input(\"Are you Student(yes/no) > \")",
+    "age = int(inputA)",
+    "if(age <= 18 or age >= 65):",
+    "print(\"Your age is appropriate. Subway is free.\")",
+    "elif(inputB == 'yes' and age <= 25):",
+    "print(\"You are student and your age appropriate. Subway is free.\")",
+    "else:",
+    "print(\"You can not use subway free.\")",
+    "0,1,2,3,4,5,6,7,8",
+    "0,0,0,0,1,0,1,0,1"
+]

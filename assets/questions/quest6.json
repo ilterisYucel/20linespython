@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "FOR LOOP AND LIST-0",
+            "content" : [
+                    "1-)Define listA include numbers.",
+                    "2-)Define empty listB.",
+                    "3-)Iterate over listA and add number to next.",
+                    "4-)Add those sum to listB and sort it ascending order.",
+                    "5-)Print that list.",
+                    "6-)Reverse listB and create descending order list.",
+                    "7-)Print that list."
+            ]
+         },
+         
+    "1" : {
+            "title" : "FOR DÖNGÜSÜ VE LİSTE-0",
+            "content" : [
+                    "1-)İçinde sayılar olan listA tanımla.",
+                    "2-)Boş bir listB tanımla.",
+                    "3-)listA'nın içinde gez ve sayıları kendinden sonraki ile topla.",
+                    "4-)Bu toplamları listB'nin içine at.Küçükten büyüye sırala.",
+                    "5-)Bu listeyi yazdır.",
+                    "6-)büyükten küçüğe olması için listB'yi ters çevir.",
+                    "7-)Bu listeyi yazdır."
+            ]
+         }
+         
+}  

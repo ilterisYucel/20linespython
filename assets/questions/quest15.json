@@ -1,0 +1,30 @@
+{
+    "0" : {
+            "title" : "FILE OPERATIONS-1",
+            "content":
+                    [ 
+                       "1-)Open 'records.txt' write mode.",
+                       "2-)Assign true to booleab to loop control.",
+                       "3-)Insıde loop get records name, surname, e_mail respectively.",
+                       "4-)Write these to file.",
+                       "5-)Prompt user continue or quit.",
+                       "6-)Close file."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "DOSYA İŞLEMLERİ-1",
+            "content": 
+                      [
+                       "1-)Yazma modunda 'records.txt' aç.",
+                       "2-)Döngü kontrolü için boolean'a 0 ata.",
+                       "3-)Döngü içinde sırasıyla ad, soyad, e_mail kaydı al.",
+                       "4-)Kayıtları dosyaya yaz.",
+                       "5-)Kullanıcıya çıkma veya devam etme seçeneği sun.",
+                       "6-)Dosyayı kapat."
+                      ]
+    }
+
+
+}

@@ -1,0 +1,9 @@
+[
+    "name = input(\"Your name >\")",
+    "surname = input(\"Your surname >\")",
+    "age = input(\"Your age >\")",
+    "print(\"{}\".format(name), \"{}\".format(surname), sep=\"\\t\", end = \"\\t\\t\")",
+    "print(\"{}\".format(age))",
+    "0,1,2,3,4",
+    "0,0,0,0,0"
+]

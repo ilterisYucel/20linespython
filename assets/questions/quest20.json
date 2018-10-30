@@ -1,0 +1,30 @@
+{
+    "0" : {
+            "title" : "CLASS-0",
+            "content":
+                    [ 
+                       "1-)Define class Alien.It's init function get race,name and skills parameters.",
+                       "2-)Add parameters to race, name and skills respectively.",
+                       "3-)Define object method introduce and add_skills respectively.",
+                       "4-)Use classmethod decorator and define class_method.",
+                       "5-)Instance class with variable a.Invoke introduce, add_skills method respectively.",
+                       "6-)Print skills list of object and invoke class method respectively."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "SINIFLAR-0",
+            "content": 
+                      [
+                       "1-)Race, name, skills parametreleri ile Alien sınıfını tanımla.",
+                       "2-)Parametreleri __init__ fonksiyonu içinde sırasıyla race,name,skills'e ata.",
+                       "3-)Nesne metodları introduce ve add_skills'i sırasıyla tanımla.",
+                       "4-)@classmethod bezeyicisini kullan ve class_method'u tanımla.",
+                       "5-)Sınıfı a değişkeninde örnekle. introduce ve add_skills'i sırasıyla kullan.",
+                       "6-)Nesne değişkeni skills'i yazdır ve sınıf methodunu çağır."
+                      ]
+    }
+
+
+}

@@ -9,8 +9,11 @@ var w = window,
 var quest = parseInt(getAllUrlParams().quest);
 var orient = (y >= x) ? 'p' : 'l';
 var fFont = (orient < 'm') ? y : x;
+var coef_base = (orient < 'm') ? y / x : x / y;
+var coef = coef_base >= 3 / 4 ? 1.2 : 1.0;
 var graphics = new PIXI.Graphics();
 var questData = {};
+var lang = JSON.parse(localStorage.getItem("language"));
     
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "assets/questions/quest" + quest + ".json", false);
@@ -27,7 +30,7 @@ function createPage(app){
     this.app = app;
     
     var questText = "";
-    var questTitle = questData["title"];
+    var questTitle = questData[lang].title;
     
     graphics.beginFill(0x2e3436);
     graphics.drawRect(0, y / 10, x, y / 10);
@@ -37,8 +40,8 @@ function createPage(app){
     graphics.drawRect(0 , 9 * (y / 10), x, (y / 10));
     graphics.endFill();
     
-    for(var i = 0; i < questData["content"].length; i++){
-        questText += questData["content"][i];
+    for(var i = 0; i < questData[lang].content.length; i++){
+        questText += questData[lang].content[i];
         questText += "\n\n";
     }
     
@@ -46,7 +49,7 @@ function createPage(app){
     
     var title = new PIXI.Text(questTitle, 
                           {
-                            fontSize: fFont / 20 + 'px', 
+                            fontSize: fFont / (20 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#eeeeec",  
                             fontWeight: "bold", 
@@ -60,7 +63,7 @@ function createPage(app){
     
     var content = new PIXI.Text(questText, 
                           {
-                            fontSize: fFont / 30 + 'px', 
+                            fontSize: fFont / (30 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#D8D8D8",  
                             fontStyle: "oblique",
@@ -73,8 +76,8 @@ function createPage(app){
     content.position.x = x / 2;
     content.position.y = 2 * y / 10 + y /20;
     this.app.stage.addChild(content); 
-    
-    var go = new PIXI.Text("<<<<START>>>>", 
+    var text = ["<<<<START>>>>", "<<<BAŞLA>>>>"]
+    var go = new PIXI.Text(text[parseInt(lang)], 
                           {
                             fontSize: fFont / 20 + 'px', 
                             fontFamily: "monospace", 

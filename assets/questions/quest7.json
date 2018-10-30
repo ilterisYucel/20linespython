@@ -1,0 +1,30 @@
+{
+    "0" : {
+            "title" : "FOR LOOP AND LIST-1",
+            "content" : [
+                    "1-)Define listA empty.",
+                    "2-)Iterate over with i from 1 to 10.",
+                    "3-)Define empty listB.",
+                    "4-)Iterate over with j from 1 to 10.",
+                    "5-)append i * j to listB",
+                    "6-)Append listB to listA.",
+                    "7-)Print that listA.",
+                    "8-)listA include the multiplication table."
+            ]
+         },
+         
+    "1" : {
+            "title" : "FOR DÖNGÜSÜ VE LİSTE-1",
+            "content" : [
+                    "1-)Boş bir listA tanımla.",
+                    "2-)i değişkeni ile 1'den 10'a kadar gez.",
+                    "3-)Boş bir listB tanımla.",
+                    "4-)j değişkeni ile 1'den 10'a kadar gez.",
+                    "5-)i çarpı j'yi listB'ye ekle.",
+                    "6-)listB'yi list0'a ekle.",
+                    "7-)listA'yı yazdır.",
+                    "8-)listA çarpım tablosunu içerir."
+            ]
+         }
+         
+} 

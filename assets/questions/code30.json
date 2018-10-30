@@ -1,0 +1,15 @@
+[
+    "import urllib.request as u_req",
+    "def get_html_content(url):",
+    "try:",
+    "connection = u_req.urlopen(url)",
+    "html = connection.read()",
+    "connection.close()",
+    "except u_req.HTTPError:",
+    "print(\"Error while fetching {}\".format(url))",
+    "return",
+    "return(html.decode(\"utf-8\"))",
+    "get_html_content(\"https://www.gnu.org/\")",
+    "0,1,2,3,4,5,6,7,8,9,10",
+    "0,0,1,2,2,2,1,2,2,1,0"
+]

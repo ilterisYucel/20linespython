@@ -1,0 +1,13 @@
+[
+    "def isPalindrom(word):",
+    "count = 0",
+    "while(count <= len(word) // 2):",
+    "if(word[count] != word[-1 - count]):",
+    "return \"{} is not palindrom.\".format(word)",
+    "count+=1",
+    "return \"{} is palindrom\".format(word)",
+    "print(isPalindrom(\"rotavator\"))",
+    "print(isPalindrom(\"machine\"))",
+    "0,1,2,3,4,5,6,7,8",
+    "0,1,1,2,3,2,1,0,0"
+]

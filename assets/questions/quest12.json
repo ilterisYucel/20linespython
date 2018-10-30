@@ -1,0 +1,30 @@
+{
+    "0" : {
+            "title" : "DICTIONARY-0",
+            "content":
+                    [ 
+                       "1-)Define empty eng_tr_dict.",
+                       "2-)Assign True to boolean to loop control.",
+                       "3-)Get words from user english and turkish respectively.",
+                       "4-)Add these to eng_tr_dict as key and value.",
+                       "5-)Ask user quit or continue and do it.",
+                       "6-)Print word_dict as 'key ---> value' pattern."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "SÖZLÜK-0",
+            "content": 
+                      [
+                       "1-)Boş eng_tr_dict tanımla.",
+                       "2-)Döngü kontrolü için True boolean tanımla.",
+                       "3-)Kullanıcıdan sırasıyla ingilizce ve türkçe kelime iste.",
+                       "4-)Bunları eng_tr_dict'e anahtar değer şeklinde ata.",
+                       "5-)Kullanıcıyı devam etmek veya çıkmak için yönlendir.",
+                       "6-)word_dict'i 'anahtar ---> değer' düzeninde yazdır."
+                      ]
+    }
+
+
+}

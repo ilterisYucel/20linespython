@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "WHILE LOOP-0",
+            "content":
+                    [ 
+                       "1-)Print multipication table with 2 while loop.",
+                       "2-)First assign 1 to i and loop over to 10.",
+                       "3-)In the loop assign 1 to j loop over to 10.",
+                       "4-)print i * j and increase j with 1.",
+                       "5-)In outer loop increase i with 1 and print newline karakter."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "WHILE DÖNGÜSÜ-0",
+            "content": 
+                      [
+                        "1-)2 while döngüsü ile çarpım tablosu yazdır.",
+                        "2-)i'ye 1 ata ve 10 olana kadar döngüye at.",
+                        "3-)Bu döngünün içinde j'ye 1 ata ve 10 olana kadar döngüye at.",
+                        "4-)i * j'yi yazdır ve j'yi 1 arttır.",
+                        "5-)Dış döngüde i'yi 1 arttır ve yeni satır karakteri yazdır."
+                      ]
+    }
+
+
+}

@@ -1,0 +1,10 @@
+[
+    "diagonal = []",
+    "for i in range(len(listA)):",
+    "for j in range(len(listA))",
+    "if(i == j):",
+    "diagonal.append(listA[i][j])",
+    "print(diagonal)",
+    "0,1,2,3,4,5",
+    "0,1,2,3,4,0"
+]

@@ -1,0 +1,21 @@
+[
+    "class Alien():",
+    "def __init__(self, race, name):",
+    "self.race = race",
+    "self.name = name",
+    "self.skills = []",
+    "def introduce(self):",
+    "print(\"Hello earthling.I'am {} {}.\".format(self.race, self.name))",
+    "def add_skills(self, skill):",
+    "self.skills.append(skill)",
+    "@classmethod",
+    "def class_method(cls):",
+    "print(\"This is alien class\")",
+    "a = Alien(\"mamakian\", \"kamil\")",
+    "a.introduce()",
+    "a.add_skills(\"programming\")",
+    "print(a.skills)",
+    "Alien.class_method()",
+    "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+    "0,1,2,2,2,1,2,1,2,1,1,2,0,0,0,0,0"
+]

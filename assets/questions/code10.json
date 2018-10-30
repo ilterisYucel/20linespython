@@ -1,0 +1,17 @@
+[
+    "boolean = True",
+    "while(boolean):",
+    "operation = input(\"Celsius to Fahrenheit - 1, Fahrenheit to Celsius -2, quit -q >\")",
+    "if(operation == '1'):",
+    "celsius = input(\"Enter celsius value >\")",
+    "print(\"Temperature {} F\" .format(9.0/5.0 * float(celsius) + 32))",
+    "elif(operation == '2'):",
+    "fahrenheit = input(\"Enter fahrenheit value >\")",
+    "print(\"Temperature {} C\" .format((float(fahrenheit) - 32) * 5.0/9.0))",
+    "elif(operation == 'q'):",
+    "boolean = False",
+    "else:",
+    "print(\"Invalid operation.\")",
+    "0,1,2,3,4,5,6,7,8,9,10,11,12",
+    "0,0,1,1,2,2,1,2,2,1,2,1,2"
+]

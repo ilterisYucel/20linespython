@@ -1,0 +1,16 @@
+[
+    "def print_prime_number(number):",
+    "for i in range(number):",
+    "if(i != 0 and i != 1):",
+    "prime = True",
+    "for j in range(2, i // 2):",
+    "if i % j == 0:",
+    "prime = False",
+    "break",
+    "if(prime):",
+    "print(i, end = \" \")",
+    "print()",
+    "print_prime_number(100)",
+    "0,1,2,3,4,5,6,7,8,9,10,11",
+    "0,1,2,3,3,4,5,5,3,4,1,0"
+]

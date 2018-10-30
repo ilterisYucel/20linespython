@@ -1,0 +1,26 @@
+{
+    "0" : {
+            "title" : "DECIMAL TO HEX DICT",
+            "content":
+                    [ 
+                       "1-)Implement function take list of decimal and convert decimals to hexadecimals and create dict as decimal:hex.",
+                       "2-)To convert decimal to hexadecimal use builtin hex function with map.",
+                       "3-)To create decimal:hex dict use dict comprehension and print dict with format.",
+                       "4-)Define numbers list and invoke function with the list."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "ONLUK TABAN -ONALTILIK TABAN SÖZLÜĞÜ",
+            "content": 
+                      [
+                       "1-)Onluk tabanlı sayı listesi alıp onaltılık tabana çeviren ve onluk:onaltılık düzeninde sözlük oluşturan fonksiyon tanımla.",
+                       "2-)Onluk tabandaki sayıyı onaltılık tabana çevirmek için map fonksiyonu ile hex fonksiyonunu kullan.",
+                       "3-)Onluk:Onaltılık sözlüğünü yaratmak için dictionary(sözlük) comprehension yapısını kullan.",
+                       "4-)Sözlüğü formatlı olarak yazdır.",
+                       "5-)numbers adlı listeyi tanımla ve fonksiyonu bu listeyle çağır."
+                      ]
+    }
+    
+}

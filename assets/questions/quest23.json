@@ -1,0 +1,26 @@
+{
+    "0" : {
+            "title" : "FIBONACCI NUMBERS",
+            "content":
+                    [ 
+                       "1-)Implement function that print fibonacci numbers from 0 to number given as parameter.",
+                       "2-)Numbers is printed alongside with space.",
+                       "3-)End of the function invoke empty print for newline.",
+                       "4-)Invoke the function with paramater 10000."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "RASTGELE PAROLA ÜRETİCİ",
+            "content": 
+                      [
+                       "1-)0'dan parametre olarak verilen sayıya kadar olan fibonacci sayılarını yazdıran bit fonksiyon oluştur.",
+                       "2-)Sayılar art arda ve aralarında boşlukla yazılmalıdır.",
+                       "3-)Fonksiyonun sonunda yeni satıra geçmek için boş print fonksiyonu çağır.",
+                       "4-)Fonksiyonu 10000 parametresi ile çağır."
+                      ]
+    }
+
+
+}

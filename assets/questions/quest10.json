@@ -1,0 +1,26 @@
+{
+    "0" : {
+            "title" : "WHILE LOOP-1",
+            "content":
+                    [ 
+                       "1-)Create fahrenheit-celsius converter.",
+                       "2-)Assign True to boolean for to loop control.",
+                       "3-)Prompt user operation select.",
+                       "4-)Respectively do if control op 1, op 2, op quit and invalid operation."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "WHILE DÖNGÜSÜ-1",
+            "content": 
+                      [
+                        "1-)Fahrenheit-Celsius çevirici kodla.",
+                        "2-)Loop kontrolü için boolean değişkenine True ata.",
+                        "3-)Kullanıcıya işlem numarası sor..",
+                        "4-)sırasıyla işlem 1, işlem 2, çıkış ve geçersiz işlem için if kontrolü yap."
+                      ]
+    }
+
+
+}

@@ -11,7 +11,9 @@ var end = parseInt(getAllUrlParams().end);
 var minLevel = parseInt(localStorage.getItem("minLevel"));
 var maxLevel = parseInt(localStorage.getItem("maxLevel"));
 var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+var lang = JSON.parse(localStorage.getItem("language"));
 var activeColors = [0x306998, 0xFFD43B, 0x646464];
+var buttonName = ["QUESTION ", "SORU "];
 
 if (begin === maxLevel+1) {
     location.replace("./levelSelect.html?begin="+(maxLevel === maxLevel - maxLevel%10 ? maxLevel : maxLevel - maxLevel%10)+"&end="+(maxLevel+1));
@@ -49,10 +51,10 @@ function menuPage(){
     for(var j = 0; j < count; j++){
         var fontColor = itemTest[begin + j] ? "#d3d7cf" : "#000000"
         if(orient === 'p'){
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
+            var text = new PIXI.Text(buttonName[lang] + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
         }
         else{
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
+            var text = new PIXI.Text(buttonName[lang] + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
         }
         text.id = (begin + j);
         text.position.x = x / 2;

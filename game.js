@@ -13,10 +13,10 @@ var builtInArr = ["abs", "all", "any", "ascii", "bin", "bool", "bytearray", "byt
 "frozenset", "getattr", "globals", "hasattr", "hash", "help", "hex", "id", "input", "int", "isinstance", "issubclass",
 "iter", "len", "list", "locals", "map", "max", "memoryview", "min", "next", "object", "oct", "open", "ord", "pow", 
 "print", "property", "range", "repr", "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod", "str",
-"sum", "super", "tuple", "type", "vars", "zip", "__import__"];
+"sum", "super", "tuple", "type", "vars", "zip", "__import__", "self", "__init__"];
 
 var formatChars = [" ", "(", ")", "+", "-", "*", "/", "%", ".", "[", "]", "{", "}", ":", "=", "!",
-"<", ">"];
+"<", ">", ","];
 
 var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
@@ -28,6 +28,10 @@ var orient = (y >= x) ? 'p' : 'l';
 var itemTest = JSON.parse(localStorage.getItem("itemTest"));
 var font = orient < 'm' ? y / 30 : (8 * y / 10) / 30;
 var fFont = (orient < 'm') ? y : x;
+var coef_base = (orient < 'm') ? y / x : x / y;
+var coef = coef_base > 2 / 3 ? 1.2 : 1.0;
+var lang = JSON.parse(localStorage.getItem("language"));
+var lockDict = {};
 
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "assets/questions/code" + level + ".json", false);
@@ -75,6 +79,10 @@ function createCodeLine(x, y, text, app)
        
        "flt" : {
           fill: "#EFC090"
+       },
+       
+       "comment" :{
+            fill : "#888a85"
        }
        
     });
@@ -226,7 +234,7 @@ function redraw() {
         graphics.beginFill(0x000000);
         graphics.drawRect(document.body.scrollLeft+0, y / 10, document.body.scrollLeft+x, y / 10);
         graphics.endFill();
-        var dashedLineBeginY = document.body.scrollTop > 2 * (y /  10) ? 0 : 2 * (y /  10);
+        var dashedLineBeginY = document.body.scrollTop > 2 * (y /  10) ? 0 : 2 * (y /  10)-document.body.scrollTop;
         for(var i = 0; i < getMaxIndent(); i++)
         {
             dashedLine(graphics, i * (2 * font), document.body.scrollTop+dashedLineBeginY, x, document.body.scrollTop+y);
@@ -410,13 +418,14 @@ function createGame()
         {
             var rndInd = getEmptyInd(indexArr);
             indexArr[rndInd] = true;
-            var xLoc = 2;
-            var yLoc = y - ((rndInd + 1) * font + 2);              
+            var xLoc = 2  + 4 * font;
+            var yLoc =  3 * y / 4  + ((rndInd + 1) * font + 2);              
             var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
             line.xInd = parseInt(xLocs[i]);
             line.yInd = parseInt(yLocs[i]);
             console.log(line.xInd + ' ' + line.yInd);
             line.helpStatus = false;
+            line.lockStatus = false;
             line.id = i;
             codelines.push(line);
         }
@@ -427,8 +436,8 @@ function createGame()
         {
             var rndInd = getEmptyInd(indexArr);
             indexArr[rndInd] = true;
-            var xLoc = 2 * (x / 10) + 2;
-            var yLoc = y - ((rndInd + 1) * font + 2);
+            var xLoc = 2 * (x / 10) + 2 + 4 * font;
+            var yLoc = 3 * y / 4 + ((rndInd + 1) * font + 2);
             var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
             line.xInd = parseInt(xLocs[i]);
             line.yInd = parseInt(yLocs[i]);
@@ -536,13 +545,17 @@ function onDragStart(event)
 {
 
     this.data = event.data;
-    this.alpha = 0.5;
     this.dragging = true;
+    if(this.lockStatus){
+        for(var i = 1; i < lockDict[this.id].length; i++){
+            app.stage.removeChild(lockDict[this.id][i])
+        }
+        this.lockStatus = false;
+    }
 }
 
 function onDragEnd()
 {
-    this.alpha = 1;
     this.dragging = false;
     var tmp_position = this.position.x - codeAreaBeginX;
     if(tmp_position % (font * 2) !== 2)
@@ -552,6 +565,8 @@ function onDragEnd()
     if (this.position.x < codeAreaBeginX) {
         this.position.x += font * 2;
     }
+    
+    endFunc(this);
     this.data = null;
 }
 
@@ -569,6 +584,65 @@ function onDragMove()
     }
 }
 
+function endFunc(line){
+    var list = [];
+    line.lockStatus = true;
+    list.push(line);
+    var g = new PIXI.Graphics();
+    g.beginFill(0x000000, 0.7);
+    g.drawRect(line.position.x + line.width, line.position.y, 8 * font, font);
+    g.endFill();
+    app.stage.addChild(g);
+    list.push(g);
+    
+    var lock = new PIXI.Text("lock", {fontFamily: "monospace", fontSize: font + "px",fill: "#FFFFFF", align: "center"});
+    lock.position.x = line.position.x + line.width;
+    lock.position.y = line.position.y;
+    lock.interactive = true;
+    lock.buttonMode = true;
+    lock
+        .on('mousedown', function(){lockFunc(list);})
+        .on('touchstart', function(){lockFunc(list);});
+    app.stage.addChild(lock);
+    list.push(lock);
+
+    var unlock = new PIXI.Text("unlock", {fontFamily: "monospace", fontSize: font + "px",fill: "#FFFFFF", align: "center"});
+    unlock.position.x = line.position.x + line.width + 4 * font;
+    unlock.position.y = line.position.y;
+    unlock.interactive = true;
+    unlock.buttonMode = true;
+    unlock
+        .on('mousedown', function(){unlockFunc(list);})
+        .on('touchstart', function(){unlockFunc(list);});
+    app.stage.addChild(unlock);
+    list.push(unlock);
+    lockDict[line.id] = list;
+    
+    setTimeout(function(){
+        for(var i = 1; i < list.length; i++){
+            app.stage.removeChild(list[i]);
+        }
+    },3000); 
+    
+}
+
+function lockFunc(list){
+    list[0].helpStatus = true;
+    list[0].alpha = 0.5;
+    list[0].lockStatus = false;
+    for(var i = 1; i < list.length; i++){
+        app.stage.removeChild(list[i]);
+    }
+}
+
+function unlockFunc(list){
+    list[0].helpStatus = false;
+    list[0].alpha = 1;
+    list[0].lockStatus = false;
+    for(var i = 1; i < list.length; i++){
+        app.stage.removeChild(list[i]);
+    }
+}
 
 function convertToCode(text)
 {
@@ -580,14 +654,26 @@ function convertToCode(text)
   var last = "";
   
   var matched = false;
+  var matched1 = false;
+  
+  if (text[0] == '#'){
+    return "<comment>" + text + "</comment>";
+  }
   
   for(var i = 0; i < text.length; i++)
   {
-    //formatlama karakterlerinden birine denk gelirse
+    if( (i === 0 || text[i-1] != "\\") && (text[i] === "\"" || text[i] === "'")){
+        if(matched1){
+            matched1 = false;
+            
+        }else{
+            matched1 = true;
+        }
+    }
     if(formatChars.includes(text[i]))
     {
     
-      if(keywordArr.includes(temp))
+      if(keywordArr.includes(temp) && !matched1)
       {
         //temp keywordlerden biri ise
         temp = "<kw>" + temp + "</kw>";
@@ -596,7 +682,7 @@ function convertToCode(text)
       
       }
       
-      else if (builtInArr.includes(temp))
+      else if (builtInArr.includes(temp) && !matched1)
       {
         //temp built in fonksiyonlardan biri ise
         temp = "<bf>" + temp + "</bf>";
@@ -621,6 +707,9 @@ function convertToCode(text)
     {
       //textin sonuna ulaşıldığında temp'te hala kalanlar varsa
       temp += text[i];
+      if(keywordArr.includes(temp) && !matched1){
+        temp = "<kw>" + temp + "</kw>";
+      }
       result += temp;
       temp = "";
     
@@ -697,6 +786,7 @@ function convertToCode(text)
       
     
     }
+    
     else if(j === result.length -1)
     {
       //textin sonuna ulaşıldığında temp'te hala kalanlar varsa
@@ -816,7 +906,7 @@ function createQuestPage(){
     }
     
     var questText = "";
-    var questTitle = questData["title"];
+    var questTitle = questData[lang].title;
     
     var graphicsQuest = new PIXI.Graphics();
     graphicsQuest.beginFill(0x888a85);
@@ -831,8 +921,8 @@ function createQuestPage(){
     graphicsQuest.drawRect(document.body.scrollLeft , document.body.scrollTop+9 * (y / 10), x, (y / 10));
     graphicsQuest.endFill();
     
-    for(var i = 0; i < questData["content"].length; i++){
-        questText += questData["content"][i];
+    for(var i = 0; i < questData[lang].content.length; i++){
+        questText += questData[lang].content[i];
         questText += "\n\n";
     }
     
@@ -841,7 +931,7 @@ function createQuestPage(){
     
     var title = new PIXI.Text(questTitle, 
                           {
-                            fontSize: fFont / 20 + 'px', 
+                            fontSize: fFont / (20 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#eeeeec",  
                             fontWeight: "bold", 
@@ -856,7 +946,7 @@ function createQuestPage(){
     
     var content = new PIXI.Text(questText, 
                           {
-                            fontSize: fFont / 30 + 'px', 
+                            fontSize: fFont / (30 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#D8D8D8",  
                             fontStyle: "oblique",
@@ -870,8 +960,8 @@ function createQuestPage(){
     content.position.y = document.body.scrollTop + 2 * y / 10 + y /20;
     app.stage.addChild(content); 
     list.push(content);
-    
-    var go = new PIXI.Text("<<<<BACK>>>>", 
+    var text = ["<<<<BACK>>>>", "<<<GERİ>>>>"] 
+    var go = new PIXI.Text(text[parseInt(lang)], 
                           {
                             fontSize: fFont / 20 + 'px', 
                             fontFamily: "monospace", 

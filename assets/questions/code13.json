@@ -1,0 +1,9 @@
+[
+    "tr_eng_dict = {}",
+    "for k,v in eng_tr_dict.items():",
+    "tr_eng_dict[v] = k",
+    "print(tr_eng_dict.keys())",
+    "print(tr_eng_dict.values())",
+    "0,1,2,3,4",
+    "0,0,1,0,0"
+]

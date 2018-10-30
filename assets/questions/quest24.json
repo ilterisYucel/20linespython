@@ -1,0 +1,27 @@
+{
+    "0" : {
+            "title" : "DECIMAL TO BINARY CONVERTER",
+            "content":
+                    [ 
+                       "1-)Implement recursive function that convert decimal number to binary and print it.",
+                       "2-)Fuction takes parameter decimal number and digit_list that predefined empty.",
+                       "3-)Print binary value in final case join with empyt string.For this map digit_list to str method.",
+                       "4-)Invoke the function with 133."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "ONLUK TABAN - İKİLİK TABAN DÖNÜŞÜMÜ",
+            "content": 
+                      [
+                       "1-)Onluk tabanlı sayıyı ikilik tabana çeviren özyinelemeli bir fonksiyon oluştur.",
+                       "2-)Fonksiyon parametre olarak onluk tabandan bir sayı ve ön tanımlı olarak boş bir liste alır.",
+                       "3-)Sonuç adımında 2'lik basamakların bulunduğu liste join ve map kullanılarak yazdırırır.",
+                       "4-)Fonksiyonu 133 parametresi ile çağır."
+                      ]
+    }
+}
+
+
+

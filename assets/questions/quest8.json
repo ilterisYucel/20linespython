@@ -1,0 +1,26 @@
+{
+    "0" : {
+            "title" : "FOR LOOP AND LIST-2",
+            "content" : [
+                    "1-)Presume listA is square matrix(a list that row number = column number).",
+                    "2-)Define empty list named diagonal.",
+                    "3-)Iterate over with i in length listA.",
+                    "4-)Iterate over with j in length listA.",
+                    "5-)If i equal j, add listA[i][j] to diagonal.",
+                    "6-)Print diagonal (include diagonal line of square matrix)."
+            ]
+         },
+         
+    "1" : {
+            "title" : "FOR DÖNGÜSÜ VE LİSTE-2",
+            "content" : [
+                    "1-)ListA'yı kare matriks(satır ve sütun sayısı aynı liste) varsay.",
+                    "2-)Boş liste diagonali tanımla.",
+                    "3-)i değişkeni ile listA'nın eleman sayısı kadar gez.",
+                    "4-)j değişkeni ile listA'nın eleman sayısı kadar gez.",
+                    "5-)i j'ye eşitse, i çarpı j'yi diagonala ekle.",
+                    "6-)Diagonali(kare matriksin köşegenini içerir) yazdır. "
+            ]
+         }
+         
+} 

@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "FILE OPERATIONS-0",
+            "content":
+                    [ 
+                       "1-)Open 'records.txt' read mode.",
+                       "2-)Assign 0 to count to keep line count.",
+                       "3-)Get all lines with readlines function.",
+                       "4-)Loop over lines print them and increase count.",
+                       "5-)Print total line count and close file."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "DOSYA İŞLEMLERİ-0",
+            "content": 
+                      [
+                       "1-)Okuma modunda 'records.txt' aç.",
+                       "2-)Satır sayısını tutacak count'a 0 ata.",
+                       "3-)readlines fonksiyonu ile tüm satırları al.",
+                       "4-)Döngü ile satırlara ulaş ve yazdır.Count'u arttır.",
+                       "5-)Satır sayısını yazdır ve dosyayı kapat."
+                      ]
+    }
+
+
+}

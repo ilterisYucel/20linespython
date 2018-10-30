@@ -3,11 +3,11 @@ if (typeof(Storage) !== "undefined") {
         localStorage.setItem("minLevel", 0);
     }
     if(!localStorage.getItem("maxLevel")){
-        localStorage.setItem("maxLevel", 89);
+        localStorage.setItem("maxLevel", 60);
     }
     if(!localStorage.getItem("itemTest")){
         var obj = [];
-        for(var o = 0; o <= 89; o++){
+        for(var o = 0; o <= 60; o++){
             obj[o] = false;
         }
         setTimeout(function(){
@@ -17,6 +17,17 @@ if (typeof(Storage) !== "undefined") {
 } else {
     console.log("No local storage.")
 }
+
+/*function checkLanguage() {
+    navigator.globalization.getPreferredLanguage(
+        function (language) {    
+            alert('language: ' + language.value + '\n');
+        },
+        function () {
+            alert('Error getting language\n');
+        }
+    );
+}*/
 
 var w = window,
     d = document,
@@ -156,8 +167,12 @@ function onButtonUp() {
 }
 
 window.onload = function(){
-
     app = new PIXI.Application(x, y, {backgroundColor : 0x2e3436});
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        alert(navigator.globalization.getPreferredLanguage);
+    }
+    checkLanguage();
     document.body.appendChild(app.view);
     menuPage();
 }

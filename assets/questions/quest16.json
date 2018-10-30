@@ -1,0 +1,28 @@
+{
+    "0" : {
+            "title" : "SET-0",
+            "content":
+                    [ 
+                       "1-)Set unordered collection of items.Every item of set are unique.",
+                       "2-)Define 2 list listA, listB respectively.",
+                       "3-)Convert them to sets respectively.",
+                       "4-)Print union of them and intersection of them respectively.",
+                       "5-)Print difference listA from listB and inverse respectively."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "SET-0",
+            "content": 
+                      [
+                       "1-)Set sırasız elemanlardan oluşur.Aynı elemandan 2 tane içeremez.",
+                       "2-)Sırasıyla listA ve listB'yi tanımla.",
+                       "3-)Bu listeleri sırasıyla set'e çevir.",
+                       "4-)2 set'in birleşim ve kesişimlerini sırasıyla yazdır.",
+                       "5-)listA'nın listB'den, listB'nin listA'dan farkını yazdır."
+                      ]
+    }
+
+
+}

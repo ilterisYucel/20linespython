@@ -1,0 +1,19 @@
+{
+    "0" : {
+            "title" : "Output-0",
+            "content" : [
+                    "1-)Make pyramid with asteriks.",
+                    "2-)Place print function correctly.",
+                    "3-)Pyramid height is 5."
+                    ]
+    },
+    
+    "1" : {
+            "title" : "Çıktı ver-0",
+            "content" : [
+                    "1-)'*' karakteri ile piramid oluştur.",
+                    "2-)Print fonksiyonlarını doğru yerleştir.",
+                    "3-)Piramit yüksekliği 5'tir.."
+                    ]
+    }
+}

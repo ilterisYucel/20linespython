@@ -1,0 +1,24 @@
+{
+    "0" : {
+            "title" : "WHILE LOOP-2",
+            "content":
+                    [ 
+                       "1-)Get word from user.",
+                       "2-)Assign 0 to counter to loop control.",
+                       "3-)Print substring that word."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "WHILE DÖNGÜSÜ-2",
+            "content": 
+                      [
+                        "1-)Kullanıcıdan bir kelime al.",
+                        "2-)Döngü kontrolü için counter'a 0 ata.",
+                        "3-)Alınan kelimenin alt dizilerini yazdır."
+                      ]
+    }
+
+
+}

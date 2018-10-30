@@ -1,0 +1,30 @@
+{
+    "0" : {
+            "title" : "FUNCTION-0",
+            "content":
+                    [ 
+                       "1-)Palindrom words are Same backwards and forwards.",
+                       "2-)Create function take word as parameter and return is palindrom or not.",
+                       "3-)Compare chars from begin and end respectively.",
+                       "4-)If these aren't equals return word is not palindrom.",
+                       "5-)If no inequality return word is palindrom.",
+                       "6-)Print rotavator and machine is palindrom or not respectively."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "FONKSİYON-0",
+            "content": 
+                      [
+                       "1-)Palindrom baştan ve sondan aynı okunan kelimelerdir.",
+                       "2-)Verilen kelimenin palindrom olup olmadığını bulan fonksiyon tanımla.",
+                       "3-)Baştan ve sondan karakterleri sırasıyla karşılaştır.",
+                       "4-)Karakterler eşit değilse 'kelime palindrom değil' döndür.",
+                       "5-)Bir eşitsizlik yoksa 'kelime palindrom' döndür.",
+                       "6-)Sırasıyla 'rotavator'un ve 'machine' nin palindrom durumunu yazdır. "
+                      ]
+    }
+
+
+}
