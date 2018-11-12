@@ -298,7 +298,7 @@ function run()
 {
     var val = true;
     var items = [];
-    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2
+    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
     
     for(var i = 0; i < codelines.length-1; i++)
     {
@@ -342,8 +342,8 @@ function help()
     var helpLines = controlHelpStatus();
     var xStep = 2 * font;
     var yStep = getMaxLineHeight() + font / 4;
-    var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2
-    var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2)
+    var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+    var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2);
     if(helpLines.length <= 3 )
     {
         for(var i = 0; i < helpLines.length; i++)
@@ -540,6 +540,26 @@ function controlCodeArea(line, nx ,ny)
     return codeAreaBeginX + 2 <= nx && codeAreaEndX - 2 >= nx + 10 && codeAreaBeginY + 2 <= ny && codeAreaEndY - 2 >= ny + line.height;
 }
 
+function parseLines() {
+	var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+	var indent = "\t";
+	
+	var codeArray = [];
+	for (var i = 0; i < codelines.length; i++) {
+		codeArray.push({
+			code : codelines[i].text.replace(/(<\/?kw>|<\/?bf>|<\/?dt>|<\/?int>|<\/?flt>|<\/?comment>)/gi,"").trim(),
+			indent : Math.round((codelines[i].position.x - indentBegin)/(2*font)),
+			order : codelines[i].position.y
+		});
+	}
+	codeArray.sort(function(a,b){ return a.order - b.order});
+	
+	var codeText = "";
+	for (var i = 0; i < codeArray.length; i++) {
+		codeText += indent.repeat(codeArray[i].indent) + codeArray[i].code + "\n";
+	}
+	console.log(codeText);
+}
 
 function onDragStart(event)
 {
