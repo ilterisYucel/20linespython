@@ -11,7 +11,9 @@ var end = parseInt(getAllUrlParams().end);
 var minLevel = parseInt(localStorage.getItem("minLevel"));
 var maxLevel = parseInt(localStorage.getItem("maxLevel"));
 var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+var lang = JSON.parse(localStorage.getItem("language"));
 var activeColors = [0x306998, 0xFFD43B, 0x646464];
+var buttonName = ["QUESTION ", "SORU "];
 
 if (begin === maxLevel+1) {
     location.replace("./levelSelect.html?begin="+(maxLevel === maxLevel - maxLevel%10 ? maxLevel : maxLevel - maxLevel%10)+"&end="+(maxLevel+1));
@@ -49,10 +51,10 @@ function menuPage(){
     for(var j = 0; j < count; j++){
         var fontColor = itemTest[begin + j] ? "#d3d7cf" : "#000000"
         if(orient === 'p'){
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
+            var text = new PIXI.Text(buttonName[lang] + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInX) + "px"});
         }
         else{
-            var text = new PIXI.Text("QUESTİON " + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
+            var text = new PIXI.Text(buttonName[lang] + (begin + j), {fontFamily : "monospace", fill : fontColor, fontStyle : "bold", align : "center", fontSize : (1.5 * stepInY) + "px"});        
         }
         text.id = (begin + j);
         text.position.x = x / 2;
@@ -71,26 +73,22 @@ function menuPage(){
         app.stage.addChild(text);
     }
     
-    var texture = PIXI.Texture.fromImage(path);
-    var nextArr = new PIXI.Sprite(texture);
-    
-    nextArr.position.x = 6 * stepX - stepInX;
-    nextArr.position.y = 8 * stepY + 3 * stepInY;
+    /*var texture = PIXI.Texture.fromImage(path);
+    var nextArr = new PIXI.Sprite(texture);*/
     
     if(orient === 'p'){
-        nextArr.width = 4 * stepInX;
-        nextArr.height = 2 * stepInX;
+        var nextArr = new PIXI.Text("\u21AA", {fontSize : 4 * stepInX, fill : "#FFD43B"})
     }
     else{
-        nextArr.width = 4 * stepInY;
-        nextArr.height = 2 * stepInY;    
+        var nextArr = new PIXI.Text("\u21AA", {fontSize : 4 * stepInY, fill : "#FFD43B"})   
     }
+    nextArr.position.x = 6 * stepX - stepInX;
+    nextArr.position.y = 8 * stepY + 3 * stepInY;
     nextArr.anchor.x = 0.5;
     nextArr.anchor.y = 0.5;
     nextArr.buttonMode = true;
     nextArr.interactive = true;
     nextArr.direction = "right";
-    nextArr.rotation += Math.PI;
     
     nextArr
             .on('pointerdown', onArrowDown)
@@ -102,19 +100,16 @@ function menuPage(){
     
     app.stage.addChild(nextArr);
 
-    var prevArr = new PIXI.Sprite(texture);
-    
-    prevArr.position.x = 4 * stepX + stepInX;
-    prevArr.position.y = 8 * stepY + 3 * stepInY;
+    /*var prevArr = new PIXI.Sprite(texture);*/
     
     if(orient === 'p'){
-        prevArr.width = 4 * stepInX;
-        prevArr.height = 2 * stepInX;
+        var prevArr = new PIXI.Text("\u21A9", {fontSize : 4 * stepInX, fill : "#306998"})
     }
     else{
-        prevArr.width = 4 * stepInY;
-        prevArr.height = 2 * stepInY;    
+        var prevArr = new PIXI.Text("\u21A9", {fontSize : 4 * stepInY, fill : "#306998"})    
     }
+    prevArr.position.x = 4 * stepX + stepInX;
+    prevArr.position.y = 8 * stepY + 3 * stepInY;
     prevArr.anchor.x = 0.5;
     prevArr.anchor.y = 0.5;
     prevArr.buttonMode = true;

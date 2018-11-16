@@ -18,16 +18,19 @@ if (typeof(Storage) !== "undefined") {
     console.log("No local storage.")
 }
 
-/*function checkLanguage() {
-    navigator.globalization.getPreferredLanguage(
-        function (language) {    
-            alert('language: ' + language.value + '\n');
-        },
-        function () {
-            alert('Error getting language\n');
-        }
-    );
-}*/
+var lang = 0;
+if (window.Intl && typeof window.Intl === 'object') {
+    console.log('API available');
+    if(window.navigator.language == 'tr' || window.navigator.userLanguage == 'tr'){
+        lang = 1;
+    }
+}
+
+localStorage.setItem("language", lang);
+
+var buttonName = ["CHALLENGE", "MÜCADELE"];
+var buttonName1 = ["QUESTION SELECT", "SORU SEÇ"];
+var buttonName2 = ["HOW TO PLAY", "NASIL OYNANIR"];
 
 var w = window,
     d = document,
@@ -66,7 +69,7 @@ function menuPage(){
     
     var textSize = ('m' > orient) ? stepInY : stepInX;
     
-    var text = new PIXI.Text("CHALLENGE", {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
+    var text = new PIXI.Text(buttonName[lang], {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
     text.id = 0;
     text.position.x = x / 2;
     text.position.y = 2 * stepY + 2 * stepInY;
@@ -83,7 +86,7 @@ function menuPage(){
         .on('touchend', onButtonUp)
     app.stage.addChild(text);
     
-    var text1 = new PIXI.Text("LEVEL SELECT", {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
+    var text1 = new PIXI.Text(buttonName1[lang], {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
     text1.id = 1;
     text1.position.x = x / 2;
     text1.position.y = 2 * stepY + 5 * stepInY;
@@ -100,7 +103,7 @@ function menuPage(){
         .on('touchend', onButtonUp)
     app.stage.addChild(text1);
     
-    var text2 = new PIXI.Text("HOW TO PLAY", {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
+    var text2 = new PIXI.Text(buttonName2[lang], {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
     text2.id = 2;
     text2.position.x = x / 2;
     text2.position.y = 2 * stepY + 8 * stepInY;
@@ -141,8 +144,16 @@ function onButtonDown(event) {
     this.isdown = true;
     this.alpha = 0.5;
     if(this.id === 0){
+    var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+    var level = 0;
+    for(var i = 0; i < itemTest.length; i++){
+        if(!itemTest[i]){
+            level = i;
+            break;
+        }
+    }
         setTimeout(function(){
-            location.replace("./quest.html?quest=" + 0);
+            location.replace("./quest.html?quest=" + level);
         },500);
     }
     else if(this.id === 1){
@@ -168,11 +179,6 @@ function onButtonUp() {
 
 window.onload = function(){
     app = new PIXI.Application(x, y, {backgroundColor : 0x2e3436});
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        alert(navigator.globalization.getPreferredLanguage);
-    }
-    checkLanguage();
     document.body.appendChild(app.view);
     menuPage();
 }

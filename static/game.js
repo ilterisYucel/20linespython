@@ -13,21 +13,26 @@ var builtInArr = ["abs", "all", "any", "ascii", "bin", "bool", "bytearray", "byt
 "frozenset", "getattr", "globals", "hasattr", "hash", "help", "hex", "id", "input", "int", "isinstance", "issubclass",
 "iter", "len", "list", "locals", "map", "max", "memoryview", "min", "next", "object", "oct", "open", "ord", "pow", 
 "print", "property", "range", "repr", "reversed", "round", "set", "setattr", "slice", "sorted", "staticmethod", "str",
-"sum", "super", "tuple", "type", "vars", "zip", "__import__"];
+"sum", "super", "tuple", "type", "vars", "zip", "__import__", "self", "__init__"];
 
 var formatChars = [" ", "(", ")", "+", "-", "*", "/", "%", ".", "[", "]", "{", "}", ":", "=", "!",
-"<", ">"];
+"<", ">", ","];
 
 var intChars = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 var app;
 var level = parseInt(getAllUrlParams().level);
+var qFlag = JSON.parse(getAllUrlParams().flag)
 var levelData = [];
 var codelines = [];
 var orient = (y >= x) ? 'p' : 'l';
 var itemTest = JSON.parse(localStorage.getItem("itemTest"));
 var font = orient < 'm' ? y / 30 : (8 * y / 10) / 30;
 var fFont = (orient < 'm') ? y : x;
+var coef_base = (orient < 'm') ? y / x : x / y;
+var coef = coef_base > 2 / 3 ? 1.2 : 1.0;
+var lang = JSON.parse(localStorage.getItem("language"));
+var lockDict = {};
 
 let xhr = new XMLHttpRequest();
 xhr.open("GET", "assets/questions/code" + level + ".json", false);
@@ -75,6 +80,10 @@ function createCodeLine(x, y, text, app)
        
        "flt" : {
           fill: "#EFC090"
+       },
+       
+       "comment" :{
+            fill : "#888a85"
        }
        
     });
@@ -111,9 +120,11 @@ function createPage()
     var texture = new PIXI.Texture.fromImage("./assets/images/run.png");
     var texture1 = new PIXI.Texture.fromImage("./assets/images/tip.png");
     var texture2 = new PIXI.Texture.fromImage("./assets/images/question.png");
+    var texture3 = new PIXI.Texture.fromImage("./assets/images/glass.png");
     runButton = new PIXI.Sprite(texture);
     helpButton = new PIXI.Sprite(texture1);
     qButton = new PIXI.Sprite(texture2);
+    glassButton = new PIXI.Sprite(texture3);
     runButton.interactive = true;
     runButton.buttonMode = true;
     runButton
@@ -130,6 +141,11 @@ function createPage()
     qButton
             .on('mousedown', quest)
             .on('touchstart', quest);
+    glassButton.interactive = true;
+    glassButton.buttonMode = true;
+    glassButton
+            .on('mousedown', glass)
+            .on('touchstart', glass);
             
     var fontBack = ('m' > orient) ? (y / 20) : (x / 20);        
     back = new PIXI.Text("\u27a4", {fontSize : fontBack + "px", fill : "#FFFFFF"});
@@ -160,6 +176,11 @@ function createPage()
         qButton.position.y = y / 10 + y / 40;
         qButton.width = y / 20;
         qButton.height = y / 20;
+        
+        glassButton.position.x = x - 4 * y / 10;
+        glassButton.position.y = y / 10 + y / 40;
+        glassButton.width = y / 20;
+        glassButton.height = y / 20;
         
         back.anchor.x = 0.5;
         back.anchor.y = 0.5;
@@ -202,6 +223,13 @@ function createPage()
         qButton.height = y / 20;
         qButton.rotate = Math.PI / 2;
         
+        glassButton.anchor.x = 0.5;        
+        glassButton.position.x = x / 10 + x / 20;
+        glassButton.position.y = x / 20 + 5 * y / 20;
+        glassButton.width = y / 20;
+        glassButton.height = y / 20;
+        glassButton.rotate = Math.PI / 2;
+        
 
         back.anchor.x = 0.5;
         back.anchor.y = 0.5;
@@ -217,6 +245,7 @@ function createPage()
     this.app.stage.addChild(runButton);
     this.app.stage.addChild(helpButton);
     this.app.stage.addChild(qButton);
+    this.app.stage.addChild(glassButton)
     this.app.stage.addChild(back);
 }
 
@@ -226,7 +255,7 @@ function redraw() {
         graphics.beginFill(0x000000);
         graphics.drawRect(document.body.scrollLeft+0, y / 10, document.body.scrollLeft+x, y / 10);
         graphics.endFill();
-        var dashedLineBeginY = document.body.scrollTop > 2 * (y /  10) ? 0 : 2 * (y /  10);
+        var dashedLineBeginY = document.body.scrollTop > 2 * (y /  10) ? 0 : 2 * (y /  10)-document.body.scrollTop;
         for(var i = 0; i < getMaxIndent(); i++)
         {
             dashedLine(graphics, i * (2 * font), document.body.scrollTop+dashedLineBeginY, x, document.body.scrollTop+y);
@@ -240,6 +269,9 @@ function redraw() {
         
         qButton.position.x = document.body.scrollLeft+x - 2 * y / 10;
         qButton.position.y = y / 10 + y / 40;
+        
+        glassButton.position.x = document.body.scrollLeft+x - 4 * y / 10;
+        glassButton.position.y = y / 10 + y / 40;
         
         back.position.x = document.body.scrollLeft+ x / 10 - x / 20;
         back.position.y = y / 10 + y / 20;
@@ -260,6 +292,9 @@ function redraw() {
               
         qButton.position.x = x / 10 + x / 20;
         qButton.position.y = document.body.scrollTop+x / 20 + y / 20;
+        
+        glassButton.position.x = x / 10 + x / 20;
+        glassButton.position.y = document.body.scrollTop +  x / 20 + 5 * y / 20;
         
 
         back.position.x = x / 10 + x / 20;
@@ -290,7 +325,7 @@ function run()
 {
     var val = true;
     var items = [];
-    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2
+    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
     
     for(var i = 0; i < codelines.length-1; i++)
     {
@@ -334,8 +369,8 @@ function help()
     var helpLines = controlHelpStatus();
     var xStep = 2 * font;
     var yStep = getMaxLineHeight() + font / 4;
-    var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2
-    var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2)
+    var indentBeginX = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+    var indentBeginY = (orient < 'm') ?  2 : (2 * (y / 10) + 2);
     if(helpLines.length <= 3 )
     {
         for(var i = 0; i < helpLines.length; i++)
@@ -407,34 +442,67 @@ function createGame()
     if(orient === 'p')
     {
         for(var i = 0; i < lines.length; i++)
-        {
-            var rndInd = getEmptyInd(indexArr);
-            indexArr[rndInd] = true;
-            var xLoc = 2;
-            var yLoc = y - ((rndInd + 1) * font + 2);              
-            var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
-            line.xInd = parseInt(xLocs[i]);
-            line.yInd = parseInt(yLocs[i]);
-            console.log(line.xInd + ' ' + line.yInd);
-            line.helpStatus = false;
-            line.id = i;
-            codelines.push(line);
+        {   
+            if(!qFlag){
+                var rndInd = getEmptyInd(indexArr);
+                indexArr[rndInd] = true;
+                var xLoc = 2  + 4 * font;
+                var yLoc =  3 * y / 4  + ((rndInd + 1) * font + 2);              
+                var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
+                line.xInd = parseInt(xLocs[i]);
+                line.yInd = parseInt(yLocs[i]);
+                console.log(line.xInd + ' ' + line.yInd);
+                line.helpStatus = false;
+                line.lockStatus = false;
+                line.id = i;
+                codelines.push(line);
+            }else{
+                var lineInf = JSON.parse(localStorage.getItem("linesInf"))
+                console.log(lineInf[i]);
+                var line = createCodeLine(lineInf[i][0], lineInf[i][1], lines[i], this.app);
+                line.helpStatus = lineInf[i][2];
+                line.lockStatus = lineInf[i][3];
+                line.interactive = lineInf[i][4];
+                line.buttonMode = lineInf[i][5];
+                line.xInd = lineInf[i][6];
+                line.yInd = lineInf[i][7];
+                line.alpha = lineInf[i][8];
+                line.id = i;
+                codelines.push(line);
+            
+            }
         }
     }
     else
     {
         for(var i = 0; i < lines.length; i++)
         {
-            var rndInd = getEmptyInd(indexArr);
-            indexArr[rndInd] = true;
-            var xLoc = 2 * (x / 10) + 2;
-            var yLoc = y - ((rndInd + 1) * font + 2);
-            var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
-            line.xInd = parseInt(xLocs[i]);
-            line.yInd = parseInt(yLocs[i]);
-            line.helpStatus = false;
-            line.id = i;
-            codelines.push(line);
+            if(!qFlag){
+                var rndInd = getEmptyInd(indexArr);
+                indexArr[rndInd] = true;
+                var xLoc = 2 * (x / 10) + 2 + 4 * font;
+                var yLoc = 3 * y / 4 + ((rndInd + 1) * font + 2);
+                var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
+                line.xInd = parseInt(xLocs[i]);
+                line.yInd = parseInt(yLocs[i]);
+                line.helpStatus = false;
+                line.lockStatus = false;
+                line.id = i;
+                codelines.push(line);
+            }else{
+                var lineInf = JSON.parse(localStorage.getItem("linesInf"))
+                console.log(lineInf[i]);
+                var line = createCodeLine(lineInf[i][0], lineInf[i][1], lines[i], this.app);
+                line.helpStatus = lineInf[i][2];
+                line.lockStatus = lineInf[i][3];
+                line.interactive = lineInf[i][4];
+                line.buttonMode = lineInf[i][5];
+                line.xInd = lineInf[i][6];
+                line.yInd = lineInf[i][7];
+                line.alpha = lineInf[i][8];
+                codelines.push(line);
+            
+            }
         }    
     }
 }
@@ -531,18 +599,69 @@ function controlCodeArea(line, nx ,ny)
     return codeAreaBeginX + 2 <= nx && codeAreaEndX - 2 >= nx + 10 && codeAreaBeginY + 2 <= ny && codeAreaEndY - 2 >= ny + line.height;
 }
 
+function parseLines() {
+	var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+	var indent = "\t";
+	
+	var codeArray = [];
+	for (var i = 0; i < codelines.length; i++) {
+		codeArray.push({
+			code : codelines[i].text.replace(/(<\/?kw>|<\/?bf>|<\/?dt>|<\/?int>|<\/?flt>|<\/?comment>)/gi,"").trim(),
+			indent : Math.round((codelines[i].position.x - indentBegin)/(2*font)),
+			order : codelines[i].position.y
+		});
+	}
+	codeArray.sort(function(a,b){ return a.order - b.order});
+	
+	var codeText = "";
+	for (var i = 0; i < codeArray.length; i++) {
+		codeText += indent.repeat(codeArray[i].indent) + codeArray[i].code + "\n";
+	}
+	return codeText;
+}
+
+function glass(){
+    var codeText = parseLines();
+    var linesInf = [];
+    var xStep = 2 * font;
+    var yStep = getMaxLineHeight() + font / 4;
+    var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+    var yBegin = (orient < 'm') ?  2 : (2 * (y / 10) + 2);
+    for(var i = 0; i < codelines.length; i++){
+        var lineInf = [];
+        lineInf[0] = codelines[i].position.x;
+        lineInf[1] = codelines[i].position.y;
+        lineInf[2] = codelines[i].helpStatus;
+        lineInf[3] = codelines[i].lockStatus;
+        lineInf[4] = codelines[i].interactive;
+        lineInf[5] = codelines[i].buttonMode;
+        lineInf[6] = codelines[i].xInd;
+        lineInf[7] = codelines[i].yInd;
+        lineInf[8] = codelines[i].alpha;
+        linesInf.push(lineInf);
+    }
+    localStorage.setItem("linesInf", JSON.stringify(linesInf));
+    localStorage.setItem("codeText", JSON.stringify(codeText));
+    setTimeout(function(){
+        window.location.assign("./terminal.html?level=" + level);
+    },1000);
+}
 
 function onDragStart(event)
 {
 
     this.data = event.data;
-    this.alpha = 0.5;
     this.dragging = true;
+    if(this.lockStatus){
+        for(var i = 1; i < lockDict[this.id].length; i++){
+            app.stage.removeChild(lockDict[this.id][i])
+        }
+        this.lockStatus = false;
+    }
 }
 
 function onDragEnd()
 {
-    this.alpha = 1;
     this.dragging = false;
     var tmp_position = this.position.x - codeAreaBeginX;
     if(tmp_position % (font * 2) !== 2)
@@ -552,6 +671,8 @@ function onDragEnd()
     if (this.position.x < codeAreaBeginX) {
         this.position.x += font * 2;
     }
+    
+    endFunc(this);
     this.data = null;
 }
 
@@ -569,6 +690,65 @@ function onDragMove()
     }
 }
 
+function endFunc(line){
+    var list = [];
+    line.lockStatus = true;
+    list.push(line);
+    var g = new PIXI.Graphics();
+    g.beginFill(0x000000, 0.7);
+    g.drawRect(line.position.x + line.width, line.position.y, 8 * font, font);
+    g.endFill();
+    app.stage.addChild(g);
+    list.push(g);
+    
+    var lock = new PIXI.Text("lock", {fontFamily: "monospace", fontSize: font + "px",fill: "#FFFFFF", align: "center"});
+    lock.position.x = line.position.x + line.width;
+    lock.position.y = line.position.y;
+    lock.interactive = true;
+    lock.buttonMode = true;
+    lock
+        .on('mousedown', function(){lockFunc(list);})
+        .on('touchstart', function(){lockFunc(list);});
+    app.stage.addChild(lock);
+    list.push(lock);
+
+    var unlock = new PIXI.Text("unlock", {fontFamily: "monospace", fontSize: font + "px",fill: "#FFFFFF", align: "center"});
+    unlock.position.x = line.position.x + line.width + 4 * font;
+    unlock.position.y = line.position.y;
+    unlock.interactive = true;
+    unlock.buttonMode = true;
+    unlock
+        .on('mousedown', function(){unlockFunc(list);})
+        .on('touchstart', function(){unlockFunc(list);});
+    app.stage.addChild(unlock);
+    list.push(unlock);
+    lockDict[line.id] = list;
+    
+    setTimeout(function(){
+        for(var i = 1; i < list.length; i++){
+            app.stage.removeChild(list[i]);
+        }
+    },3000); 
+    
+}
+
+function lockFunc(list){
+    list[0].helpStatus = true;
+    list[0].alpha = 0.5;
+    list[0].lockStatus = false;
+    for(var i = 1; i < list.length; i++){
+        app.stage.removeChild(list[i]);
+    }
+}
+
+function unlockFunc(list){
+    list[0].helpStatus = false;
+    list[0].alpha = 1;
+    list[0].lockStatus = false;
+    for(var i = 1; i < list.length; i++){
+        app.stage.removeChild(list[i]);
+    }
+}
 
 function convertToCode(text)
 {
@@ -580,14 +760,26 @@ function convertToCode(text)
   var last = "";
   
   var matched = false;
+  var matched1 = false;
+  
+  if (text[0] == '#'){
+    return "<comment>" + text + "</comment>";
+  }
   
   for(var i = 0; i < text.length; i++)
   {
-    //formatlama karakterlerinden birine denk gelirse
+    if( (i === 0 || text[i-1] != "\\") && (text[i] === "\"" || text[i] === "'")){
+        if(matched1){
+            matched1 = false;
+            
+        }else{
+            matched1 = true;
+        }
+    }
     if(formatChars.includes(text[i]))
     {
     
-      if(keywordArr.includes(temp))
+      if(keywordArr.includes(temp) && !matched1)
       {
         //temp keywordlerden biri ise
         temp = "<kw>" + temp + "</kw>";
@@ -596,7 +788,7 @@ function convertToCode(text)
       
       }
       
-      else if (builtInArr.includes(temp))
+      else if (builtInArr.includes(temp) && !matched1)
       {
         //temp built in fonksiyonlardan biri ise
         temp = "<bf>" + temp + "</bf>";
@@ -621,6 +813,9 @@ function convertToCode(text)
     {
       //textin sonuna ulaşıldığında temp'te hala kalanlar varsa
       temp += text[i];
+      if(keywordArr.includes(temp) && !matched1){
+        temp = "<kw>" + temp + "</kw>";
+      }
       result += temp;
       temp = "";
     
@@ -697,6 +892,7 @@ function convertToCode(text)
       
     
     }
+    
     else if(j === result.length -1)
     {
       //textin sonuna ulaşıldığında temp'te hala kalanlar varsa
@@ -816,7 +1012,7 @@ function createQuestPage(){
     }
     
     var questText = "";
-    var questTitle = questData["title"];
+    var questTitle = questData[lang].title;
     
     var graphicsQuest = new PIXI.Graphics();
     graphicsQuest.beginFill(0x888a85);
@@ -831,8 +1027,8 @@ function createQuestPage(){
     graphicsQuest.drawRect(document.body.scrollLeft , document.body.scrollTop+9 * (y / 10), x, (y / 10));
     graphicsQuest.endFill();
     
-    for(var i = 0; i < questData["content"].length; i++){
-        questText += questData["content"][i];
+    for(var i = 0; i < questData[lang].content.length; i++){
+        questText += questData[lang].content[i];
         questText += "\n\n";
     }
     
@@ -841,7 +1037,7 @@ function createQuestPage(){
     
     var title = new PIXI.Text(questTitle, 
                           {
-                            fontSize: fFont / 20 + 'px', 
+                            fontSize: fFont / (20 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#eeeeec",  
                             fontWeight: "bold", 
@@ -856,7 +1052,7 @@ function createQuestPage(){
     
     var content = new PIXI.Text(questText, 
                           {
-                            fontSize: fFont / 30 + 'px', 
+                            fontSize: fFont / (30 * coef) + 'px', 
                             fontFamily: "monospace", 
                             fill : "#D8D8D8",  
                             fontStyle: "oblique",
@@ -870,8 +1066,8 @@ function createQuestPage(){
     content.position.y = document.body.scrollTop + 2 * y / 10 + y /20;
     app.stage.addChild(content); 
     list.push(content);
-    
-    var go = new PIXI.Text("<<<<BACK>>>>", 
+    var text = ["<<<<BACK>>>>", "<<<GERİ>>>>"] 
+    var go = new PIXI.Text(text[parseInt(lang)], 
                           {
                             fontSize: fFont / 20 + 'px', 
                             fontFamily: "monospace", 

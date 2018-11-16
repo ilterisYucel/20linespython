@@ -1,6 +1,7 @@
 {
-    "title" : "Output-2",
-    "content" : [
+    "0" : {
+        "title" : "Output-2",
+        "content" : [
                     "1-)Get input respectively.\n\t\t-name\n\t\t-surname\n\t\t-age",
                     "2-)Print them respectively.",
                     "3-)1 tab between name and surname.",
@@ -8,5 +9,17 @@
                     "5-)1. print output name, surname.",
                     "6-)2. print output age."
                 ]
-
+            },
+            
+    "1" : {
+        "title" : "Çıktı ver-2",
+        "content" : [
+                    "1-)Sırasıyla girdileri al.\n\t\t-ad\n\t\t-soyad\n\t\t-yaş",
+                    "2-)Sırasıyla girdileri yazdır.",
+                    "3-)Ad ile soyad arasında 1 tab boşluk olmalı.",
+                    "4-)Soyad ile yaş arasında 2 tab boşluk olmadlı.",
+                    "5-)1.print ad ve soyadı yazdırmalı.",
+                    "6-)2.print yaşı yazdırmalı."
+                ]
+            }
 }
