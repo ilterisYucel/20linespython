@@ -54,6 +54,19 @@ function backFunc(){
     window.location.assign("./game.html?level=" + level + "&flag=" + true)
 }
 
+function parseForTextArea(script) {
+	return script.replace(/print\((\_|.*)\)$/gmi,'document["outputArea"].value = document["outputArea"].value + str($1) + "\\n"');
+}
+
+function runFunc() {
+	document.getElementById("outputArea").value = "";
+	var script = document.getElementById("script");
+	script.innerHTML = document.getElementById("base_script").innerHTML.trim()+"\n";
+	script.innerHTML += parseForTextArea(codeArea.value);
+	console.log(script.innerHTML);
+	brython();
+}
+
 function getAllUrlParams(url) {
 
     var queryString = url ? url.split('?')[1] : window.location.search.slice(1);

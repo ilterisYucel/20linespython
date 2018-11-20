@@ -66,9 +66,16 @@
     </head>
     <body style="background-color:#2e3436;">
 	    <script src="./assets/libs/pixi.min.js"></script>
+	    <script src="./assets/libs/brython.js"></script>
+	    <script src="./assets/libs/brython_stdlib.js"></script>
+	    <custom-script id="base_script" style="display:none;">
+from browser import document
+
+	    </custom-script>
+	    <script id="script" type="text/python"></script>
 	    <textarea id="codeArea" readonly></textarea>
 	    <div id="buttonDiv">
-	        <button id="runButton">RUN</button>
+	        <button id="runButton" onclick="runFunc();">RUN</button>
 	        <button id="editButton" onclick="editFunction();">EDIT</button>
 	        <button id="backButton" onclick="backFunc();">BACK</button>
 	    </div>
