@@ -61,10 +61,29 @@ function parseForTextArea(script) {
 function runFunc() {
 	document.getElementById("outputArea").value = "";
 	var script = document.getElementById("script");
-	script.innerHTML = document.getElementById("base_script").innerHTML.trim()+"\n";
+	var base_script = document.getElementById("base_script").innerHTML.trim();
+	script.innerHTML = base_script + "\n";
 	script.innerHTML += parseForTextArea(codeArea.value);
 	console.log(script.innerHTML);
-	brython();
+	try {
+		brython();
+	} catch (err) {
+		/*//console.log(Object.keys(err));
+		//console.log(err.args);
+		console.log(err.__class__.__name__);
+		//console.log(err.$py_error);
+		//console.log(err.$stack);
+		//console.log(err.$line_info);
+		//console.log(err.__cause__);
+		//console.log(err.__C__);
+		//console.log(err.__suppress_C__);
+		//console.log(err.text);
+		console.log(err.offset);
+		console.log(err.lineno-base_script.split(/\n/).length);
+		console.log(err.msg);
+		//console.log(err.filename);*/
+		document.getElementById("outputArea").value = err.__class__.__name__ + ": " + err.msg + " on line: " + (err.lineno-base_script.split(/\n/).length) + "\n";
+	}
 }
 
 function getAllUrlParams(url) {
