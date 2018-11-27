@@ -70,9 +70,19 @@
 	    <script src="./assets/libs/brython_stdlib.js"></script>
 	    <custom-script id="base_script" style="display:none;">
 from browser import document
+import sys
+class StringStream:
+	def __init__(self):
+		self.data = ""
+	def write(self, s):
+		self.data += s;
+sys.stdout = print_var = StringStream()
 
 	    </custom-script>
 	    <script id="script" type="text/python"></script>
+	    <custom-script id="end_script" style="display:none;">
+document["outputArea"].value = print_var.data;
+	    </custom-script>
 	    <textarea id="codeArea" readonly></textarea>
 	    <div id="buttonDiv">
 	        <button id="runButton" onclick="runFunc();">RUN</button>

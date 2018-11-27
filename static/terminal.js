@@ -55,7 +55,7 @@ function backFunc(){
 }
 
 function parseForTextArea(script) {
-	return script.replace(/print\((\_|.*)\)$/gmi,'document["outputArea"].value = document["outputArea"].value + str($1) + "\\n"');
+	return script; //script.replace(/print\((\_|.*)\)$/gmi,'document["outputArea"].value = document["outputArea"].value + str($1) + "\\n"');
 }
 
 function runFunc() {
@@ -64,6 +64,7 @@ function runFunc() {
 	var base_script = document.getElementById("base_script").innerHTML.trim();
 	script.innerHTML = base_script + "\n";
 	script.innerHTML += parseForTextArea(codeArea.value);
+	script.innerHTML += document.getElementById("end_script").innerHTML.trim();
 	console.log(script.innerHTML);
 	try {
 		brython();
