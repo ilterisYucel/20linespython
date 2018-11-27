@@ -83,7 +83,7 @@ function runFunc() {
 		console.log(err.lineno-base_script.split(/\n/).length);
 		console.log(err.msg);
 		//console.log(err.filename);*/
-		document.getElementById("outputArea").value = err.__class__.__name__ + ": " + err.msg + " on line: " + (err.lineno-base_script.split(/\n/).length) + "\n";
+		document.getElementById("outputArea").value += err.__class__.__name__ + ": " + err.msg + " on line: " + (err.lineno-base_script.split(/\n/).length) + "\n";
 	}
 }
 
