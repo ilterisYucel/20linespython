@@ -73,15 +73,14 @@ from browser import document
 import sys
 class StringStream:
 	def __init__(self):
-		self.data = ""
+		self.data = [document["outputArea"]];
 	def write(self, s):
-		self.data += s;
+		self.data[0].value += s;
 sys.stdout = print_var = StringStream()
 
 	    </custom-script>
 	    <script id="script" type="text/python"></script>
 	    <custom-script id="end_script" style="display:none;">
-document["outputArea"].value = print_var.data;
 	    </custom-script>
 	    <textarea id="codeArea" readonly></textarea>
 	    <div id="buttonDiv">
