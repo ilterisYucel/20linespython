@@ -8,7 +8,7 @@
                        "3-)Get words from user english and turkish respectively.",
                        "4-)Add these to eng_tr_dict as key and value.",
                        "5-)Ask user quit or continue and do it.",
-                       "6-)Print word_dict as 'key ---> value' pattern."
+                       "6-)Print eng_tr_dict as 'key ---> value' pattern."
                      ]
 
     },
@@ -22,7 +22,7 @@
                        "3-)Kullanıcıdan sırasıyla ingilizce ve türkçe kelime iste.",
                        "4-)Bunları eng_tr_dict'e anahtar değer şeklinde ata.",
                        "5-)Kullanıcıyı devam etmek veya çıkmak için yönlendir.",
-                       "6-)word_dict'i 'anahtar ---> değer' düzeninde yazdır."
+                       "6-)eng_tr_dict'i 'anahtar ---> değer' düzeninde yazdır."
                       ]
     }
 

@@ -3,9 +3,10 @@
             "title" : "DICTIONARY-1",
             "content":
                     [ 
-                       "1-)Define empty tr_eng_dict.",
-                       "2-)Convert eng_tr_dict to tr_eng_dict.",
-                       "3-)Print keys and value of dict respectively."
+                       "1-)Define eng_tr_dict",
+                       "2-)Define empty tr_eng_dict.",
+                       "3-)Convert eng_tr_dict to tr_eng_dict.",
+                       "4-)Print keys and value of dict respectively."
                      ]
 
     },
@@ -14,9 +15,10 @@
             "title" : "SÖZLÜK-1",
             "content": 
                       [
-                       "1-)Boş tr_eng_dict tanımla.",
-                       "2-)eng_tr_dict'i tr_eng_dict'e çevir.",
-                       "3-)Bu sözlüğün anahtarlarını ve değerlerini sırasıyla yazdır."
+                       "1-)eng_tr_dict'i tanımla."
+                       "2-)Boş tr_eng_dict'i tanımla.",
+                       "3-)eng_tr_dict'i tr_eng_dict'e çevir.",
+                       "4-)Bu sözlüğün anahtarlarını ve değerlerini sırasıyla yazdır."
                       ]
     }
 

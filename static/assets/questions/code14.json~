@@ -1,5 +1,5 @@
 [
-    "file = open(\"./data/players.txt\", \"r\")",
+    "file = open(\"./data/customers.txt\", \"r\")",
     "count = 0",
     "for line in file.readlines():",
     "print(line)",

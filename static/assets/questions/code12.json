@@ -8,7 +8,7 @@
     "status = input(\"For quit press q, for continue press enter >\")",
     "if(status == 'q'):",
     "boolean = False",
-    "for k,v in word_dict.items():",
+    "for k,v in eng_tr_dict.items():",
     "print(\"{} ----> {}\".format(k,v))",
     "0,1,2,3,4,5,6,7,8,9,10",
     "0,0,0,1,1,1,1,1,2,0,1"

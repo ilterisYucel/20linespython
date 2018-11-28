@@ -1,5 +1,5 @@
 [
-    "file = open(\"record.txt\", \"w\")",
+    "file = open(\"./data/records.txt\", \"w\")",
     "boolean = True",
     "while(boolean):",
     "name = input(\"Enter customer name >\")",

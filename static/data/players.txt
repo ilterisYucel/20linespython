@@ -1,0 +1,5 @@
+ID    NICKNAME      TOTALSCORE
+01    DELALIM       252
+02    SULO          168
+03    KALECIKLI     998
+04    HAYDUT        642  

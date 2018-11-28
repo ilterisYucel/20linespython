@@ -6,7 +6,7 @@
     "difference = abs(number - guess)",
     "if(guess > number and difference <= 5):",
     "print(\"Bigger than hidden number.You're very close.\")",
-    "elif(guess > number and difference > 5)",
+    "elif(guess > number and difference > 5):",
     "print(\"Bigger than hidden number.\")",
     "elif(guess < number and difference <= 5):",
     "print(\"Less than hidden number.You're very close.\")",
