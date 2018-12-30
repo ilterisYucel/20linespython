@@ -27,10 +27,12 @@ if (window.Intl && typeof window.Intl === 'object') {
 }
 
 localStorage.setItem("language", lang);
+path = "./assets/images/"
 
-var buttonName = ["CHALLENGE", "MÜCADELE"];
-var buttonName1 = ["QUESTION SELECT", "SORU SEÇ"];
-var buttonName2 = ["HOW TO PLAY", "NASIL OYNANIR"];
+var buttonName = [path + "button_challenge.png", path + "button_mucadele.png"];
+var buttonName1 = [path + "button_question-select.png", path + "button_soru-sec.png"];
+var buttonName2 = [path + "button_how-to-play.png", path + "button_nasil-oynanir.png"];
+var buttonName3 = [path + "button_sources.png", path + "button_kaynaklar.png"];
 
 var w = window,
     d = document,
@@ -44,15 +46,148 @@ var orient = (x >= y) ? 'l' : 'p';
 var app;
 var graphics = new PIXI.Graphics();
 
+function dashedLine(graphics, beginX, beginY, endX, endY)
+{   
+    step = Math.abs(beginY - endY) / 100;
+    graphics.lineStyle(2, 0xeeeeec, 0.2);
+    for(var i = 1; i < 101; i++)
+    {
+        if(i % 2 === 0)
+        {
+            graphics.lineTo(beginX, beginY + (i * step));
+        }
+        else
+        {
+            graphics.moveTo(beginX, beginY + (i * step));
+        }
+    }
+    
+    graphics.endFill();  
+}
+
 function menuPage(){
     
     stepX = x / 10;
     stepY = y / 10;
     
-    stepInX = (6 * stepX) / 12;
-    stepInY = (6 * stepY) / 12;
+    stepInX = (4 * stepX) / 12;
+    stepInY = (4 * stepY) / 12;
     
-    graphics.beginFill(0x306998);
+    dashedLine(graphics, 1 * stepX, 4 * stepY, x, 4 * stepY + 11 * stepInY);
+    dashedLine(graphics, 9 * stepX, 4 * stepY, x, 4 * stepY + 11 * stepInY);
+    
+    app.stage.addChild(graphics);
+     
+    var texture = new PIXI.Texture.fromImage(buttonName[lang]);
+    var texture1 = new PIXI.Texture.fromImage(buttonName1[lang]);
+    var texture2 = new PIXI.Texture.fromImage(buttonName2[lang]);
+    var texture3 = new PIXI.Texture.fromImage(buttonName3[lang]);
+    
+    button = new PIXI.Sprite(texture);
+    button1 = new PIXI.Sprite(texture1);
+    button2 = new PIXI.Sprite(texture2);
+    button3 = new PIXI.Sprite(texture3);
+    
+    button.id = 0;
+    button.position.x = x / 2;
+    button.position.y = 4 * stepY + 1 * stepInY;
+    button.firstX =  x / 2;
+    button.firstY = 4 * stepY + 1 * stepInY;
+    button.width = 4 * stepX;
+    button.height = 2 * stepInY
+    button.anchor.x = 0.5;
+    button.anchor.y = 0.5;
+    button.buttonMode = true;
+    button.interactive = true;
+    button
+        .on('mousedown', onDragStart)
+        .on('touchstart', onDragStart)
+        
+        .on('mouseup', onDragEnd)
+        .on('mouseupoutside', onDragEnd)
+        .on('touchend', onDragEnd)
+        .on('touchendoutside', onDragEnd)
+
+        .on('mousemove', onDragMove)
+        .on('touchmove', onDragMove);
+        
+    app.stage.addChild(button);
+        
+    button1.id = 1;
+    button1.position.x = x / 2;
+    button1.position.y = 4 * stepY + 4 * stepInY;
+    button1.firstX = x / 2;
+    button1.firstY = 4 * stepY + 4 * stepInY;
+    button1.width = 4 * stepX;
+    button1.height = 2 * stepInY
+    button1.anchor.x = 0.5;
+    button1.anchor.y = 0.5;
+    button1.buttonMode = true;
+    button1.interactive = true;
+    button1
+        .on('mousedown', onDragStart)
+        .on('touchstart', onDragStart)
+        
+        .on('mouseup', onDragEnd)
+        .on('mouseupoutside', onDragEnd)
+        .on('touchend', onDragEnd)
+        .on('touchendoutside', onDragEnd)
+
+        .on('mousemove', onDragMove)
+        .on('touchmove', onDragMove);
+        
+    app.stage.addChild(button1);
+    
+    button2.id = 2;
+    button2.position.x = x / 2;
+    button2.position.y = 4 * stepY + 7 * stepInY;
+    button2.firstX = x / 2;
+    button2.firstY = 4 * stepY + 7 * stepInY;
+    button2.width = 4 * stepX;
+    button2.height = 2 * stepInY
+    button2.anchor.x = 0.5;
+    button2.anchor.y = 0.5;
+    button2.buttonMode = true;
+    button2.interactive = true;
+    button2
+        .on('mousedown', onDragStart)
+        .on('touchstart', onDragStart)
+        
+        .on('mouseup', onDragEnd)
+        .on('mouseupoutside', onDragEnd)
+        .on('touchend', onDragEnd)
+        .on('touchendoutside', onDragEnd)
+
+        .on('mousemove', onDragMove)
+        .on('touchmove', onDragMove);
+        
+    app.stage.addChild(button2);
+    
+    button3.id = 3;
+    button3.position.x = x / 2;
+    button3.position.y = 4 * stepY + 10 * stepInY;
+    button3.firstX = x / 2;
+    button3.firstY = 4 * stepY + 10 * stepInY;
+    button3.width = 4 * stepX;
+    button3.height = 2 * stepInY
+    button3.anchor.x = 0.5;
+    button3.anchor.y = 0.5;
+    button3.buttonMode = true;
+    button3.interactive = true;
+    button3
+        .on('mousedown', onDragStart)
+        .on('touchstart', onDragStart)
+        
+        .on('mouseup', onDragEnd)
+        .on('mouseupoutside', onDragEnd)
+        .on('touchend', onDragEnd)
+        .on('touchendoutside', onDragEnd)
+
+        .on('mousemove', onDragMove)
+        .on('touchmove', onDragMove);
+        
+    app.stage.addChild(button3)
+    /*graphics.beginFill(0x306998);
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();
     graphics.beginFill(0xFFD43B);
@@ -65,9 +200,9 @@ function menuPage(){
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + 10 * stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();*/
     
-    app.stage.addChild(graphics);
+    /*app.stage.addChild(graphics);*/
     
-    var textSize = ('m' > orient) ? stepInY : stepInX;
+    /*var textSize = ('m' > orient) ? stepInY : stepInX;
     
     var text = new PIXI.Text(buttonName[lang], {fontFamily : "monospace", align : "center", fontSize : textSize + "px"});
     text.id = 0;
@@ -139,44 +274,57 @@ function menuPage(){
     app.stage.addChild(text3);*/
 }
 
-function onButtonDown(event) {
+function onDragStart(event) {
     this.data = event.data;
-    this.isdown = true;
+    this.dragging = true;
     this.alpha = 0.5;
-    if(this.id === 0){
-    var itemTest = JSON.parse(localStorage.getItem("itemTest"));
-    var level = 0;
-    for(var i = 0; i < itemTest.length; i++){
-        if(!itemTest[i]){
-            level = i;
-            break;
+
+}
+
+function onDragEnd(){
+    this.alpha = 1.0;
+    this.position.x = this.firstX;
+    this.dragging = false;
+}
+
+function onDragMove(){
+    if (this.dragging){
+        var newPosition = this.data.getLocalPosition(this.parent);
+        if(newPosition.x - this.width / 2 >= 0 && newPosition.x + this.width / 2 <= x){
+            this.position.x = newPosition.x;
+            if(Math.abs(this.position.x - this.firstX) >= this.width / 2){
+                if(this.id === 0){
+                    var itemTest = JSON.parse(localStorage.getItem("itemTest"));
+                    var level = 0;
+                    for(var i = 0; i < itemTest.length; i++){
+                        if(!itemTest[i]){
+                            level = i;
+                            break;
+                        }
+                    }
+                    setTimeout(function(){
+                        location.replace("./quest.html?quest=" + level);
+                    },500);
+                }
+                else if(this.id === 1){
+                    setTimeout(function(){
+                        location.replace("./levelSelect.html?begin=0&end=10");
+                    },500);
+                }
+                else if(this.id === 2){
+                    setTimeout(function(){
+                        location.replace("./howToPlay.html?section=0");
+                    },500);
+    
+                }
+                else if(this.id === 3){
+    
+                }
+            }
         }
     }
-        setTimeout(function(){
-            location.replace("./quest.html?quest=" + level);
-        },500);
-    }
-    else if(this.id === 1){
-        setTimeout(function(){
-            location.replace("./levelSelect.html?begin=0&end=10");
-        },500);
-    }
-    else if(this.id === 2){
-        setTimeout(function(){
-            location.replace("./howToPlay.html?section=0");
-        },500);
-    
-    }
-    else if(this.id === 3){
-    
-    }
-}
 
-function onButtonUp() {
-    this.isdown = false;
-    this.alpha = 1.0;
 }
-
 window.onload = function(){
     app = new PIXI.Application(x, y, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);

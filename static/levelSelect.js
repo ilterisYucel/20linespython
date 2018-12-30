@@ -1,4 +1,4 @@
-var path = "./assets/images/arrow.png";
+var path = "./assets/images/";
 var w = window,
     d = document,
     e = d.documentElement,
@@ -33,16 +33,70 @@ function menuPage(){
     stepInX = (6 * stepX) / 30;
     stepInY = (6 * stepY) / 30;
     
+    var texture = new PIXI.Texture.fromImage(path + "button.png");
+    var texture1 = new PIXI.Texture.fromImage(path + "button1.png");
+    var texture2 = new PIXI.Texture.fromImage(path + "button2.png");
+    var texture3 = new PIXI.Texture.fromImage(path + "button3.png");
+    
+    var textureArr = [texture, texture1, texture2];
     
     for(var i = 0; i < count; i++){
         if(itemTest[begin + i]){
-            graphics.beginFill(0x000000, 0.5);
+            var button3 = new PIXI.Sprite(texture3);
+            button3.id = begin + i;
+            button3.position.x = 5 * stepX;
+            button3.position.y = 2 * stepY + (3 * i + 2) * stepInY;
+            button3.width = 3 * stepX;
+            button3.height = 2 * stepInY;
+            button3.interactive = true;
+            button3.buttonMode = true;
+            button3.anchor.x = 0.5;
+            button3.anchor.y = 0.5;
+            button3.firstX = 5 * stepX;
+            button3.firstY = 2 * stepY + (3 * i + 2) * stepInY;
+            button3
+                .on('mousedown', onDragStart)
+                .on('touchstart', onDragStart)
+        
+                .on('mouseup', onDragEnd)
+                .on('mouseupoutside', onDragEnd)
+                .on('touchend', onDragEnd)
+                .on('touchendoutside', onDragEnd)
+
+                .on('mousemove', onDragMove)
+                .on('touchmove', onDragMove);
+            app.stage.addChild(button3);
+            /*graphics.beginFill(0x000000, 0.5);
             graphics.drawRect(3.5 * stepX, 2 * stepY + (3 * i + 1) * stepInY, 3 * stepX, 2 * stepInY);
-            graphics.endFill();
+            graphics.endFill();*/
         }else{
-            graphics.beginFill(activeColors[i % 3]);
+            button = new PIXI.Sprite(textureArr[i % 3]);
+            button.id = begin + i;
+            button.position.x = 5 * stepX;
+            button.position.y = 2 * stepY + (3 * i + 2) * stepInY;
+            button.width = 3 * stepX;
+            button.height = 2 * stepInY;
+            button.interactive = true;
+            button.buttonMode = true;
+            button.anchor.x = 0.5;
+            button.anchor.y = 0.5;
+            button.firstX = 5 * stepX;
+            button.firstY = 2 * stepY + (3 * i + 2) * stepInY;
+            button
+                .on('mousedown', onDragStart)
+                .on('touchstart', onDragStart)
+        
+                .on('mouseup', onDragEnd)
+                .on('mouseupoutside', onDragEnd)
+                .on('touchend', onDragEnd)
+                .on('touchendoutside', onDragEnd)
+
+                .on('mousemove', onDragMove)
+                .on('touchmove', onDragMove);
+            app.stage.addChild(button);
+            /*graphics.beginFill(activeColors[i % 3]);
             graphics.drawRect(3.5 * stepX, 2 * stepY + (3 * i + 1) * stepInY, 3 * stepX, 2 * stepInY);
-            graphics.endFill();
+            graphics.endFill();*/
         }
     }
         
@@ -63,13 +117,19 @@ function menuPage(){
         text.anchor.y = 0.5;
         text.buttonMode = true;
         text.interactive = true;
+        text.firstX = x / 2;
+        text.firstY = 2 * stepY + (3 * j + 2) * stepInY;
         text
-            .on('pointerdown', onButtonDown)
-            .on('pointerup', onButtonUp)
-            .on('mousedown', onButtonDown)
-            .on('mouseup', onButtonUp)
-            .on('touchstart', onButtonDown)
-            .on('touchend', onButtonUp)
+            .on('mousedown', onDragStart)
+            .on('touchstart', onDragStart)
+        
+            .on('mouseup', onDragEnd)
+            .on('mouseupoutside', onDragEnd)
+            .on('touchend', onDragEnd)
+            .on('touchendoutside', onDragEnd)
+
+            .on('mousemove', onDragMove)
+            .on('touchmove', onDragMove);
         app.stage.addChild(text);
     }
     
@@ -77,13 +137,13 @@ function menuPage(){
     var nextArr = new PIXI.Sprite(texture);*/
     
     if(orient === 'p'){
-        var nextArr = new PIXI.Text("\u21AA", {fontSize : 4 * stepInX, fill : "#FFD43B"})
+        var nextArr = new PIXI.Text("\u27a4", {fontSize : 8 * stepInX, fill : "#FFD43B"})
     }
     else{
-        var nextArr = new PIXI.Text("\u21AA", {fontSize : 4 * stepInY, fill : "#FFD43B"})   
+        var nextArr = new PIXI.Text("\u27a4", {fontSize : 8 * stepInY, fill : "#FFD43B"})   
     }
-    nextArr.position.x = 6 * stepX - stepInX;
-    nextArr.position.y = 8 * stepY + 3 * stepInY;
+    nextArr.position.x = 9 * stepX - stepInX;
+    nextArr.position.y = y / 2;
     nextArr.anchor.x = 0.5;
     nextArr.anchor.y = 0.5;
     nextArr.buttonMode = true;
@@ -103,18 +163,19 @@ function menuPage(){
     /*var prevArr = new PIXI.Sprite(texture);*/
     
     if(orient === 'p'){
-        var prevArr = new PIXI.Text("\u21A9", {fontSize : 4 * stepInX, fill : "#306998"})
+        var prevArr = new PIXI.Text("\u27a4", {fontSize : 8 * stepInX, fill : "#306998"})
     }
     else{
-        var prevArr = new PIXI.Text("\u21A9", {fontSize : 4 * stepInY, fill : "#306998"})    
+        var prevArr = new PIXI.Text("\u27a4", {fontSize : 8 * stepInY, fill : "#306998"})    
     }
-    prevArr.position.x = 4 * stepX + stepInX;
-    prevArr.position.y = 8 * stepY + 3 * stepInY;
+    prevArr.position.x = 1 * stepX + stepInX;
+    prevArr.position.y = y / 2;
     prevArr.anchor.x = 0.5;
     prevArr.anchor.y = 0.5;
     prevArr.buttonMode = true;
     prevArr.interactive = true;
     prevArr.direction = "left";
+    prevArr.rotation += Math.PI;
 
     
     prevArr
@@ -128,12 +189,12 @@ function menuPage(){
     
     var font = ('m' > orient) ? (y / 18) : (x / 18);
 
-    var back = new PIXI.Text("\u27a4", {fontSize : font + "px", fill : "#edd400"});
+    var back = new PIXI.Text("\u27a4", {fontSize : 3 * font + "px", fill : "#646464"});
     back.anchor.x = 0.5;
     back.anchor.y = 0.5;
-    back.position.x = stepX;
+    back.position.x = x / 2;
     back.position.y = stepY;
-    back.rotation += Math.PI;
+    back.rotation -= Math.PI / 2;
     back.buttonMode = true;
     back.interactive = true;
     back
@@ -189,19 +250,23 @@ function getAllUrlParams(url) {
   return obj;
 }
 
-function onButtonDown(event) {
+function onDragStart(event) {
     this.data = event.data;
-    var level = this.id;
-    this.isdown = true;
+    this.dragging = true;
     this.alpha = 0.5;
+    var level = this.id;
     setTimeout(function(){
         window.location.assign("./quest.html?quest=" + level);
     },500);
 }
 
-function onButtonUp() {
-    this.isdown = false;
+function onDragMove(){
+}
+
+function onDragEnd() {
+    this.dragging = false;
     this.alpha = 1.0;
+    this.position.x = this.firstX;
 }
 
 function onArrowDown(event){
