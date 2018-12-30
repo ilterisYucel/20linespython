@@ -1,0 +1,16 @@
+[
+    "def analyze_stmt(text):",
+    "try:",
+    "code_object = compile(text, '<string>', 'eval')",
+    "return_val = eval(code_object, globals(), locals())",
+    "return True",
+    "except:",
+    "return False",
+    "stmt_file = open(\"./data/statements.py\", \"r\")",
+    "stmt_list = [stmt.strip(\"\\n\") for stmt in stmt_file.readlines()]",
+    "valid_list = [\"'{}' is invalid.\".format(stmt) if(not analyze_stmt(stmt)) else \"'{}' is valid.\".format(stmt) for stmt in stmt_list]",
+    "list(map(print, valid_list))",
+    "stmt_file.close()",
+    "0,1,2,3,4,5,6,7,8,9,10,11",
+    "0,1,2,2,2,1,2,0,0,0,0,0"
+]

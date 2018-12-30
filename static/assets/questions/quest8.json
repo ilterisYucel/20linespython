@@ -15,7 +15,7 @@
             "title" : "FOR DÖNGÜSÜ VE LİSTE-2",
             "content" : [
                     "1-)Kare matriks ListA'yı tanımla.(2 boyutlu satır ve sütun sayısı aynı liste)",
-                    "2-)Boş liste diagonali tanımla.",
+                    "2-)Boş liste diagonal'i tanımla.",
                     "3-)i değişkeni ile listA'nın eleman sayısı kadar gez.",
                     "4-)j değişkeni ile listA'nın eleman sayısı kadar gez.",
                     "5-)i j'ye eşitse, listA[i][j]'yi diagonala ekle.",

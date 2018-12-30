@@ -326,20 +326,37 @@ function run()
     var val = true;
     var items = [];
     var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
+    var trueComb = levelData.trueComb;
+    var yIndArr = getIndList();
+    var changeStatus = false;
     
-    for(var i = 0; i < codelines.length-1; i++)
-    {
-        if(codelines[i+1].position.y < codelines[i].position.y)
-        {
-            val = false;
-        }
+    if(compareArray(yIndArr, trueComb[0])){
+        val = true;
+    }else{
+        val = trueComb.some(function(item){
+            return compareArray(item, yIndArr);
+        });
+        changeStatus = true;
+    }
+    console.log(val + " " + changeStatus)
+    console.log(yIndArr);
+    if(val && changeStatus){
+        for(var i = 0; i < codelines.length; i++){
+            if(!codelines[yIndArr[i]].cs && !codelines[i].cs){
+                var temp = codelines[yIndArr[i]].xInd;
+                codelines[yIndArr[i]].xInd = codelines[i].xInd;
+                codelines[i].xInd = temp;
+                codelines[yIndArr[i]].cs = true;
+                codelines[i].cs = true;
+            }
+        } 
     }
     
-    for(var j = 0; j < codelines.length; j++)
-    {
-        if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) )
-        {
-            val = false;
+    if(val){
+        for(var j = 0; j < codelines.length; j++){
+            if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) ){
+                val = false;
+            }
         }
     }
     
@@ -416,6 +433,32 @@ function quest()
 
 }
 
+function compareArray(arr, arr1){
+
+    if(arr.length !== arr1.length) return false;
+    
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] !== arr1[i])  return false;
+    }
+    
+    return true;    
+}
+
+function getIndList(){
+    var yIndList = [];
+    for(var i = 0; i < codelines.length; i++){
+        ind = 0;
+        for(var j = 0; j < codelines.length; j++){
+            if(codelines[i].position.y > codelines[j].position.y){
+                ind++;
+            }
+        }
+        yIndList.push(ind);
+    }
+    return yIndList;
+
+}
+
 function controlHelpStatus()
 {
     var helpItems = [];
@@ -434,9 +477,9 @@ function controlHelpStatus()
 function createGame()
 {
     this.app = app;
-    var lines = levelData.slice(0, levelData.length-2);
-    var yLocs = levelData[levelData.length-2].split(',');
-    var xLocs = levelData[levelData.length-1].split(',');
+    var lines = levelData.codes;
+    var yLocs = levelData.yLocs;
+    var xLocs = levelData.xLocs;
     var indexArr = fillArr(lines.length, false);
     
     if(orient === 'p')
@@ -449,8 +492,8 @@ function createGame()
                 var xLoc = 2  + 4 * font;
                 var yLoc =  3 * y / 4  + ((rndInd + 1) * font + 2);              
                 var line = createCodeLine(xLoc, yLoc, lines[i], this.app)
-                line.xInd = parseInt(xLocs[i]);
-                line.yInd = parseInt(yLocs[i]);
+                line.xInd = xLocs[i];
+                line.yInd = yLocs[i];
                 console.log(line.xInd + ' ' + line.yInd);
                 line.helpStatus = false;
                 line.lockStatus = false;
@@ -535,12 +578,12 @@ function getMaxLineHeight()
 function getMaxIndent()
 {
     max = 0;
-    var xLocs = levelData[levelData.length-1].split(',');
+    var xLocs = levelData.xLocs;
     for(var i = 0; i < xLocs.length; i++)
     {
-        if(parseInt(xLocs[i]) > max)
+        if(xLocs[i] > max)
         {
-            max = parseInt(xLocs[i]);
+            max = xLocs[i];
         
         }
     }
@@ -1108,17 +1151,18 @@ function goBack() {
 }
 
 window.onload = function(){
-    app = new PIXI.Application(window.innerWidth  + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font), 
-                                        window.innerHeight*2, {backgroundColor : 0x2e3436});
+    app = new PIXI.Application(window.innerWidth  + (getMaxLineWidth(levelData.codes) * font + getMaxIndent() * 2 * font), 
+                               window.innerHeight*2, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     
     createPage();
     createGame();
     canvasElement = document.getElementsByTagName("canvas")[0];
-    canvasElement.style.width = window.innerWidth + (getMaxLineWidth(levelData.slice(0, levelData.length-2)) * font + getMaxIndent() * 2 * font) + "px";
+    canvasElement.style.width = window.innerWidth + (getMaxLineWidth(levelData.codes) * font + getMaxIndent() * 2 * font) + "px";
     canvasElement.style.height = (window.innerHeight*2)+"px";
         
     setInterval(checkScroll,20);
     lastScrollX = 0;
     lastScrollY = 0;
+    console.log(getIndList());
 }

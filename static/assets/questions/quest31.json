@@ -1,30 +1,30 @@
 {
     "0" : {
-            "title" : "HTMLPARSER",
+            "title" : "MATRIX MULTIPICATION",
             "content":
                     [ 
-                       "1-)Use function implemented in previous question print links in html page.",
-                       "2-)In below previous import,import HTMLParser from html.parser.",
-                       "3-)Define class ExtractLinks that inherit HTMLParser.",
-                       "4-)Override handle_starttag function of HTMLParser to get tag a from html page.",
-                       "5-)If tag is a get value of href with attrs dict and print it.It is a link in the html page.",
-                       "6-)Get html content from url your defined function.",
-                       "7-)Instantiate your class and call feed with html content to print links of html page."
+                       "1-)Define x, y and result as 2d list.All values of result is 0.",
+                       "2-)Iterate on rows of x with i.",
+                       "3-)Iterate on columns of y with j.",
+                       "4-)Iterate on rows of y with k.",
+                       "5-)result[i][j] is equal sum of x[i][k] multiply y[k][j] with together.",
+                       "6-)Print result.",
+                       "7-)First matrix i-th row and second matrix i-th column give result[i][i]."
                      ]
 
     },
 
     "1" : {
-            "title" : "HTMLPARSER",
+            "title" : "MATRIX ÇARPIMI",
             "content": 
                       [
-                       "1-)Önceki soruda tanımladığın fonksiyon kullanarak html sayfasındaki linkleri yazdır.",
-                       "2-)Önceki sorudaki import satırının altında html.parser'dan HTMLParser'i al.",
-                       "3-)HTMLParser sınıfını miras alan ExtractLinks sınıfını tanımla.",
-                       "4-)HTMLParser'in handle_starttag fonksiyonunu html'den a taglerini almak için yeniden tanımla.",
-                       "5-)Tag a tagi ise attrs sözlüğünden href'in değerini al. Bu html sayfasındaki linklerden biridir.",
-                       "6-)Önceden tanımladığın fonksiyon ile url'nin html içeriğini al.",
-                       "7-)Sınıfını örnekle ve feed fonksiyonunu html içeriği ile çağır.Bu sayfadaki linkleri yazdıracaktır."
+                       "1-)x, y ve result adlı 2 boyutlu listeleri tanımla.Result'un tüm değerleri sıfırdır.",
+                       "2-)for i ile x'in satırlarını al.",
+                       "3-)for j ile y'nin sütunlarını al.",
+                       "4-)for k ile y'nin satırlarını al.",
+                       "5-)result[i][j], x[i][k] ile y[k][j] lerin çarpımının birbirleriyle toplamına eşittir. .",
+                       "5-)Sonucu yazdır.",
+                       "6-)1. matriksin i. satırı ile 2. matriksin i. sütunu sonuc matriksin [i][i]'sini oluşturur."
                       ]
     }
     

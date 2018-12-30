@@ -1,0 +1,25 @@
+{
+    "0" : {
+            "title" : "LIST COMPREHENSION",
+            "content":
+                    [ 
+                       "1-)Define function getTranspose take parameter list matrix.",
+                       "2-)The function get transpose of parameter matrix. Transpose of arr[i][j] is equal att[j][i].",
+                       "3-)For get transpose of matrix and print them correctly use list comprehension.",
+                       "4-)Implement function, defined matrix and print its transpose."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "LISTE COMPREHENSION",
+            "content": 
+                      [
+                       "1-)Parametre olarak liste matriksi alan getTranspose fonksiyonunu tanımla.",
+                       "2-)Fonksiyon parametre olarak verilen matriksin transpozunu alır. transpoz arr[i][j] arr[j][i]'ye eşittir.",
+                       "3-)Matriksin transpozunu almak ve düzgünce yazdırmak için list comprehension kullan.",
+                       "4-)Fonksiyonu ve matriksi tanımla ve matriksin transpozunu yazdır.."
+                      ]
+    }
+    
+}

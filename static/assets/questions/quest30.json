@@ -1,28 +1,24 @@
 {
     "0" : {
-            "title" : "URLLIB MODULE",
+            "title" : "ZIP FUNCTION-1",
             "content":
                     [ 
-                       "1-)Import urllib.request as u_req.",
-                       "2-)Implement function that get url and return html content of the url.",
-                       "3-)Try connect with urlopen to url and if sucees read html content.After that close connection.",
-                       "4-)If not succes print error and add empty  return to exit function.",
-                       "5-)Lastly, return html content convert from bytecode to utf-8.",
-                       "6-)Call function."
+                       "1-)Define two list a and b includes numbers respectively.",
+                       "2-)zip and assign them to zipped variable.print zipped variable.",
+                       "3-)unzip with zip(*) pattern zip object assign to ua, ub.",
+                       "4-)print ua, ub respectively."
                      ]
 
     },
 
     "1" : {
-            "title" : "URLLIB MODÜLÜ",
+            "title" : "ZİP FONKSİYONU-1",
             "content": 
                       [
-                       "1-)urllib.request modülünü u_req olarak adlandırarak al.",
-                       "2-)Url'yi parametre olarak alan ve html içeriğini döndüren fonksiyonu tanımla.",
-                       "3-)urlopen ile bağlantı sağlamayı dene.Bağlantı sağlanırsa html içeriği oku, bağlantıyı kapat.",
-                       "4-)Bağlantı başarısız olursa hata mesajı yazdır ve fonksiyondan çıkmak için boş return ekle.",
-                       "5-)Son olarak html içeriğini bytecode'dan utf-8'e çevirerek döndür.",
-                       "6-)Fonksiyonu çağır."
+                       "1-)Sırasıyla sayı içeren a ve b listelerini tanımla.",
+                       "2-)Bu listeleri ziple ve zipped değişkenine at.zipped değişkenini yazdır.",
+                       "3-)zip(*) yapısını kullanarak zip nesnesini unzip et ve ua, ub'ye ata.",
+                       "4-)Sırasıyla ua ve ub'yi yazdır."
                       ]
     }
     

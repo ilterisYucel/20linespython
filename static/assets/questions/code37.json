@@ -1,0 +1,9 @@
+[
+    "def getTranspose(matrix):",
+    "transpose = [[row[i] for row in matrix] for i in range(len(matrix[0]))]",
+    "[print(\" \".join(str(row[i]) for i in range(len(row)))) for row in transpose]",
+    "matrix = [[4, 7], [11,4], [5,9], [9,3]]",
+    "getTranspose(matrix)",
+    "0,1,2,3,4",
+    "0,1,1,0,0"
+]

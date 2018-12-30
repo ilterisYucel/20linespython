@@ -5,19 +5,17 @@
     "for line in read_file.readlines():",
     "line = line.strip(\"\\n\")",
     "for word in line.split(\" \"):",
-    "if(word not in word_count_dict.keys()):",
-    "word_count_dict[word] = 1",
+    "if(word.lower() not in word_count_dict.keys()):",
+    "word_count_dict[word.lower()] = 1",
     "else:",
-    "word_count_dict[word] += 1",
+    "word_count_dict[word.lower()] += 1",
     "read_file.close()",
     "return word_count_dict",
-    "def print_word_count(in_file, out_file):",
-    "write_file = open(out_file, 'w')",
+    "def print_word_count(in_file):",
     "for k,v in get_word_count(in_file).items():",
-    "print(\"{} ---> {}\".format(k, v), file = write_file)",
-    "write_file.close()",
-    "print_word_count(\"in.txt\", \"out.txt\")",
-    "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17",
-    "0,1,1,1,2,2,3,4,3,4,1,1,0,1,1,2,1,0"
+    "print(\"{} ---> {}\".format(k, v))",
+    "print_word_count(\"./data/in.txt\")",
+    "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+    "0,1,1,1,2,2,3,4,3,4,1,1,0,1,2,0"
 
 ]

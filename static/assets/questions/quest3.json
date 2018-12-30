@@ -2,9 +2,9 @@
     "0" : {
             "title" : "IF STATEMENT-0",
             "content" : [
-                    "1-)Define number as 28.",
-                    "2-)Get guess from user.",
-                    "3-)Parse it integer from string.",
+                    "1-)Define variable number and assign 28.",
+                    "2-)Take guess from user.",
+                    "3-)Parse it integer.",
                     "4-)Compare user guess and number.",
                     "5-)Say to user guess is bigger,less or equal."
                 ]
@@ -13,11 +13,11 @@
      "1" : {
             "title" : "IF YAPISI-0",
             "content" : [
-                    "1-)Değişken tanımla, 28 ata.",
+                    "1-)Number adlı değişken tanımla, 28 ata.",
                     "2-)Kullanıcıdan tahminini al.",
-                    "3-)Kullanıcı tahminini sayıya çevir(int).",
-                    "4-)Tahmin ile değişkenini karşılatır.",
-                    "5-)Kullanıcıyı tahmini hakkında bilgilendir\n\t\tBüyük,küçük veya eşit."
+                    "3-)Kullanıcı tahminini sayıya(int) çevir.",
+                    "4-)Tahmin ile number değişkenini karşılaştır.",
+                    "5-)Kullanıcıyı tahmini hakkında bilgilendir.(büyük,küçük veya eşit)"
                 ]
             }           
             

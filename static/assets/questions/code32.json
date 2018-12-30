@@ -1,0 +1,8 @@
+[
+    "x = [[6, 2, 8], [9, 3, 1], [8, 12, 11]]",
+    "y = [[5, 9, 4, 2], [6, 2, 2, 1], [9, 2, 7, 11]]",
+    "result = [[sum(a*b for a,b in zip(rowX,colY)) for colY in zip(*y)] for rowX in x]",
+    "print(result)",
+    "0,1,2,3",
+    "0,0,0,0"
+]

@@ -7,7 +7,8 @@
                        "2-)Get lines of file with line variable.",
                        "3-)Strip newline char from line and split it words.",
                        "4-)Add these words to set and print set.",
-                       "5-)This set include every unique word in stort.txt."
+                       "5-)This set include every unique word in stort.txt.",
+                       "6-)lower function convert lowercase to string. "
                      ]
 
     },
@@ -20,7 +21,8 @@
                        "2-)Dosyadaki satırları line değişkeni ile al.",
                        "3-)Satırlardan yeni satır karakterini sil ve kelimelere ayır.",
                        "4-)Kelimeleri words setine ad ve seti yazdır.",
-                       "5-)Bu set dosyadaki tüm farklı kelimeleri içerir."
+                       "5-)Bu set dosyadaki tüm farklı kelimeleri içerir.",
+                       "6-)lower fonksiyonu kelimelerin harflerini küçük harfe çevirir."
                       ]
     }
 

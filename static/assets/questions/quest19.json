@@ -18,9 +18,9 @@
                       [
                        "1-)get_word_count fonksiyonunu tanımla. Fonksiyon verilen dosyayı okur ve kelimelerin sayılarını içeren sözlük döndürür.",
                        "2-)2.döngüde kelime sözlükte yoksa sözlüğe at ve sayısına 1 ata.Varsa sayısını 1 arttır.",
-                       "3-)print_word_count fonksiyonunu tanımla.Bu fonksiyon 2 dosya alır.İlkini okur, ikincisine yazar.",
-                       "4-)Birinci dosyanın word_count_dict'ini al, 2.sine 'word ---> count' düzeninde yazdır.",
-                       "5-)print_word_count fonksiyonunu in.txt, out.txt ile çağır"
+                       "3-)print_word_count fonksiyonunu tanımla.Bu fonksiyon 1 dosya alır ve okur.",
+                       "4-)Dosyanın word_count_dict'ini al. Ekrana yazdır.",
+                       "5-)print_word_count fonksiyonunu in.txt ile çağır."
                       ]
     }
 

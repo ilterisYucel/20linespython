@@ -1,0 +1,25 @@
+{
+    "0" : {
+            "title" : "RECURSION-3",
+            "content":
+                    [ 
+                       "1-)Define function isPrime take parameters integer x and d. d predefined as 2.",
+                       "2-)It is recursive function that query x is prime or not.",
+                       "3-)Algorithm based on max divisor of number is less or equal its square root.",
+                       "4-)Implement function and print 15,17,49,37 is prime or not respectively."
+                     ]
+
+    },
+
+    "1" : {
+            "title" : "ÖZYİNELEME-3",
+            "content": 
+                      [
+                       "1-)Parametre olarak integer x ve integer d'yi  alan isPrime fonksiyonunu tanımla. d ön tanımlı olarak 2'dir.",
+                       "2-)Özyinelemeli bu fonksyion x'in asal sayı olup olmadığını sorgular.",
+                       "3-)Bu algoritma bir sayının maksimum böleninin bu sayının karekökünden küçük veya eşit olmasına dayanır.",
+                       "4-)Fonksiyonu tanımla ve 15,17,49,37 sayılarının asal olup olmadığını bul."
+                      ]
+    }
+    
+}

@@ -1,0 +1,10 @@
+[
+    "def gcd(a, b):",
+    "if a == 0:",
+    "return b",
+    "return gcd(b % a, a)",
+    "print(gcd(1296, 28))",
+    "print(gcd(1305, 15))",
+    "0,1,2,3,4,5",
+    "0,1,2,1,0,0"
+]

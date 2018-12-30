@@ -1,4 +1,5 @@
-[
+{
+    "codes" : [
     "boolean = True",
     "while(boolean):",
     "operation = input(\"Celsius to Fahrenheit - 1, Fahrenheit to Celsius -2, quit -q >\")",
@@ -11,7 +12,11 @@
     "elif(operation == 'q'):",
     "boolean = False",
     "else:",
-    "print(\"Invalid operation.\")",
-    "0,1,2,3,4,5,6,7,8,9,10,11,12",
-    "0,0,1,1,2,2,1,2,2,1,2,1,2"
-]
+    "print(\"Invalid operation.\")"
+    ],
+    "yLocs" : [0,1,2,3,4,5,6,7,8,9,10,11,12],
+    "xLocs" : [0,0,1,1,2,2,1,2,2,1,2,1,2],
+    "trueComb" : [[0,1,2,3,4,5,6,7,8,9,10,11,12],
+                  [0,1,2,3,4,5,8,9,10,6,7,11,12]
+                 ]
+}

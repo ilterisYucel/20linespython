@@ -6,7 +6,7 @@
                     "2-)Convert input age to int.",
                     "3-)If age <= 18'den or >=65, subway free.",
                     "4-)If age <= 25 and user is student,subway free .",
-                    "5-)If not, user can not use free"
+                    "5-)If not, user can not use free."
             ]
          },
          
@@ -15,9 +15,9 @@
             "content" : [
                     "1-)Sırasıyla yaş ve öğrenci statüsü girdisi al.",
                     "2-)Yaş girdisini sayıya çevir(int).",
-                    "3-)Yaş <= 18 veya <= 65 ise, metro ücretsiz.",
-                    "4-)Yaş <= 25 ve kullanıcı öğrenci ise, metro ücretsiz.",
-                    "5-)Değilse, metro ücretli."
+                    "3-)Yaş <= 18 veya >= 65 ise, metro ücretsiz.",
+                    "4-)Yaş <= 25 ve kullanıcı öğrenci ise, metro ücretsizdir.",
+                    "5-)Değilse, metro ücretlidir."
             ]
          }
          

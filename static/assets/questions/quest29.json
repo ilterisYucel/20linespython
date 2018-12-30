@@ -1,28 +1,26 @@
 {
     "0" : {
-            "title" : "OS MODULE",
+            "title" : "ZIP FUNCTION",
             "content":
                     [ 
-                       "1-)Import os module and create function that get parameter path.",
-                       "2-)Try get file names from path with os.listdir.If path exist, it will be succesfull.",
-                       "3-)Split filename os.path.splitext.If it has .py extension print it is python script.",
-                       "4-)If it has not .py extension, print it is not python script.",
-                       "5-)If path no exist, catch FileNotFoundError and print error mesage.",
-                       "6-)Call function."
+                       "1-)Define two list a and b includes numbers respectively.",
+                       "2-)zip and assign them to zipped variable.",
+                       "3-)Convert zipped to list and print it.",
+                       "4-)İterate on zipped.It includes tuple includes number from a and b.",
+                       "5-)Add these numbers to x and y and print sum of them."
                      ]
 
     },
 
     "1" : {
-            "title" : "OS MODÜLÜ",
+            "title" : "ZİP FONKSİYONU",
             "content": 
                       [
-                       "1-)os modülünü al ve dosya yolunu parametre olarak alan fonksiyon tanımla.",
-                       "2-)os.listdir ile dosya yolundan dosya isimlerini almayı dene.Dosya yolu doğru ise alabilecektir.",
-                       "3-)os.path.splitext ile dosya adını ayır. uzantısı .py ise python betiği olduğunu yazdır.",
-                       "4-)Uzantısı .py değilse python betiği olmadığını yazdır.",
-                       "5-)Dosya yolu hatalıysa FileNotFoundError'u yakala ve hata mesajı yazdır.",
-                       "6-)Fonksiyonu çağır."
+                       "1-)Sırasıyla sayı içeren a ve b listelerini tanımla.",
+                       "2-)Bu listeleri ziple ve zipped değişkenine at.",
+                       "3-)zipped değişkenini listeye çevir ve yazdır.",
+                       "4-)zipped değişkenine for ile gir.Zipped a ve b'deki sayıları içeren tuple'lardan oluşur.",
+                       "5-)Bu sayıları x ve y'ye at.Toplamlarını yazdır."
                       ]
     }
     

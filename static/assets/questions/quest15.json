@@ -3,11 +3,11 @@
             "title" : "FILE OPERATIONS-1",
             "content":
                     [ 
-                       "1-)Open 'records.txt' write mode.",
-                       "2-)Assign true to booleab to loop control.",
-                       "3-)Insıde loop get records name, surname, e_mail respectively.",
-                       "4-)Write these to file.",
-                       "5-)Prompt user continue or quit.",
+                       "1-)Open 'numbers.txt' write mode.",
+                       "2-)Get all lines as line and strip newline char.",
+                       "3-)Write striped line.",
+                       "4-)Split line with '-' char and convert them int with list comprehension.",
+                       "5-)Print n1 over n2 modulo n3.",
                        "6-)Close file."
                      ]
 
@@ -17,11 +17,11 @@
             "title" : "DOSYA İŞLEMLERİ-1",
             "content": 
                       [
-                       "1-)Yazma modunda 'records.txt' aç.",
-                       "2-)Döngü kontrolü için boolean'a 0 ata.",
-                       "3-)Döngü içinde sırasıyla ad, soyad, e_mail kaydı al.",
-                       "4-)Kayıtları dosyaya yaz.",
-                       "5-)Kullanıcıya çıkma veya devam etme seçeneği sun.",
+                       "1-)Okuma modunda 'numbers.txt'yi aç.",
+                       "2-)Dosya satırlarını al ve sırasıyla line'a ata.",
+                       "3-)Line'ın yeni satır karakterlerini sil ve yazdır.",
+                       "4-)Line'ı '-' ile parçala ve herbir elemanı list comprehension ile sayıya çevir.",
+                       "5-)modül n3'te n1 üzeri n2'yi yazdır.",
                        "6-)Dosyayı kapat."
                       ]
     }

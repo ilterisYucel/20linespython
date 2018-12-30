@@ -3,7 +3,7 @@
             "title" : "Output-0",
             "content" : [
                     "1-)Make pyramid with asteriks.",
-                    "2-)Place print function correctly.",
+                    "2-)Place print functions correctly.",
                     "3-)Pyramid height is 5."
                     ]
     },
@@ -13,7 +13,7 @@
             "content" : [
                     "1-)'*' karakteri ile piramid oluştur.",
                     "2-)Print fonksiyonlarını doğru yerleştir.",
-                    "3-)Piramit yüksekliği 5'tir.."
+                    "3-)Piramit yüksekliği 5'tir."
                     ]
     }
 }

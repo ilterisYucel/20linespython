@@ -1,16 +1,12 @@
 [
-    "import os",
-    "def print_python_scripts(path):",
-    "try:",
-    "for f in os.listdir(path):",
-    "name, ext = os.path.splitext(f)",
-    "if(ext == \".py\"):",
-    "print(\"{} is python script.\".format(f))",
-    "else:",
-    "print(\"{} is not python script.\".format(f))",
-    "except FileNotFoundError:",
-    "print(\"{} is not exist.\".format(path))",
-    "print_python_scripts(\"..\"+os.sep+\"codes\")",
-    "0,1,2,3,4,5,6,7,8,9,10,11",
-    "0,0,1,2,3,3,4,3,4,1,2,0"
+    "a = [2, 3, 4, 5, 6]",
+    "b = [11, 12, 13, 14]",
+    "zipped = zip(a, b)",
+    "zipped = list(zipped)",
+    "print(zipped)",
+    "for i in zipped:",
+    "x, y = i",
+    "print(x+y)",
+    "0,1,2,3,4,5,6,7",
+    "0,0,0,0,0,0,1,1"
 ]
