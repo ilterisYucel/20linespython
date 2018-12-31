@@ -4,7 +4,7 @@
             "content":
                     [ 
                        "1-)Import string and random module, implement random password generator take parameter size(predefined with 8).",
-                       "2-)For strong password, it don't choices same type char(big letter, small letter, digits, punctation) sequentially.",
+                       "2-)For strong password, it don't choices same type chars(big letter, small letter, digits, punctation) sequentially.",
                        "3-)Begin of function define char_map,password,before, count variables.",
                        "4-)In else clause add selected char to password, add key to before and increment count.",
                        "5-)Invoke function in print."
