@@ -256,6 +256,7 @@ function onDragStart(event) {
     this.alpha = 0.5;
     var level = this.id;
     setTimeout(function(){
+        
         window.location.assign("./quest.html?quest=" + level);
     },500);
 }

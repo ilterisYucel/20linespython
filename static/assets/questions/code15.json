@@ -1,13 +1,18 @@
-[
-    "infile = open(\"./data/numbers.txt\", \"r\")",
-    "for line in infile.readlines():",
-    "line = line.strip(\"\\n\")",
-    "print(line)",
-    "line = line.split(\"-\")",
-    "line = [int(number) for number in line]",
-    "print(\"{} over {} modulo {} is {}\".format(line[0], line[1], line[2], pow(line[0], line[1], line[2])))",
-    "infile.close()",
-    "0,1,2,3,4,5,6,7",
-    "0,0,1,1,1,1,1,0"
+{
+    "codes" : [
+        "infile = open(\"./data/numbers.txt\", \"r\")",
+        "for line in infile.readlines():",
+        "line = line.strip(\"\\n\")",
+        "print(line)",
+        "line = line.split(\"-\")",
+        "line = [int(number) for number in line]",
+        "print(\"{} over {} modulo {} is {}\".format(line[0], line[1], line[2], pow(line[0], line[1], line[2])))",
+        "infile.close()"
 
-]
+    ],
+    "yLocs" : [0,1,2,3,4,5,6,7],
+    "xLocs" : [0,0,1,1,1,1,1,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6,7]  
+                 ]
+}

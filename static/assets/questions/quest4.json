@@ -4,7 +4,7 @@
             "content" : [
                     "1-)Import randint from random.",
                     "2-)Create random integer with function randint.",
-                    "3-)Get abstract value of  number - guess and add it to variable difference.",
+                    "3-)Get absolute value of  number - guess and add it to variable difference.",
                     "4-)Compare user guess and number.",
                     "5-)Say to user guess is bigger,less or equal.",
                     "6-)Add tips about guess is close(difference less than equal 5) or not number."

@@ -1,12 +1,18 @@
-[
-    "file = open(\"./data/story.txt\", 'r')",
-    "words = set()",
-    "for line in file.readlines():",
-    "line = line.strip(\"\\n\")",
-    "for word in line.split(\" \"):",
-    "words.add(word.lower())",
-    "print(words)",
-    "0,1,2,3,4,5,6",
-    "0,0,0,1,1,2,0"
+{
+    "codes" : [
+        "file = open(\"./data/story.txt\", 'r')",
+        "words = set()",
+        "for line in file.readlines():",
+        "line = line.strip(\"\\n\")",
+        "for word in line.split(\" \"):",
+        "words.add(word.lower())",
+        "print(words)"
 
-]
+    ],
+    "yLocs" : [0,1,2,3,4,5,6],
+    "xLocs" : [0,0,0,1,1,2,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6],
+                  [1,0,2,3,4,5,6]
+                 ]
+}

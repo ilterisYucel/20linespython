@@ -3,10 +3,10 @@
             "title" : "RANDOM PASSWORD GENERATOR",
             "content":
                     [ 
-                       "1-)Import string and random module, implement random password generator take parameter size.",
-                       "2-)For strong password, it don't choice same type char(big letter, small letter, digits, punctation) sequentially.",
-                       "3-)Begin of function define char_map,password,before,count variable respectively.",
-                       "4-)In else clause add selected char to password, increment count, add key to before respectively.",
+                       "1-)Import string and random module, implement random password generator take parameter size(predefined with 8).",
+                       "2-)For strong password, it don't choices same type char(big letter, small letter, digits, punctation) sequentially.",
+                       "3-)Begin of function define char_map,password,before, count variables.",
+                       "4-)In else clause add selected char to password, add key to before and increment count.",
                        "5-)Invoke function in print."
                      ]
 
@@ -16,10 +16,10 @@
             "title" : "RASTGELE PAROLA ÜRETİCİ",
             "content": 
                       [
-                       "1-)string ve random modüllerini çağırarak size parametresi alan random parola üretici fonksiyonu oluştur.",
-                       "2-)Bu fonksiyon ürettiği şifrede aynı tip karakterleri(büyük harf, küçük harf, rakam, noktalama işareti) art arda kullanamaz.",
-                       "3-)Fonksiyonun başında char_map,password,before,count değişkenlerini sırasıyla tanımla.",
-                       "4-)Else yapısının içinde sırasıyla seçilen karakteri password'e at, count'u arttır, key değişkenini before'a ata.",
+                       "1-)string ve random modüllerini kullanarak size parametresi(öntanımlı olarak 8) alan random parola üretici fonksiyonu oluştur.",
+                       "2-)Bu fonksiyon ürettiği şifrede aynı tip karakterleri(büyük harf, küçük harf, rakam, noktalama işareti) art arda kullanmaz.",
+                       "3-)Fonksiyonun başında char_map,password,before ve count değişkenlerini tanımla.",
+                       "4-)Else yapısının içinde seçilen karakteri password'e at, key değişkenini before'a ata ve count'u arttır.",
                        "5-)Oluşturduğun fonksiyonu print'in içinde çağır."
                       ]
     }

@@ -1,12 +1,21 @@
-[
-    "listA = [1, 2, 3, 4]",
-    "listB = [3, 4, 5, 6, 7]",
-    "setA = set(listA)",
-    "setB = set(listB)",
-    "print(setA | setB)",
-    "print(setA & setB)",
-    "print(setA - setB)",
-    "print(setB - setA)",
-    "0,1,2,3,4,5,6,7",
-    "0,0,0,0,0,0,0,0"
-]
+{
+    "codes" : [
+        "listA = [1, 2, 3, 4]",
+        "listB = [3, 4, 5, 6, 7]",
+        "setA = set(listA)",
+        "setB = set(listB)",
+        "print(setA | setB)",
+        "print(setA & setB)",
+        "print(setA - setB)",
+        "print(setB - setA)"
+    ],
+    
+    "yLocs" : [0,1,2,3,4,5,6,7],
+    "xLocs" : [0,0,0,0,0,0,0,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6,7],
+                  [1,0,2,3,4,5,6,7],
+                  [0,1,3,2,4,5,6,7],
+                  [1,0,3,2,4,5,6,7]  
+                 ]
+}

@@ -1,9 +1,16 @@
-[
-    "word = input(\"Enter a word >\")",
-    "counter = 0",
-    "while(counter < len(word)):",
-    "print(word[counter:])",
-    "counter += 1",
-    "0,1,2,3,4",
-    "0,0,0,1,1"
-]
+{
+    "codes" : [
+        "word = input(\"Enter a word >\")",
+        "counter = 0",
+        "while(counter < len(word)):",
+        "print(word[counter:])",
+        "counter += 1"
+    ],
+    
+    "yLocs" : [0,1,2,3,4],
+    "xLocs" : [0,0,0,1,1],
+    "trueComb" : [
+                  [0,1,2,3,4],
+                  [1,0,2,3,4]     
+                 ]
+}

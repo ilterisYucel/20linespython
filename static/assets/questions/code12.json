@@ -1,15 +1,24 @@
-[
-    "eng_tr_dict = {}",
-    "boolean = True",
-    "while(boolean):",
-    "eng = input(\"Enter english word >\")",
-    "tr = input(\"Enter mean in turkish >\")",
-    "eng_tr_dict[eng] = tr",
-    "status = input(\"For quit press q, for continue press enter >\")",
-    "if(status == 'q'):",
-    "boolean = False",
-    "for k,v in eng_tr_dict.items():",
-    "print(\"{} ----> {}\".format(k,v))",
-    "0,1,2,3,4,5,6,7,8,9,10",
-    "0,0,0,1,1,1,1,1,2,0,1"
-]
+{
+    "codes" : [
+        "eng_tr_dict = {}",
+        "boolean = True",
+        "while(boolean):",
+        "eng = input(\"Enter english word >\")",
+        "tr = input(\"Enter mean in turkish >\")",
+        "eng_tr_dict[eng] = tr",
+        "status = input(\"For quit press q, for continue press enter >\")",
+        "if(status == 'q'):",
+        "boolean = False",
+        "for k,v in eng_tr_dict.items():",
+        "print(\"{} ----> {}\".format(k,v))"
+    ],
+    
+    "yLocs" : [0,1,2,3,4,5,6,7,8,9,10],
+    "xLocs" : [0,0,0,1,1,1,1,1,2,0,1],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6,7,8,9,10],
+                  [1,0,2,3,4,5,6,7,8,9,10],
+                  [0,1,2,4,3,5,6,7,8,9,10],
+                  [1,0,2,4,3,5,6,7,8,9,10]
+                 ]
+}

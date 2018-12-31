@@ -3,9 +3,9 @@
             "title" : "FILE OPERATIONS-0",
             "content":
                     [ 
-                       "1-)Open 'records.txt' read mode.",
+                       "1-)Open 'players.txt' in read mode.",
                        "2-)Assign 0 to count to keep line count.",
-                       "3-)Get all lines with readlines function.",
+                       "3-)Get all lines of file with readlines function.",
                        "4-)Loop over lines print them and increase count.",
                        "5-)Print total line count and close file."
                      ]
@@ -16,10 +16,10 @@
             "title" : "DOSYA İŞLEMLERİ-0",
             "content": 
                       [
-                       "1-)Okuma modunda 'records.txt' aç.",
+                       "1-)Okuma modunda 'players.txt' dosyasını aç.",
                        "2-)Satır sayısını tutacak count'a 0 ata.",
-                       "3-)readlines fonksiyonu ile tüm satırları al.",
-                       "4-)Döngü ile satırlara ulaş ve yazdır.Count'u arttır.",
+                       "3-)readlines fonksiyonu ile dosyanın tüm satırlarını al.",
+                       "4-)For döngüsü ile satırlara ulaş ve yazdır.Count'u arttır.",
                        "5-)Satır sayısını yazdır ve dosyayı kapat."
                       ]
     }

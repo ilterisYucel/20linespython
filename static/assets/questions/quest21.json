@@ -1,24 +1,24 @@
 {
     "0" : {
-            "title" : "PRINT PRIME NUMBER",
+            "title" : "PRINT PRIME NUMBERS",
             "content":
                     [ 
-                       "1-)Implement function get number as paramater and print prime numbers from 0 to the number.",
+                       "1-)Implement function take number as paramater and print prime numbers from 0 to the number.",
                        "2-)Prime numbers are printed alongside with space.",
                        "3-)End of the function invoke empty print for newline.",
-                       "4-)Invoke your method with paramter 100."
+                       "4-)Invoke your function with paramter 100."
                      ]
 
     },
 
     "1" : {
-            "title" : "SINIFLAR-0",
+            "title" : "ASAL SAYILARI YAZDIR",
             "content": 
                       [
-                       "1-)Parametre olarak sayı alıp 0'dan bu sayıya kadar olan asal sayıları yazdıran bir fonksiyon oluştur.",
-                       "2-)Asal sayılar aralarında bir boşluk ile yan yana yazılmalıdır.",
+                       "1-)0'dan parametre olarak aldığı sayıya kadar olan asal sayıları yazdıran bir fonksiyon tanımla.",
+                       "2-)Asal sayılar aralarında birer boşluk ile yan yana yazılmalıdır.",
                        "3-)Fonksiyonun sonunda yeni satıra geçmek için boş print fonksiyonu çağır.",
-                       "4-)Fonksiyonunu 100 parametresi ile çağır."
+                       "4-)Fonksiyonu 100 parametresi ile çağır."
                       ]
     }
 

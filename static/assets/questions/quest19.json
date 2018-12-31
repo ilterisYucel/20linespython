@@ -4,10 +4,10 @@
             "content":
                     [ 
                        "1-)Create function get_word_count take file name and return dict include counts of words of file.",
-                       "2-)In second loop,If word not in dict, add it count 1 if in increase count.",
-                       "3-)Create function print_word_count take 2 file name first read second write.",
-                       "4-)Get word_count_dict first file, write them second file 'word ---> count' pattern with loop.",
-                       "5-)Invoke print_word_count function with in.txt, out.txt"
+                       "2-)Second loop in that function,if word not in dict, add it count 1 if in increase count.",
+                       "3-)Create function print_word_count take file name for read.",
+                       "4-)Get word_count_dict from file, print that dict 'word ---> count' pattern with loop.",
+                       "5-)Invoke print_word_count function with in.txt."
                      ]
 
     },
@@ -17,9 +17,9 @@
             "content": 
                       [
                        "1-)get_word_count fonksiyonunu tanımla. Fonksiyon verilen dosyayı okur ve kelimelerin sayılarını içeren sözlük döndürür.",
-                       "2-)2.döngüde kelime sözlükte yoksa sözlüğe at ve sayısına 1 ata.Varsa sayısını 1 arttır.",
+                       "2-)Fonksiyondaki 2.döngüde kelime sözlükte yoksa sözlüğe at ve sayısına 1 ata.Varsa sayısını 1 arttır.",
                        "3-)print_word_count fonksiyonunu tanımla.Bu fonksiyon 1 dosya alır ve okur.",
-                       "4-)Dosyanın word_count_dict'ini al. Ekrana yazdır.",
+                       "4-)Dosyanın word_count_dict'ini al. Ekrana 'kelime ---> sayısı' yazdır.",
                        "5-)print_word_count fonksiyonunu in.txt ile çağır."
                       ]
     }

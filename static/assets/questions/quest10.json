@@ -16,9 +16,9 @@
             "content": 
                       [
                         "1-)Fahrenheit-Celsius çevirici kodla.",
-                        "2-)Loop kontrolü için boolean değişkenine True ata.",
+                        "2-)Döngü kontrolü için boolean değişkenine True ata.",
                         "3-)Kullanıcıya işlem numarası sor.",
-                        "4-)sırasıyla işlem 1, işlem 2, çıkış ve geçersiz işlem için if kontrolü yap."
+                        "4-)Sırasıyla işlem 1, işlem 2, çıkış ve geçersiz işlem için if kontrolü yap."
                       ]
     }
 

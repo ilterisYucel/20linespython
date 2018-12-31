@@ -3,10 +3,10 @@
             "title" : "FILE OPERATIONS-1",
             "content":
                     [ 
-                       "1-)Open 'numbers.txt' write mode.",
-                       "2-)Get all lines as line and strip newline char.",
+                       "1-)Open 'numbers.txt' in read mode.",
+                       "2-)Get all lines of file and strip newline char.",
                        "3-)Write striped line.",
-                       "4-)Split line with '-' char and convert them int with list comprehension.",
+                       "4-)Split line from '-' char and convert pieces int with list comprehension.",
                        "5-)Print n1 over n2 modulo n3.",
                        "6-)Close file."
                      ]
@@ -18,9 +18,9 @@
             "content": 
                       [
                        "1-)Okuma modunda 'numbers.txt'yi aç.",
-                       "2-)Dosya satırlarını al ve sırasıyla line'a ata.",
-                       "3-)Line'ın yeni satır karakterlerini sil ve yazdır.",
-                       "4-)Line'ı '-' ile parçala ve herbir elemanı list comprehension ile sayıya çevir.",
+                       "2-)Dosya satırlarını al ve yeni satır karakterlerini sil.",
+                       "3-)Satırı yazdır.",
+                       "4-)Satırı '-' karakterinden parçala ve herbir elemanı list comprehension ile sayıya çevir.",
                        "5-)modül n3'te n1 üzeri n2'yi yazdır.",
                        "6-)Dosyayı kapat."
                       ]
