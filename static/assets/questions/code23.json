@@ -1,11 +1,17 @@
-[
-    "def fibonacci(number):",
-    "a, b = 0, 1",
-    "while a < number:",
-    "print(a, end=\" \")",
-    "a, b = b, a+b",
-    "print()",
-    "fibonacci(10000)",
-    "0,1,2,3,4,5,6",
-    "0,1,1,2,2,1,0"
-]
+{
+    "codes" : [
+        "def fibonacci(number):",
+        "a, b = 0, 1",
+        "while a < number:",
+        "print(a, end=\" \")",
+        "a, b = b, a+b",
+        "print()",
+        "fibonacci(10000)"
+    ],
+    
+    "yLocs" : [0,1,2,3,4,5,6],
+    "xLocs" : [0,1,1,2,2,1,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6]
+                 ]
+}

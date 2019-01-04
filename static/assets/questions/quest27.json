@@ -4,7 +4,7 @@
             "content":
                     [ 
                        "1-)Import calendar, datetime, regex modules.",
-                       "2-)Get weekday list integer respresentation.",
+                       "2-)Get weekday list in integer respresentation.",
                        "3-)Get user birth date day/month/year format.",
                        "4-)Control user input format with regex.",
                        "5-)If input format true get day of birth date and print.",
@@ -17,7 +17,7 @@
             "title" : "DATETIME VE REGEX",
             "content": 
                       [
-                       "1-)calendar, datetime, regex modüllerini al.",
+                       "1-)calendar, datetime, regex modüllerini kullan.",
                        "2-)Haftanın günleri listesini al.",
                        "3-)Kullanıcıdan doğum tarihini gün/ay/yıl formatında iste.",
                        "4-)Kullanıcı girdisinin formatını regex ile kontrol et.",

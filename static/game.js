@@ -327,56 +327,104 @@ function run()
     var items = [];
     var indentBegin = (orient < 'm') ? (2 * (x / 10) + 2) : 2;
     var trueComb = levelData.trueComb;
+    var yLocs = levelData.yLocs;
     var yIndArr = getIndList();
     var changeStatus = false;
+    var beforeCoords = {};
+    var newCoords = {};
+    var faultX = fillArr(codelines.length, false);
+    var faultY = fillArr(codelines.length, false);
+    var errorType;
+    var errors = [["Location Error on lines> ", "Konumu Hatalı Satırlar> "], ["Indentation Error on lines> ", "Girintilemesi Hatalı Satırlar> "]];
+
+    for(var k = 0; k < yIndArr.length; k++){
+        beforeCoords[k] = yIndArr[k];
+    }
+    //console.log(beforeCoords);
     
-    if(compareArray(yIndArr, trueComb[0])){
+    if(compareArray(yIndArr, trueComb[0], faultY)){
         val = true;
     }else{
         val = trueComb.some(function(item){
-            return compareArray(item, yIndArr);
+            return compareArray(item, yIndArr, faultY);
         });
         changeStatus = true;
     }
-    console.log(val + " " + changeStatus)
-    console.log(yIndArr);
-    if(val && changeStatus){
+    //console.log(val + " " + changeStatus)
+    //console.log(yIndArr);
+    console.log(faultY);
+    
+    if(val & changeStatus){
+        for(var i = 0; i < yIndArr.length; i++){
+            newCoords[yIndArr[i]] = levelData.xLocs[i];
+        }
+    }else if (val & !changeStatus){
+        for(var i = 0; i < yIndArr.length; i++){
+            newCoords[i] = levelData.xLocs[i];
+        }
+            
+    }else{
+        errorType = 0;
+        for(var i = 0; i < yIndArr.length; i++){
+            if(!faultY[i]){
+                errors[0][lang]+= i+1 + " ";
+            }
+        }
+    }
+    
+    
+    console.log(newCoords);
+    
+    /*if(val && changeStatus){
         for(var i = 0; i < codelines.length; i++){
-            if(!codelines[yIndArr[i]].cs && !codelines[i].cs){
+            if(!codelines[yIndArr[i]].cs && !codelines[i].cs && codelines[yIndArr[i]].xInd !== codelines[i].xInd){
+                console.log(codelines[yIndArr[i]].id, codelines[yIndArr[i]].xInd, codelines[i].id, codelines[i].xInd );
                 var temp = codelines[yIndArr[i]].xInd;
                 codelines[yIndArr[i]].xInd = codelines[i].xInd;
                 codelines[i].xInd = temp;
                 codelines[yIndArr[i]].cs = true;
                 codelines[i].cs = true;
+                console.log(codelines[yIndArr[i]].id, codelines[yIndArr[i]].xInd, codelines[i].id, codelines[i].xInd );
             }
         } 
-    }
+    }*/
     
     if(val){
+        var runStatus = true;
         for(var j = 0; j < codelines.length; j++){
-            if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) ){
-                val = false;
+            //if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) ){
+            if(codelines[j].position.x === indentBegin + (newCoords[beforeCoords[j]])* (2 * font) ){
+                faultX[j] = true;
+            }else{
+                runStatus = false;
+                errors[1][lang] += j+1 + " ";
             }
         }
+        if(!runStatus){
+            errorType = 1;
+            val = false;
+        }
     }
-    
+    console.log(faultX);
     if(val){
         itemTest[level] = true;
         localStorage.setItem("itemTest", JSON.stringify(itemTest));
         level++;
+        //alert("ok");
 		setTimeout(function() {
-			createModal(val);
+			createModal(val, "Compilation is SUCCESFULL!");
 			setTimeout(function() {
 			    window.location.assign("./quest.html?quest="+level);
 			},1000);
 		},500);
     }else{
 		setTimeout(function() {
-			items = createModal(val);
+			items = createModal(val, errors[errorType][lang]);
 			setTimeout(function() {
 			    app.stage.removeChild(items[0]);
 			    app.stage.removeChild(items[1]);
-			},1000);
+			    app.stage.removeChild(items[2]);
+			},2000);
 		},500);        
     }
 }
@@ -433,15 +481,21 @@ function quest()
 
 }
 
-function compareArray(arr, arr1){
-
-    if(arr.length !== arr1.length) return false;
+function compareArray(arr, arr1, list){
+    
+    bool = true;
+    
+    //if(arr.length !== arr1.length) return false;
     
     for(var i = 0; i < arr.length; i++){
-        if(arr[i] !== arr1[i])  return false;
+        if(arr[i] !== arr1[i]){
+            bool = false;
+        }else{
+            list[i] = true;
+        }
     }
     
-    return true;    
+    return bool;    
 }
 
 function getIndList(){
@@ -706,13 +760,22 @@ function onDragStart(event)
 function onDragEnd()
 {
     this.dragging = false;
-    var tmp_position = this.position.x - codeAreaBeginX;
-    if(tmp_position % (font * 2) !== 2)
+    var tmp_positionX = this.position.x - codeAreaBeginX;
+    var tmp_positionY = this.position.y - codeAreaBeginY;
+    var lineHeight = getMaxLineHeight() + 6;
+    if(tmp_positionX % (font * 2) !== 2)
     {
-        this.position.x = this.position.x - (tmp_position % (font * 2)) + 2; 
+        this.position.x = this.position.x - (tmp_positionX % (font * 2)) + 2; 
+    }
+    if(tmp_positionY % (lineHeight) !== 0)
+    {
+        this.position.y = this.position.y + (lineHeight - (tmp_positionY % lineHeight));
     }
     if (this.position.x < codeAreaBeginX) {
         this.position.x += font * 2;
+    }
+    if (this.position.y < codeAreaBeginY) {
+        this.position.y += lineHeight;
     }
     
     endFunc(this);
@@ -1010,31 +1073,43 @@ function getAllUrlParams(url) {
 
   return obj;
 }
-function createModal(condition)
+function createModal(condition, text)
 {
     var items = [];
     var graphicModal = new PIXI.Graphics();
     graphicModal.beginFill(0x000000, 0.5);
-    graphicModal.drawRect(0, 0, x, y);
+    graphicModal.drawRect(0, 0, document.body.scrollLeft + x, document.body.scrollTop + y);
     graphicModal.endFill();
     if(condition)
     {
         var line = new PIXI.Text("\u2714", {fontFamily : "monospace", fontSize :  8 * font + "px" ,
                                         align : "center",  fill : "#e60000", fontWeight: "bold"});
+        var line1 = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  fFont / (30 * coef) + 'px' ,
+                                        align : "center",  fill : "#eeeeec", fontWeight: "bold"} );
     }else{
         var line = new PIXI.Text("\u2716", {fontFamily : "monospace", fontSize :  8 * font  + "px" ,
-                                        align : "center",  fill : "#005ce6", fontWeight: "bold"});    
+                                        align : "center",  fill : "#005ce6", fontWeight: "bold"}); 
+        var line1 = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  fFont / (30 * coef) + 'px' ,
+                                        align : "center",  fill : "#eeeeec", fontWeight: "bold"} );                                
+                                          
     }
     line.anchor.x = 0.5;
     line.anchor. y = 0.5;
-    line.position.x = x / 2;
-    line.position.y = y / 2;
+    line.position.x = document.body.scrollLeft + x / 2;
+    line.position.y = document.body.scrollTop + y / 2;
+    
+    line1.anchor.x = 0.5;
+    line1.anchor. y = 0.5;
+    line1.position.x = document.body.scrollLeft + x / 2 ;
+    line1.position.y = document.body.scrollTop + y / 2 + 4 * font;
     
     app.stage.addChild(graphicModal);
     app.stage.addChild(line);
+    app.stage.addChild(line1);
     
     items.push(graphicModal);
     items.push(line);
+    items.push(line1);
     return items;
 
 }

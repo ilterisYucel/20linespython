@@ -5,18 +5,18 @@
                     [ 
                        "1-)Define x, y as 2d list.",
                        "2-)With comprehension multiply elements of i-th row of x and  elements of i-th column of y together respectively.",
-                       "3-)sum these multipication with together.It give result[i][i].",
+                       "3-)Sum these multipications with together.It give result[i][i].",
                        "4-)zip(*y) makes iterate over column y. * use as unpack operator in there."
                      ]
 
     },
 
     "1" : {
-            "title" : "MATRIX ÇARPIMI-1",
+            "title" : "MATiRX ÇARPIMI-1",
             "content": 
                       [
                        "1-)x, y adlı 2 boyutlu listeleri tanımla.",
-                       "2-)Comprehension ile x'in i.satırının elemanları ile y'nin i.sütununun elemanları ile  sırasıyla çarp.",
+                       "2-)Comprehension ile x'in i.satırının elemanlarını y'nin i.sütununun elemanları ile  sırasıyla çarp.",
                        "3-)Bu çarpımları birbirleri ile topla. Bu result[i][i]'i verecektir.",
                        "4-)zip(*y) y'nin sütunu üzerinde gezmemizi sağlar. * burada unpack operatörü olarak kullanılmıştır. "
                       ]

@@ -1,11 +1,19 @@
-[
-    "a = [2, 3, 4, 5, 6]",
-    "b = [11, 12, 13, 14]",
-    "zipped = zip(a, b)",
-    "print(zipped)",
-    "ua, ub = zip(*zipped)",
-    "print(list(ua))",
-    "print(list(ub))",
-    "0,1,2,3,4,5,6",
-    "0,0,0,0,0,0,0"
-]
+{
+    "codes" : [
+        "a = [2, 3, 4, 5, 6]",
+        "b = [11, 12, 13, 14]",
+        "zipped = zip(a, b)",
+        "print(zipped)",
+        "ua, ub = zip(*zipped)",
+        "print(list(ua))",
+        "print(list(ub))"
+    ],
+    "yLocs" : [0,1,2,3,4,5,6],
+    "xLocs" : [0,0,0,0,0,0,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6],
+                  [1,0,2,3,4,5,6],
+                  [0,1,2,3,4,6,5],
+                  [1,0,2,3,4,6,5]
+                 ]
+}

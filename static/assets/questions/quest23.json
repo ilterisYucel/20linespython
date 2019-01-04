@@ -12,10 +12,10 @@
     },
 
     "1" : {
-            "title" : "RASTGELE PAROLA ÜRETİCİ",
+            "title" : "FİBONACCİ SAYILARI",
             "content": 
                       [
-                       "1-)0'dan parametre olarak verilen sayıya kadar olan fibonacci sayılarını yazdıran bit fonksiyon oluştur.",
+                       "1-)0'dan parametre olarak verilen sayıya kadar olan fibonacci sayılarını yazdıran bir fonksiyon oluştur.",
                        "2-)Sayılar art arda ve aralarında boşlukla yazılmalıdır.",
                        "3-)Fonksiyonun sonunda yeni satıra geçmek için boş print fonksiyonu çağır.",
                        "4-)Fonksiyonu 10000 parametresi ile çağır."

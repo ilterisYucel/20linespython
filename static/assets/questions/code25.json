@@ -1,11 +1,17 @@
-[
-    "def get_decimal_to_hex_dict(numbers):",
-    "hex_list = list(map(hex, numbers))",
-    "dec_to_hex_dict = {numbers[i] : hex_list[i] for i in range(len(numbers))}",
-    "for k,v in dec_to_hex_dict.items():",
-    "print(\"Decimal {0:8} is Hexadecimal {1:8}\".format(k,v))",
-    "numbers = [2, 3, 16, 17, 136, 137, 1001, 1002]",
-    "get_decimal_to_hex_dict(numbers)",
-    "0,1,2,3,4,5,6",
-    "0,1,1,1,2,0,0"
-]
+{
+    "codes" : [
+            "def get_decimal_to_hex_dict(numbers):",
+            "hex_list = list(map(hex, numbers))",
+            "dec_to_hex_dict = {numbers[i] : hex_list[i] for i in range(len(numbers))}",
+            "for k,v in dec_to_hex_dict.items():",
+            "print(\"Decimal {0:8} is Hexadecimal {1:8}\".format(k,v))",
+            "numbers = [2, 3, 16, 17, 136, 137, 1001, 1002]",
+            "get_decimal_to_hex_dict(numbers)"
+    ],
+    
+    "yLocs" : [0,1,2,3,4,5,6],
+    "xLocs" : [0,1,1,1,2,0,0],
+    "trueComb" : [
+                    [0,1,2,3,4,5,6]
+                  ]
+}

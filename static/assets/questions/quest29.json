@@ -3,10 +3,10 @@
             "title" : "ZIP FUNCTION",
             "content":
                     [ 
-                       "1-)Define two list a and b includes numbers respectively.",
-                       "2-)zip and assign them to zipped variable.",
+                       "1-)Define two lists a and b include decimals.",
+                       "2-)zip and assign them to variable zipped.",
                        "3-)Convert zipped to list and print it.",
-                       "4-)İterate on zipped.It includes tuple includes number from a and b.",
+                       "4-)Iterate over zipped.It includes tuples includes number from a and b.",
                        "5-)Add these numbers to x and y and print sum of them."
                      ]
 
@@ -16,10 +16,10 @@
             "title" : "ZİP FONKSİYONU",
             "content": 
                       [
-                       "1-)Sırasıyla sayı içeren a ve b listelerini tanımla.",
-                       "2-)Bu listeleri ziple ve zipped değişkenine at.",
+                       "1-)Sayılar içeren a ve b listelerini tanımla.",
+                       "2-)Bu listeleri zip fonksiyonu ile ziple ve zipped değişkenine at.",
                        "3-)zipped değişkenini listeye çevir ve yazdır.",
-                       "4-)zipped değişkenine for ile gir.Zipped a ve b'deki sayıları içeren tuple'lardan oluşur.",
+                       "4-)zipped değişkenine for ile gir.zipped a ve b'deki sayıları içeren tuplelardan oluşur.",
                        "5-)Bu sayıları x ve y'ye at.Toplamlarını yazdır."
                       ]
     }

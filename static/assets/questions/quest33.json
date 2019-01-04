@@ -4,8 +4,8 @@
             "content":
                     [ 
                        "1-)Define function gcd take parameters integer a and b.",
-                       "2-)It is recursive function that find great common divisor a and b.",
-                       "3-)Implement function and print gcd(1296,28) and gcd(1305,15) respectively."
+                       "2-)It is recursive function that find great common divisor of a and b.",
+                       "3-)Implement function and print gcd(1296,28) and gcd(1305,15)."
                      ]
 
     },
@@ -16,7 +16,7 @@
                       [
                        "1-)Parametre olarak a ve b sayılarını alan gcd fonksiyonunu tanımla.",
                        "2-)Özyinelemeli bu fonksyion verilen 2 sayının en büyük ortak bölenini bulur.",
-                       "3-)Fonksiyonu tanımla ve sırasıyla gcd(1296,28) ile gcd(1305,15)'i yazdır."
+                       "3-)Fonksiyonu tanımla ve gcd(1296,28) ile gcd(1305,15)'i yazdır."
                       ]
     }
     

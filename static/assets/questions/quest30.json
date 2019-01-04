@@ -3,10 +3,10 @@
             "title" : "ZIP FUNCTION-1",
             "content":
                     [ 
-                       "1-)Define two list a and b includes numbers respectively.",
-                       "2-)zip and assign them to zipped variable.print zipped variable.",
+                       "1-)Define two lists a and b include decimals.",
+                       "2-)zip and assign them to variable zipped.print zipped.",
                        "3-)unzip with zip(*) pattern zip object assign to ua, ub.",
-                       "4-)print ua, ub respectively."
+                       "4-)print ua, ub."
                      ]
 
     },
@@ -15,10 +15,10 @@
             "title" : "ZİP FONKSİYONU-1",
             "content": 
                       [
-                       "1-)Sırasıyla sayı içeren a ve b listelerini tanımla.",
+                       "1-)Sayılar içeren a ve b listelerini tanımla.",
                        "2-)Bu listeleri ziple ve zipped değişkenine at.zipped değişkenini yazdır.",
                        "3-)zip(*) yapısını kullanarak zip nesnesini unzip et ve ua, ub'ye ata.",
-                       "4-)Sırasıyla ua ve ub'yi yazdır."
+                       "4-)ua ve ub'yi yazdır."
                       ]
     }
     

@@ -1,11 +1,16 @@
-[
-    "def print_imposible_temperature(c_list):",
-    "k_list = list(map(lambda x : x + 273.15, c_list))",
-    "k_result = filter(lambda x : x < 0, k_list)",
-    "c_result = list(map(lambda x : x - 273.15, k_result))",
-    "list(map(lambda x : print(x),[\"{:8.2f} is imposible theoretically.\".format(i) for i in c_result]))",
-    "celsius_list = [-283.78, -274.19, -273.16, -273.15, -270.10, -120.16, 0, 98, 1098]",
-    "print_imposible_temperature(celsius_list)",
-    "0,1,2,3,4,5,6",
-    "0,1,1,1,1,0,0"
-]
+{
+    "codes" : [
+        "def print_imposible_temperature(c_list):",
+        "k_list = list(map(lambda x : x + 273.15, c_list))",
+        "k_result = filter(lambda x : x < 0, k_list)",
+        "c_result = list(map(lambda x : x - 273.15, k_result))",
+        "list(map(lambda x : print(x),[\"{:8.2f} is imposible theoretically.\".format(i) for i in c_result]))",
+        "celsius_list = [-283.78, -274.19, -273.16, -273.15, -270.10, -120.16, 0, 98, 1098]",
+        "print_imposible_temperature(celsius_list)"
+    ],
+    "yLocs" : [0,1,2,3,4,5,6],
+    "xLocs" : [0,1,1,1,1,0,0],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6]
+                 ]
+}

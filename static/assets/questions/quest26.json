@@ -3,8 +3,8 @@
             "title" : "MAP FILTER LAMBDA",
             "content":
                     [ 
-                       "1-)Implement function take list of celsius temperature and print imposible temperature theoretically.",
-                       "2-)Convert Celsius values to Kelvin map and lambda.Create list with them.",
+                       "1-)Implement function take list of celsius temperatures and print theoretically imposible temperatures.",
+                       "2-)Convert celsius values to kelvin with map and lambda.Create list with kelvin values.",
                        "3-)Filter imposible value with lambda and filter.0 Kelvin theoretically minimum temperature.",
                        "4-)Convert imposible kelvin value to celsius and print them with format.Use map and lambda.",
                        "5-)Define celsius list and invoke function with them."
@@ -17,9 +17,9 @@
             "content": 
                       [
                        "1-)Celsius sıcaklık listesini alıp teorik olarak imkansız sıcaklıkları yazdıran bir fonksiyon tanımla.",
-                       "2-)Celsius değerleri Kelvin'e çevirmek için map ve lambda kullan.Kelvin değerlerinden liste oluştur.",
-                       "3-)0 Kelvinden küçük sıcaklık olamaz.Bunları filter ve lambda kullanarak filtrele.",
-                       "4-)İmkansız Kelvin değerlerini Celsius'a çevir ve bir format ile yazdır.Map ve lambda kullan.",
+                       "2-)Celsius değerleri kelvin'e çevirmek için map ve lambda kullan.Kelvin değerlerinden liste oluştur.",
+                       "3-)0 kelvinden küçük sıcaklık olamaz.Bunları filter ve lambda kullanarak filtrele.",
+                       "4-)İmkansız kelvin değerlerini celsius'a çevir ve formatla yazdır.map ve lambda kullan.",
                        "5-)Celsius listesini tanımla ve fonksiyonu bu liste ile çağır."
                       ]
     }

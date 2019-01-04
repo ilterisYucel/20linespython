@@ -7,7 +7,7 @@
                        "2-)Iterate on rows of x with i.",
                        "3-)Iterate on columns of y with j.",
                        "4-)Iterate on rows of y with k.",
-                       "5-)result[i][j] is equal sum of x[i][k] multiply y[k][j] with together.",
+                       "5-)Multiply x[i][k] and y [k][j] and sum with result[i][j] .",
                        "6-)Print result.",
                        "7-)First matrix i-th row and second matrix i-th column give result[i][i]."
                      ]
@@ -15,16 +15,16 @@
     },
 
     "1" : {
-            "title" : "MATRIX ÇARPIMI",
+            "title" : "MATRİX ÇARPIMI",
             "content": 
                       [
                        "1-)x, y ve result adlı 2 boyutlu listeleri tanımla.Result'un tüm değerleri sıfırdır.",
-                       "2-)for i ile x'in satırlarını al.",
-                       "3-)for j ile y'nin sütunlarını al.",
-                       "4-)for k ile y'nin satırlarını al.",
+                       "2-)i ile x'in satırlarını al.",
+                       "3-)j ile y'nin sütunlarını al.",
+                       "4-)k ile y'nin satırlarını al.",
                        "5-)result[i][j], x[i][k] ile y[k][j] lerin çarpımının birbirleriyle toplamına eşittir. .",
                        "5-)Sonucu yazdır.",
-                       "6-)1. matriksin i. satırı ile 2. matriksin i. sütunu sonuc matriksin [i][i]'sini oluşturur."
+                       "6-)1. matriksin i. satırı ile 2. matriksin i. sütunu sonuç matriksinin [i][i]'sini oluşturur."
                       ]
     }
     

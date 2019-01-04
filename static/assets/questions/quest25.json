@@ -3,10 +3,10 @@
             "title" : "DECIMAL TO HEX DICT",
             "content":
                     [ 
-                       "1-)Implement function take list of decimal and convert decimals to hexadecimals and create dict as decimal:hex.",
+                       "1-)Implement function take list of decimals,convert these decimals to hexadecimals and create dict as decimal:hex.",
                        "2-)To convert decimal to hexadecimal use builtin hex function with map.",
                        "3-)To create decimal:hex dict use dict comprehension and print dict with format.",
-                       "4-)Define numbers list and invoke function with the list."
+                       "4-)Define list numbers and invoke function with the list."
                      ]
 
     },

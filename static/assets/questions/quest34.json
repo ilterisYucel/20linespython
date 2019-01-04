@@ -4,8 +4,8 @@
             "content":
                     [ 
                        "1-)Define function recIsPalindrome take parameter string word.",
-                       "2-)It is recursive function that define word is palindrome(same backwards and forwards).",
-                       "3-)Implement function and print rotavator, calibre, deified is palindrome or not respectively."
+                       "2-)It is recursive function that define word is palindrome(same backwards and forwards) or not.",
+                       "3-)Implement function and print rotavator, calibre, deified is palindrome or not."
                      ]
 
     },
@@ -15,8 +15,8 @@
             "content": 
                       [
                        "1-)Parametre olarak string word alan recIsPalindrome fonksiyonunu tanımla.",
-                       "2-)Özyinelemeli bu fonksyion verilen string'in palindrom(baştan ve sondan aynı okunan) olup olmadığını belirler.",
-                       "3-)Fonksiyonu tanımla ve sırasıyla rotavator, calibre, deified kelimelerinin palindrom olma durumunu yazdır."
+                       "2-)Özyinelemeli bu fonksyion verilen parametrenin palindrom(baştan ve sondan aynı okunan) olup olmadığını belirler.",
+                       "3-)Fonksiyonu tanımla ve rotavator, calibre, deified kelimelerinin palindrom olma durumunu yazdır."
                       ]
     }
     

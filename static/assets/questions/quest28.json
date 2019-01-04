@@ -6,7 +6,7 @@
                        "1-)Import platform, os, subprocess, sys modules.",
                        "2-)Get operating system name with platform.system().",
                        "3-)If system name Windows or Linux run script.py in up level directory with subprocess popen.",
-                       "4-)For get path seperator use os.sep.",
+                       "4-)To get path seperator use os.sep.",
                        "5-)Decode script output from bytecode to 'utf-8'.",
                        "6-)If system is not Windows or Linux print error."
                      ]
@@ -17,10 +17,10 @@
             "title" : "SUBPROCESS OS PLATFORM SYS MODÜLLERİ",
             "content": 
                       [
-                       "1-)platform, os, subprocess, sys modüllerini al.",
+                       "1-)platform, os, subprocess, sys modüllerini kullan.",
                        "2-)platform.system() ile işletim sistemi adını al.",
                        "3-)Sistem Windows veya Linux ise subprocess popen ile bir üst klasördeki script.py dosyasını çalıştır.",
-                       "4-)Dosya yolu ayırıcıyı çekmek için os.sep'i kullan.",
+                       "4-)Dosya yolu ayırıcıyı bulmak için os.sep'i kullan.",
                        "5-)Dosyanın çıktısını bytecode'dan 'utf-8'e çevir.",
                        "6-)Sistem Windows veya Linux değilse hata yazdır."
                       ]
