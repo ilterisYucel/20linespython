@@ -334,7 +334,7 @@ function run()
     var newCoords = {};
     var faultX = fillArr(codelines.length, false);
     var faultY = fillArr(codelines.length, false);
-    var errorType;
+    var errorType = 0;
     var errors = [["Location Error on lines> ", "Konumu Hatalı Satırlar> "], ["Indentation Error on lines> ", "Girintilemesi Hatalı Satırlar> "]];
 
     for(var k = 0; k < yIndArr.length; k++){
@@ -352,9 +352,9 @@ function run()
     }
     //console.log(val + " " + changeStatus)
     //console.log(yIndArr);
-    console.log(faultY);
+    //console.log(faultY);
     
-    /*if(val & changeStatus){
+    if(val & changeStatus){
         for(var i = 0; i < yIndArr.length; i++){
             newCoords[yIndArr[i]] = levelData.xLocs[i];
         }
@@ -373,7 +373,7 @@ function run()
     }
     
     
-    console.log(newCoords);*/
+    console.log(newCoords);
     
     /*if(val && changeStatus){
         for(var i = 0; i < codelines.length; i++){
@@ -393,7 +393,8 @@ function run()
         var runStatus = true;
         for(var j = 0; j < yIndArr.length; j++){
             //if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) ){
-            if (codelines[yIndArr[j]].position.x === indentBegin + (levelData.xLocs[j])*(2 * font) ){//if(codelines[j].position.x === indentBegin + (newCoords[beforeCoords[j]])* (2 * font) ){
+            //if (codelines[yIndArr[j]].position.x === indentBegin + (levelData.xLocs[j])*(2 * font) ){//i
+            if(codelines[j].position.x === indentBegin + (newCoords[j])* (2 * font) ){
                 faultX[j] = true;
             }else{
                 runStatus = false;
@@ -405,18 +406,18 @@ function run()
             val = false;
         }
     }
-    console.log(faultX);
+    //console.log(faultX);
     if(val){
-        itemTest[level] = true;
-        localStorage.setItem("itemTest", JSON.stringify(itemTest));
-        level++;
-        //alert("ok");
-		setTimeout(function() {
-			createModal(val, "Compilation is SUCCESFULL!");
-			setTimeout(function() {
-			    window.location.assign("./quest.html?quest="+level);
-			},1000);
-		},500);
+        //itemTest[level] = true;
+        //localStorage.setItem("itemTest", JSON.stringify(itemTest));
+        //level++;
+        alert("ok");
+		//setTimeout(function() {
+			//createModal(val, "Compilation is SUCCESFULL!");
+			//setTimeout(function() {
+			    //window.location.assign("./quest.html?quest="+level);
+			//},1000);
+		//},500);
     }else{
 		setTimeout(function() {
 			items = createModal(val, errors[errorType][lang]);
