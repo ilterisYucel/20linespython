@@ -5,7 +5,7 @@
         "for k,v in eng_tr_dict.items():",
         "tr_eng_dict[v] = k",
         "print(eng_tr_dict.keys())",
-        "print(eng_tr_dict.values())"
+        "print(eng_tr_dict.values())",
         "print(tr_eng_dict.keys())",
         "print(tr_eng_dict.values())"
     ],
