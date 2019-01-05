@@ -354,7 +354,7 @@ function run()
     //console.log(yIndArr);
     console.log(faultY);
     
-    if(val & changeStatus){
+    /*if(val & changeStatus){
         for(var i = 0; i < yIndArr.length; i++){
             newCoords[yIndArr[i]] = levelData.xLocs[i];
         }
@@ -373,7 +373,7 @@ function run()
     }
     
     
-    console.log(newCoords);
+    console.log(newCoords);*/
     
     /*if(val && changeStatus){
         for(var i = 0; i < codelines.length; i++){
@@ -391,9 +391,9 @@ function run()
     
     if(val){
         var runStatus = true;
-        for(var j = 0; j < codelines.length; j++){
+        for(var j = 0; j < yIndArr.length; j++){
             //if(codelines[j].position.x !== indentBegin + (codelines[j].xInd) * (2 * font) ){
-            if(codelines[j].position.x === indentBegin + (newCoords[beforeCoords[j]])* (2 * font) ){
+            if (codelines[yIndArr[j]].position.x === indentBegin + (levelData.xLocs[j])*(2 * font) ){//if(codelines[j].position.x === indentBegin + (newCoords[beforeCoords[j]])* (2 * font) ){
                 faultX[j] = true;
             }else{
                 runStatus = false;
