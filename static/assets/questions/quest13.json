@@ -6,7 +6,7 @@
                        "1-)Define eng_tr_dict",
                        "2-)Define empty tr_eng_dict.",
                        "3-)Convert eng_tr_dict to tr_eng_dict.",
-                       "4-))Print keys and value of en_tr_dict respectively."
+                       "4-))Print keys and value of en_tr_dict respectively.",
                        "5-)Print keys and value of tr_end_dict respectively."
                      ]
 
