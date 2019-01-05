@@ -340,7 +340,7 @@ function run()
     for(var k = 0; k < yIndArr.length; k++){
         beforeCoords[k] = yIndArr[k];
     }
-    //console.log(beforeCoords);
+    console.log(beforeCoords);
     
     if(compareArray(yIndArr, trueComb[0], faultY)){
         val = true;
@@ -499,7 +499,22 @@ function compareArray(arr, arr1, list){
 }
 
 function getIndList(){
-    var yIndList = [];
+    var codeRefs = [];
+    for (var i = 0; i < codelines.length; i++) {
+    	codeRefs.push({
+    		line : i,
+    		pos : codelines[i].position.y
+    	});
+    }
+    return codeRefs.sort(function(a,b){ return a.pos - b.pos; }).map(function(a) { return a.line });
+    //return codeRefs.map(function(a) { return a.line });
+	/*console.log(codeRefs);
+	var yIndList = [];
+	for (var i = 0; i < codeRefs.length; i++) {
+		yIndList[codeRefs[i].line] = i;
+	}*/
+    
+    /*var yIndList = [];
     for(var i = 0; i < codelines.length; i++){
         ind = 0;
         for(var j = 0; j < codelines.length; j++){
@@ -509,7 +524,8 @@ function getIndList(){
         }
         yIndList.push(ind);
     }
-    return yIndList;
+    console.log(yIndList);
+    return yIndList;*/
 
 }
 
