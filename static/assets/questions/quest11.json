@@ -5,7 +5,7 @@
                     [ 
                        "1-)Get word from user.",
                        "2-)Assign 0 to counter to loop control.",
-                       "3-)Print substring that word."
+                       "3-)Print substrings input word."
                      ]
 
     },

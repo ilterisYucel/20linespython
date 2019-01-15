@@ -17,8 +17,8 @@
             "content": 
                       [
                         "1-)2 while döngüsü ile çarpım tablosu yazdır.",
-                        "2-)i'ye 1 ata ve 10 olana kadar döngüye at.",
-                        "3-)Bu döngünün içinde j'ye 1 ata ve 10 olana kadar döngüye at.",
+                        "2-)i'ye 1 ata ve 10 olana kadar döngüde kal.",
+                        "3-)Bu döngünün içinde j'ye 1 ata ve 10 olana kadar döngüye kal.",
                         "4-)i * j'yi yazdır ve j'yi 1 arttır.",
                         "5-)Dış döngüde i'yi 1 arttır ve yeni satır karakteri yazdır."
                       ]

@@ -340,7 +340,7 @@ function run()
     for(var k = 0; k < yIndArr.length; k++){
         beforeCoords[k] = yIndArr[k];
     }
-    console.log(beforeCoords);
+    //console.log(beforeCoords);
     
     if(compareArray(yIndArr, trueComb[0], faultY)){
         val = true;
@@ -371,23 +371,11 @@ function run()
             }
         }
     }
+    //console.log(val, changeStatus);
+    //console.log(faultY);
     
     
-    console.log(newCoords);
-    
-    /*if(val && changeStatus){
-        for(var i = 0; i < codelines.length; i++){
-            if(!codelines[yIndArr[i]].cs && !codelines[i].cs && codelines[yIndArr[i]].xInd !== codelines[i].xInd){
-                console.log(codelines[yIndArr[i]].id, codelines[yIndArr[i]].xInd, codelines[i].id, codelines[i].xInd );
-                var temp = codelines[yIndArr[i]].xInd;
-                codelines[yIndArr[i]].xInd = codelines[i].xInd;
-                codelines[i].xInd = temp;
-                codelines[yIndArr[i]].cs = true;
-                codelines[i].cs = true;
-                console.log(codelines[yIndArr[i]].id, codelines[yIndArr[i]].xInd, codelines[i].id, codelines[i].xInd );
-            }
-        } 
-    }*/
+    //console.log(beforeCoords, newCoords);
     
     if(val){
         var runStatus = true;
@@ -408,16 +396,16 @@ function run()
     }
     //console.log(faultX);
     if(val){
-        //itemTest[level] = true;
-        //localStorage.setItem("itemTest", JSON.stringify(itemTest));
-        //level++;
-        alert("ok");
-		//setTimeout(function() {
-			//createModal(val, "Compilation is SUCCESFULL!");
-			//setTimeout(function() {
-			    //window.location.assign("./quest.html?quest="+level);
-			//},1000);
-		//},500);
+        itemTest[level] = true;
+        localStorage.setItem("itemTest", JSON.stringify(itemTest));
+        level++;
+        //alert("ok");
+		setTimeout(function() {
+			createModal(val, "Compilation is SUCCESFULL!");
+			setTimeout(function() {
+			    window.location.assign("./quest.html?quest="+level);
+			},1000);
+		},500);
     }else{
 		setTimeout(function() {
 			items = createModal(val, errors[errorType][lang]);
@@ -478,6 +466,21 @@ function quest()
         createQuestPage();
         document.getElementsByTagName("body")[0].style["overflow-x"] = "hidden";
         document.getElementsByTagName("body")[0].style["overflow-y"] = "hidden";
+        
+        runButton.interactive = false;
+        runButton.buttonMode = false;
+
+        qButton.interactive = false;
+        qButton.buttonMode = false;
+
+        helpButton.interactive = false;
+        helpButton.buttonMode = false;
+        
+        glassButton.interactive = false;
+        glassButton.buttonMode = false;
+        
+        back.interactive = false;
+        back.buttonMode = false;
     },500);
 
 }
@@ -508,26 +511,6 @@ function getIndList(){
     	});
     }
     return codeRefs.sort(function(a,b){ return a.pos - b.pos; }).map(function(a) { return a.line });
-    //return codeRefs.map(function(a) { return a.line });
-	/*console.log(codeRefs);
-	var yIndList = [];
-	for (var i = 0; i < codeRefs.length; i++) {
-		yIndList[codeRefs[i].line] = i;
-	}*/
-    
-    /*var yIndList = [];
-    for(var i = 0; i < codelines.length; i++){
-        ind = 0;
-        for(var j = 0; j < codelines.length; j++){
-            if(codelines[i].position.y > codelines[j].position.y){
-                ind++;
-            }
-        }
-        yIndList.push(ind);
-    }
-    console.log(yIndList);
-    return yIndList;*/
-
 }
 
 function controlHelpStatus()
@@ -1102,12 +1085,13 @@ function createModal(condition, text)
         var line = new PIXI.Text("\u2714", {fontFamily : "monospace", fontSize :  8 * font + "px" ,
                                         align : "center",  fill : "#e60000", fontWeight: "bold"});
         var line1 = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  fFont / (30 * coef) + 'px' ,
-                                        align : "center",  fill : "#eeeeec", fontWeight: "bold"} );
+                                        align : "center",  fill : "#eeeeec", fontWeight: "bold"});
     }else{
         var line = new PIXI.Text("\u2716", {fontFamily : "monospace", fontSize :  8 * font  + "px" ,
                                         align : "center",  fill : "#005ce6", fontWeight: "bold"}); 
         var line1 = new PIXI.Text(text, {fontFamily : "monospace", fontSize :  fFont / (30 * coef) + 'px' ,
-                                        align : "center",  fill : "#eeeeec", fontWeight: "bold"} );                                
+                                        align : "center",  fill : "#eeeeec", fontWeight: "bold",     
+                                        wordWrap :true, wordWrapWidth : 0.75 * x});                                
                                           
     }
     line.anchor.x = 0.5;
@@ -1233,6 +1217,21 @@ function backFunc(list) {
         }
         document.getElementsByTagName("body")[0].style["overflow-x"] = "scroll";
         document.getElementsByTagName("body")[0].style["overflow-y"] = "scroll";
+        
+        runButton.interactive = true;
+        runButton.buttonMode = true;
+
+        qButton.interactive = true;
+        qButton.buttonMode = true;
+
+        helpButton.interactive = true;
+        helpButton.buttonMode = true;
+        
+        glassButton.interactive = true;
+        glassButton.buttonMode = true;
+        
+        back.interactive = true;
+        back.buttonMode = true;
     },500);
 }
 

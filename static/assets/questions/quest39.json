@@ -5,9 +5,10 @@
                     [ 
                        "1-)Define function get_line_count take parameter string filename.",
                        "2-)Try open file read mode and print line count.",
-                       "3-)If text can be evaluated as valid statement return True if not return False.",
-                       "4-)Open statement.py, read lines and define these are valid statements or not.",
-                       "5-)For these use list comprehension.After that print valid_list with map function and close file."
+                       "3-)If given file is not exist, raise IOError and print error message.",
+                       "4-)If file name is not valid type, raise TypeError and print error message.",
+                       "5-)IOError must catched before TypeError.Because more possible and spesific.",
+                       "6-)Implement function and invoke function given arguments."
                      ]
 
     },
@@ -16,11 +17,12 @@
             "title" : "TRY-EXCEPT",
             "content": 
                       [
-                       "1-)Parametre olarak text adlı string'i alan analyze_stmt fonksiyonunu tanımla.",
-                       "2-)Fonksiyon text'i kod satırı olarak yorumlamaya çalışır.",
-                       "3-)text geçerli bir kod satırı ise True döndürür.Değilse False döndürür.",
-                       "4-)statement.py'yi satır satır okuyarak satırlarının geçerli bir kod satırı olup olmadığını bul.",
-                       "5-)Bunu yapmak için liste comprehension kullan ve valid_list'i map kullanarak yazdır, dosyayı kapat."
+                       "1-)Parametre olarak dosya adı alan get_line_count fonksiyonunu tanımla.",
+                       "2-)Dosyayı açmaya çalış ve satır sayısını yazdırmaya çalış.",
+                       "3-)Verilen isimde bir dosya yoksa IOError yakala ve hata mesajı yazdır.",
+                       "4-)Verilen dosya adı uygun tipte değilse TypeError yakala ve hata mesajı yazdır.",
+                       "5-)IOError, TypeError'dan daha önce kontrol edilmeli.Çünkü daha olası ve spesifik bir hatadır.",
+                       "6-)Fonksiyonu tanımla ve verilen argümanlar ile çağır."
                       ]
     }
     

@@ -1,25 +1,23 @@
 {
     "0" : {
-            "title" : "IF STATEMENT-1",
+            "title" : "IF STATEMENT-2",
             "content" : [
-                    "1-)Import randint from random.",
-                    "2-)Create random integer with function randint.",
-                    "3-)Get absolute value of  number - guess and add it to variable difference.",
-                    "4-)Compare user guess and number.",
-                    "5-)Say to user guess is bigger,less or equal.",
-                    "6-)Add tips about guess is close(difference less than equal 5) or not number."
+                    "1-)Get age and student status respectively.",
+                    "2-)Convert input age to int.",
+                    "3-)If age <= 18'den or >=65, subway free.",
+                    "4-)If age <= 25 and user is student,subway free .",
+                    "5-)If not, user can not use free."
             ]
          },
          
     "1" : {
-            "title" : "IF YAPISI-1",
+            "title" : "IF YAPISI-2",
             "content" : [
-                    "1-)Random modülünden randint fonksiyonunu al.",
-                    "2-)randint fonksiyonu ile random sayı oluştur.",
-                    "3-)Random sayı - kullanıcı tahmini'nin mutlak değerini difference değişkenine ata.",
-                    "4-)Kullanıcı tahmini ile random sayıyı karşılaştır.",
-                    "5-)Kullanıcıyı tahmini hakkında bilgilendir.(büyük, küçük veya eşit.)",
-                    "6-)Kullanıcının tahmini random sayıya yakınsa(difference 5'ten küçük veya eşitse) kullanıcıya söyle."
+                    "1-)Sırasıyla yaş ve öğrenci statüsü girdisi al.",
+                    "2-)Yaş girdisini sayıya çevir(int).",
+                    "3-)Yaş <= 18 veya >= 65 ise, metro ücretsiz.",
+                    "4-)Yaş <= 25 ve kullanıcı öğrenci ise, metro ücretsizdir.",
+                    "5-)Değilse, metro ücretlidir."
             ]
          }
          

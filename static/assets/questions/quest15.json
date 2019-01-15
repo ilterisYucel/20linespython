@@ -20,7 +20,7 @@
                        "1-)Okuma modunda 'numbers.txt'yi aç.",
                        "2-)Dosya satırlarını al ve yeni satır karakterlerini sil.",
                        "3-)Satırı yazdır.",
-                       "4-)Satırı '-' karakterinden parçala ve herbir elemanı list comprehension ile sayıya çevir.",
+                       "4-)Satırı '-' karakterinden parçala ve parçaları list comprehension ile sayıya çevir.",
                        "5-)modül n3'te n1 üzeri n2'yi yazdır.",
                        "6-)Dosyayı kapat."
                       ]

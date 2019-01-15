@@ -3,11 +3,11 @@ if (typeof(Storage) !== "undefined") {
         localStorage.setItem("minLevel", 0);
     }
     if(!localStorage.getItem("maxLevel")){
-        localStorage.setItem("maxLevel", 60);
+        localStorage.setItem("maxLevel", 39);
     }
     if(!localStorage.getItem("itemTest")){
         var obj = [];
-        for(var o = 0; o <= 60; o++){
+        for(var o = 0; o <= 39; o++){
             obj[o] = false;
         }
         setTimeout(function(){
@@ -73,8 +73,8 @@ function menuPage(){
     stepInX = (4 * stepX) / 12;
     stepInY = (4 * stepY) / 12;
     
-    dashedLine(graphics, 1 * stepX, 4 * stepY, x, 4 * stepY + 11 * stepInY);
-    dashedLine(graphics, 9 * stepX, 4 * stepY, x, 4 * stepY + 11 * stepInY);
+    dashedLine(graphics, 1 * stepX, 4 * stepY, x, 4 * stepY + 8 * stepInY);
+    dashedLine(graphics, 9 * stepX, 4 * stepY, x, 4 * stepY + 8 * stepInY);
     
     app.stage.addChild(graphics);
      
@@ -163,7 +163,7 @@ function menuPage(){
         
     app.stage.addChild(button2);
     
-    button3.id = 3;
+    /*button3.id = 3;
     button3.position.x = x / 2;
     button3.position.y = 4 * stepY + 10 * stepInY;
     button3.firstX = x / 2;
@@ -186,7 +186,7 @@ function menuPage(){
         .on('mousemove', onDragMove)
         .on('touchmove', onDragMove);
         
-    app.stage.addChild(button3)
+    app.stage.addChild(button3)*/
     /*graphics.beginFill(0x306998);
     graphics.drawRoundedRect(2 * stepX, 2 * stepY + stepInY, 6 * stepX, 2 * stepInY, 10);
     graphics.endFill();
@@ -313,7 +313,7 @@ function onDragMove(){
                 }
                 else if(this.id === 2){
                     setTimeout(function(){
-                        location.replace("./howToPlay.html?section=0");
+                        //location.replace("./howToPlay.html?section=0");
                     },500);
     
                 }

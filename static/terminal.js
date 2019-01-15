@@ -12,7 +12,7 @@ var codeArea = document.getElementById("codeArea");
 var outputArea = document.getElementById("outputArea");
 var buttonDiv = document.getElementById("buttonDiv");
 var runButton = document.getElementById("runButton");
-var editButton = document.getElementById("editButton");
+//var editButton = document.getElementById("editButton");
 var backButton = document.getElementById("backButton");
 
 codeArea.style.boxSizing = "border-box";
@@ -28,14 +28,14 @@ codeArea.style.padding = "16px";
 buttonDiv.style.width = x + "px";
 buttonDiv.style.height = 0.1 * y + "px";
 buttonDiv.style.margin = "0 auto";
-buttonDiv.style.paddingLeft = 0.2 * x + "px";
+buttonDiv.style.paddingLeft = 0.3 * x + "px";
 buttonDiv.style.paddingTop = 0.02 * y + "px";
 
 runButton.style.width = 0.2 * x + "px";
 runButton.style.height = 0.06 * y +  "px";
 
-editButton.style.width = 0.2 * x + "px";
-editButton.style.height = 0.06 * y +  "px";
+//editButton.style.width = 0.2 * x + "px";
+//editButton.style.height = 0.06 * y +  "px";
 
 backButton.style.width = 0.2 * x + "px";
 backButton.style.height = 0.06 * y +  "px";

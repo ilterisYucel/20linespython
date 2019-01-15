@@ -6,7 +6,7 @@
                        "1-)Create fahrenheit-celsius converter.",
                        "2-)Assign True to boolean for to loop control.",
                        "3-)Prompt user operation select.",
-                       "4-)Respectively do if control op 1, op 2, op quit and invalid operation."
+                       "4-)Control user select for operations 1, 2, quit and invalid and do operation."
                      ]
 
     },
@@ -18,7 +18,7 @@
                         "1-)Fahrenheit-Celsius çevirici kodla.",
                         "2-)Döngü kontrolü için boolean değişkenine True ata.",
                         "3-)Kullanıcıya işlem numarası sor.",
-                        "4-)Sırasıyla işlem 1, işlem 2, çıkış ve geçersiz işlem için if kontrolü yap."
+                        "4-)1,2,çıkış ve tanımsız işlemleri için kullanıcı seçimini kontrol et ve operasyonu gerçekleştir."
                       ]
     }
 

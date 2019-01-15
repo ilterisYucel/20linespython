@@ -10,13 +10,15 @@
     "fahrenheit = input(\"Enter fahrenheit value >\")",
     "print(\"Temperature {} C\" .format((float(fahrenheit) - 32) * 5.0/9.0))",
     "elif(operation == 'q'):",
+    "print(\"Quitting...\")",
     "boolean = False",
     "else:",
     "print(\"Invalid operation.\")"
     ],
-    "yLocs" : [0,1,2,3,4,5,6,7,8,9,10,11,12],
-    "xLocs" : [0,0,1,1,2,2,1,2,2,1,2,1,2],
-    "trueComb" : [[0,1,2,3,4,5,6,7,8,9,10,11,12],
-                  [0,1,2,3,4,5,8,9,10,6,7,11,12]
+    "yLocs" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13],
+    "xLocs" : [0,0,1,1,2,2,1,2,2,1,2,2,1,2],
+    "trueComb" : [
+                  [0,1,2,3,4,5,6,7,8,9,10,11,12,13],
+                  [0,1,2,3,4,5,9,10,11,6,7,8,12,13]
                  ]
 }

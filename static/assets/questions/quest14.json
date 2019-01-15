@@ -19,7 +19,7 @@
                        "1-)Okuma modunda 'players.txt' dosyasını aç.",
                        "2-)Satır sayısını tutacak count'a 0 ata.",
                        "3-)readlines fonksiyonu ile dosyanın tüm satırlarını al.",
-                       "4-)For döngüsü ile satırlara ulaş ve yazdır.Count'u arttır.",
+                       "4-)For döngüsü ile satırlara ulaş ve yazdır, count'u arttır.",
                        "5-)Satır sayısını yazdır ve dosyayı kapat."
                       ]
     }

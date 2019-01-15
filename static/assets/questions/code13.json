@@ -4,10 +4,10 @@
         "tr_eng_dict = {}",
         "for k,v in eng_tr_dict.items():",
         "tr_eng_dict[v] = k",
-        "print(eng_tr_dict.keys())",
-        "print(eng_tr_dict.values())",
-        "print(tr_eng_dict.keys())",
-        "print(tr_eng_dict.values())"
+        "print(\"English-Turkish keys: {}\".format(eng_tr_dict.keys()))",
+        "print(\"English-Turkish values: {}\".format(eng_tr_dict.values()))",
+        "print(\"Turkish-English keys: {}\".format(tr_eng_dict.keys()))",
+        "print(\"Turkish-English values: {}\".format(tr_eng_dict.values()))"
     ],
     "yLocs" : [0,1,2,3,4,5,6,7],
     "xLocs" : [0,0,0,1,0,0,0,0],
