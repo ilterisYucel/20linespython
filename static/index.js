@@ -33,6 +33,7 @@ var buttonName = [path + "button_challenge.png", path + "button_mucadele.png"];
 var buttonName1 = [path + "button_question-select.png", path + "button_soru-sec.png"];
 var buttonName2 = [path + "button_how-to-play.png", path + "button_nasil-oynanir.png"];
 var buttonName3 = [path + "button_sources.png", path + "button_kaynaklar.png"];
+var logoPath = path + "20_l_py_a.png";
 
 var w = window,
     d = document,
@@ -46,10 +47,10 @@ var orient = (x >= y) ? 'l' : 'p';
 var app;
 var graphics = new PIXI.Graphics();
 
-function dashedLine(graphics, beginX, beginY, endX, endY)
+function dashedLine(graphics, beginX, beginY, endX, endY, color)
 {   
     step = Math.abs(beginY - endY) / 100;
-    graphics.lineStyle(2, 0xeeeeec, 0.2);
+    graphics.lineStyle(x / 100, color, 0.4);
     for(var i = 1; i < 101; i++)
     {
         if(i % 2 === 0)
@@ -73,8 +74,8 @@ function menuPage(){
     stepInX = (4 * stepX) / 12;
     stepInY = (4 * stepY) / 12;
     
-    dashedLine(graphics, 1 * stepX, 4 * stepY, x, 4 * stepY + 8 * stepInY);
-    dashedLine(graphics, 9 * stepX, 4 * stepY, x, 4 * stepY + 8 * stepInY);
+    dashedLine(graphics, 1 * stepX, 0.05 * y , x, 0.95 * y, 0x646464);
+    dashedLine(graphics, 9 * stepX, 0.05 * y , x, 0.95 * y, 0x646464);
     
     app.stage.addChild(graphics);
      
@@ -82,11 +83,22 @@ function menuPage(){
     var texture1 = new PIXI.Texture.fromImage(buttonName1[lang]);
     var texture2 = new PIXI.Texture.fromImage(buttonName2[lang]);
     var texture3 = new PIXI.Texture.fromImage(buttonName3[lang]);
+    var logoTexture = new PIXI.Texture.fromImage(logoPath);
     
     button = new PIXI.Sprite(texture);
     button1 = new PIXI.Sprite(texture1);
     button2 = new PIXI.Sprite(texture2);
     button3 = new PIXI.Sprite(texture3);
+    logo = new PIXI.Sprite(logoTexture);
+    
+    logo.position.x = x / 2;
+    logo.position.y = 2 * stepY;
+    logo.width =  3 * stepY;
+    logo.height = 3 * stepY;
+    logo.anchor.x = 0.5;
+    logo.anchor.y = 0.5;
+    
+    app.stage.addChild(logo);
     
     button.id = 0;
     button.position.x = x / 2;
