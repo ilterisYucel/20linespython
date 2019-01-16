@@ -1,6 +1,6 @@
 {
     "0" : {
-            "title" : "DATETIME AND REGEX MODULES",
+            "title" : "DATETIME AND REGEX",
             "content":
                     [ 
                        "1-)Import calendar, datetime, regex modules.",

@@ -1,6 +1,6 @@
 {
     "0" : {
-            "title" : "SUBPROCESS OS PLATFORM SYS MODULES",
+            "title" : "SUBPROCESS-OS-PLATFORM-SYS",
             "content":
                     [ 
                        "1-)Import platform, os, subprocess, sys modules.",
@@ -14,7 +14,7 @@
     },
 
     "1" : {
-            "title" : "SUBPROCESS OS PLATFORM SYS MODÜLLERİ",
+            "title" : "SUBPROCESS-OS-PLATFORM-SYS",
             "content": 
                       [
                        "1-)platform, os, subprocess, sys modüllerini kullan.",

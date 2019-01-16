@@ -2,7 +2,7 @@
     "0" : {
             "title" : "FOR LOOP AND LIST-2",
             "content" : [
-                    "1-)Define listA is square matrix(a list that row number = column number).",
+                    "1-)Define listA is square matrix(a 2D list that row number = column number).",
                     "2-)Define empty list named diagonal.",
                     "3-)Iterate over with i in length listA.",
                     "4-)Iterate over with j in length listA.",
@@ -18,7 +18,7 @@
                     "2-)Boş liste diagonal'i tanımla.",
                     "3-)i değişkeni ile listA'nın eleman sayısı kadar gez.",
                     "4-)j değişkeni ile listA'nın eleman sayısı kadar gez.",
-                    "5-)i j'ye eşitse, listA[i][j]'yi diagonala ekle.",
+                    "5-)i j'ye eşitse, listA[i][j]'yi diagonal'e ekle.",
                     "6-)Diagonali(kare matriksin köşegenini içerir) yazdır. "
             ]
          }

@@ -5,7 +5,7 @@
                     [ 
                        "1-)Define function analyze_stmt take parameter string text.",
                        "2-)Function try to compile and evaluate this text as code statement.",
-                       "3-)If text can be evaluated as valid statement return True if not return False.",
+                       "3-)If text can be evaluated as valid statement return True if there is an error, return False.",
                        "4-)Open statement.py, read lines and define these are valid statements or not.",
                        "5-)For these use list comprehension.After that print valid_list with map function and close file."
                      ]
@@ -18,7 +18,7 @@
                       [
                        "1-)Parametre olarak text adlı string'i alan analyze_stmt fonksiyonunu tanımla.",
                        "2-)Fonksiyon text'i kod satırı olarak yorumlamaya çalışır.",
-                       "3-)text geçerli bir kod satırı ise True döndürür.Değilse False döndürür.",
+                       "3-)text geçerli bir kod satırı olarak yorumlanabiliyorsa True döndürür.Bir hata varsa False döndürür.",
                        "4-)statement.py'yi satır satır okuyarak satırlarının geçerli bir kod satırı olup olmadığını bul.",
                        "5-)Bunu yapmak için liste comprehension kullan ve valid_list'i map kullanarak yazdır, dosyayı kapat."
                       ]

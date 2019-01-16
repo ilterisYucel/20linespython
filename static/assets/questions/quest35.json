@@ -6,7 +6,7 @@
                        "1-)Define function binarySearch take parameters list arr and integer x.",
                        "2-)It is recursive function that search x in sorted list arr.",
                        "3-)Binary search compare parameter with middle of sorted list. If parameter is smaller than middle, search in before the middle. If it is bigger than middle,  search in after the middle.It is equal with middle, return true.",
-                       "4-)Define arr, search and print 5,3,10,13 is in arr or not."
+                       "4-)In given arr, search and print 5,3,10,13 is in arr or not."
                      ]
 
     },
@@ -18,7 +18,7 @@
                        "1-)Parametre olarak list arr'yi ve integer x'i  alan binarySearch fonksiyonunu tanımla.",
                        "2-)Özyinelemeli bu fonksyion verilen sıralı liste içinde x'i arar.",
                        "3-)Binary search sıralı listenin ortasındaki eleman ile parametreyi karşılaştırır.Ortadaki elemandan küçükse ortadaki elemandan küçük elemanların içinde arama yapar.Büyükse ortadaki elemandan büyük elemanların içinde arama yapar.Eşitse doğru döndürür. ",
-                       "4-)arr'yi tanımla ve 5,3,10,13 sayılarını arayarak ve bulunma durumlarını yazdır."
+                       "4-)Verilen arr içinde ve 5,3,10,13 sayılarını arayarak ve bulunma durumlarını yazdır."
                       ]
     }
     

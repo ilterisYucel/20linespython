@@ -5,7 +5,7 @@
                     [ 
                        "1-)Define empty eng_tr_dict.",
                        "2-)Assign True to boolean to loop control.",
-                       "3-)Get words from user english and turkish respectively.",
+                       "3-)Get words from user english and turkish.",
                        "4-)Add these to eng_tr_dict as key and value.",
                        "5-)Prompt user quit or continue.",
                        "6-)Print eng_tr_dict as 'key ---> value' pattern."
@@ -19,7 +19,7 @@
                       [
                        "1-)Boş eng_tr_dict tanımla.",
                        "2-)Döngü kontrolü için True boolean değişkeni tanımla.",
-                       "3-)Kullanıcıdan sırasıyla ingilizce ve türkçe kelime iste.",
+                       "3-)Kullanıcıdan ingilizce ve türkçe kelime iste.",
                        "4-)Bunları eng_tr_dict'e anahtar değer şeklinde ata.",
                        "5-)Kullanıcıyı devam etmek veya çıkmak için yönlendir.",
                        "6-)eng_tr_dict'i 'anahtar ---> değer' düzeninde yazdır."
