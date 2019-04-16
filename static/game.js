@@ -147,7 +147,7 @@ function createPage()
             .on('mousedown', glass)
             .on('touchstart', glass);
             
-    var fontBack = ('m' > orient) ? (y / 20) : (x / 20);        
+    var fontBack = ('m' > orient) ? (y / 15) : (x / 15);        
     back = new PIXI.Text("\u27a4", {fontSize : fontBack + "px", fill : "#FFFFFF"});
     back
         .on('mousedown', goBack)
@@ -162,25 +162,25 @@ function createPage()
             dashedLine(graphics, i * (2 * font), 2 * (y /  10), x, y);
         }
             
-        runButton.position.x = x - y / 10;
-        runButton.position.y = y / 10 + y / 40;
-        runButton.width = y / 20;
-        runButton.height = y / 20;
+        runButton.position.x = x - y / 20;
+        runButton.position.y = y / 10 + y / 35;
+        runButton.width = y / 25;
+        runButton.height = y / 25;
         
-        helpButton.position.x = x - 3 * y / 10;
-        helpButton.position.y = y / 10 + y / 40;
-        helpButton.width = y / 20;
-        helpButton.height = y / 20;
+        helpButton.position.x = x - (y / 20 + 2 * y / 15);
+        helpButton.position.y = y / 10 + y / 35;
+        helpButton.width = y / 25;
+        helpButton.height = y / 25;
         
-        qButton.position.x = x - 2 * y / 10;
-        qButton.position.y = y / 10 + y / 40;
-        qButton.width = y / 20;
-        qButton.height = y / 20;
+        qButton.position.x = x - (y / 20 + 1 * y / 15);
+        qButton.position.y = y / 10 + y / 35;
+        qButton.width = y / 25;
+        qButton.height = y / 25;
         
-        glassButton.position.x = x - 4 * y / 10;
-        glassButton.position.y = y / 10 + y / 40;
-        glassButton.width = y / 20;
-        glassButton.height = y / 20;
+        glassButton.position.x = x - (y / 20 + 3 * y / 15);
+        glassButton.position.y = y / 10 + y / 35;
+        glassButton.width = y / 25;
+        glassButton.height = y / 25;
         
         back.anchor.x = 0.5;
         back.anchor.y = 0.5;
@@ -261,17 +261,17 @@ function redraw() {
             dashedLine(graphics, i * (2 * font), document.body.scrollTop+dashedLineBeginY, x, document.body.scrollTop+y);
         }
         
-        runButton.position.x = document.body.scrollLeft+x - y / 10;
-        runButton.position.y = y / 10 + y / 40;
+        runButton.position.x = document.body.scrollLeft+x - y / 20;
+        runButton.position.y = y / 10 + y / 35;
         
-        helpButton.position.x = document.body.scrollLeft+x - 3 * y / 10;
-        helpButton.position.y = y / 10 + y / 40;
+        helpButton.position.x = document.body.scrollLeft+x - (y / 20 + 2 * y / 15);
+        helpButton.position.y = y / 10 + y / 35;
         
-        qButton.position.x = document.body.scrollLeft+x - 2 * y / 10;
-        qButton.position.y = y / 10 + y / 40;
+        qButton.position.x = document.body.scrollLeft+x - (y / 20 + 1 * y / 15);
+        qButton.position.y = y / 10 + y / 35;
         
-        glassButton.position.x = document.body.scrollLeft+x - 4 * y / 10;
-        glassButton.position.y = y / 10 + y / 40;
+        glassButton.position.x = document.body.scrollLeft+x - (y / 20 + 3 * y / 15);
+        glassButton.position.y = y / 10 + y / 35;
         
         back.position.x = document.body.scrollLeft+ x / 10 - x / 20;
         back.position.y = y / 10 + y / 20;
@@ -460,27 +460,28 @@ function help()
 function quest()
 {
     this.isdown = true;
+    
+    runButton.interactive = false;
+    runButton.buttonMode = false;
+
+    qButton.interactive = false;
+    qButton.buttonMode = false;
+
+    helpButton.interactive = false;
+    helpButton.buttonMode = false;
+        
+    glassButton.interactive = false;
+    glassButton.buttonMode = false;
+        
+    back.interactive = false;
+    back.buttonMode = false;
     //this.alpha = 0.5;
     setTimeout(function(){
         //window.location.assign("./quest.html?quest=" + level);
         createQuestPage();
         document.getElementsByTagName("body")[0].style["overflow-x"] = "hidden";
         document.getElementsByTagName("body")[0].style["overflow-y"] = "hidden";
-        
-        runButton.interactive = false;
-        runButton.buttonMode = false;
 
-        qButton.interactive = false;
-        qButton.buttonMode = false;
-
-        helpButton.interactive = false;
-        helpButton.buttonMode = false;
-        
-        glassButton.interactive = false;
-        glassButton.buttonMode = false;
-        
-        back.interactive = false;
-        back.buttonMode = false;
     },500);
 
 }
