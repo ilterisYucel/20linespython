@@ -276,8 +276,18 @@ function getAllUrlParams(url) {
   return obj;
 }
 
+function goBack() {
+    setTimeout(function(){
+        window.location.assign("./index.html");
+    },500);  
+}
+
 window.onload = function(){
     var app = new PIXI.Application(x, y, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     howToPage(app);
+    
+    document.addEventListener("deviceready", function() {
+    	document.addEventListener("backbutton", goBack);	
+    };
 }

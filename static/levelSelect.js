@@ -322,4 +322,8 @@ window.onload = function(){
     app = new PIXI.Application(x, y, {backgroundColor : 0x2e3436});
     document.body.appendChild(app.view);
     menuPage();
+    
+    document.addEventListener("deviceready", function() {
+    	document.addEventListener("backbutton", goBack);	
+    };
 }

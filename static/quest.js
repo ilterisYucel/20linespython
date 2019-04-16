@@ -105,6 +105,11 @@ function goFunc() {
         window.location.assign("./game.html?level=" + quest + "&flag=" + false);
     },500);
 }
+function goBack() {
+	setTimeout(function(){
+        window.location.assign("./game.html?level=" + quest + "&flag=" + false);
+    },500);
+}
 
 function getAllUrlParams(url) {
 
@@ -158,5 +163,8 @@ window.onload = function(){
     var app = new PIXI.Application(window.innerWidth, window.innerHeight, {backgroundColor : 0x888a85});
     document.body.appendChild(app.view);
     createPage(app);
-
+	
+	document.addEventListener("deviceready", function() {
+    	document.addEventListener("backbutton", goBack);	
+    };
 }

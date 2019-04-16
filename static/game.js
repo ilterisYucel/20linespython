@@ -1256,4 +1256,8 @@ window.onload = function(){
     lastScrollX = 0;
     lastScrollY = 0;
     console.log(getIndList());
+    
+    document.addEventListener("deviceready", function() {
+    	document.addEventListener("backbutton", goBack);	
+    };
 }

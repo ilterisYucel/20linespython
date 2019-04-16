@@ -136,5 +136,7 @@ function getAllUrlParams(url) {
 
 window.onload = function(){
     codeArea.value = code;
-
+	document.addEventListener("deviceready", function() {
+    	document.addEventListener("backbutton", backFunc);	
+    };
 }
