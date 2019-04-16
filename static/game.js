@@ -770,7 +770,7 @@ function onDragEnd()
     }
     if(tmp_positionY % (lineHeight) !== 0)
     {
-        this.position.y = this.position.y + (lineHeight - (tmp_positionY % lineHeight));
+        this.position.y = this.position.y + (lineHeight - (tmp_positionY % lineHeight)) - lineHeight;
     }
     if (this.position.x < codeAreaBeginX) {
         this.position.x += font * 2;
@@ -789,10 +789,10 @@ function onDragMove()
     if (this.dragging)
     {
         var newPosition = this.data.getLocalPosition(this.parent);
-        if(controlCodeArea(this, newPosition.x, newPosition.y))
+        if(controlCodeArea(this, newPosition.x, newPosition.y-3*font))
         {
             this.position.x = newPosition.x;
-            this.position.y = newPosition.y;
+            this.position.y = newPosition.y-3*font;
         }
     }
 }
