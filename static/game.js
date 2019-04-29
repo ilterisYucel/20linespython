@@ -1260,5 +1260,5 @@ window.onload = function(){
     
     document.addEventListener("deviceready", function() {
     	document.addEventListener("backbutton", goBack);	
-    };
+    });
 }
